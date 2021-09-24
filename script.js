@@ -10,7 +10,7 @@ This is your site JavaScript code - you can add interactivity and carry out proc
       style: 'mapbox://styles/swu-test/cktnuxsl20nix17qowrvldwms',
       center: [126.951073, 37.548930],
       maxZoom: 15.5,
-      minZoom: 13,
+      minZoom: 10,
       pitch: 0
     });
 
