@@ -6,57 +6,48 @@ This is your site JavaScript code - you can add interactivity and carry out proc
 mapboxgl.accessToken =
   "pk.eyJ1Ijoic3d1LXRlc3QiLCJhIjoiY2tvdG9mdWM1MDV4OTJ2bzdmdnA5ejEyZyJ9.uuSmjrOs4J48Xek-YT6bgw";
 
-const geojson = {
-  type: "FeatureCollection",
-  features: [
-    {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: [126.94555137267065, 37.5521900079999]
-      },
-      properties: {
-        title: "Title1",
-        description: "Washington, D.C."
-      }
-    },
-    {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: [126.940016, 37.562377]
-      },
-      properties: {
-        title: "Title2",
-        description: "San Francisco, California"
-      }
-    }
-  ]
-};
-
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/swu-test/cktnuxsl20nix17qowrvldwms",
-  center: [126.938, 37.57],
-  zoom: 15
+  center: [126.942, 37.56],
+  zoom: 14
 });
 
 map.on("load", function() {
   map.resize();
 });
 
-// add markers to map
-for (const { geometry, properties } of geojson.features) {
-  // create a HTML element for each feature
-  const el = document.createElement("div");
-  el.className = "marker";
+  map.on('click', function(e) {
 
-  // make a marker for each feature and add it to the map
-  new mapboxgl.Marker(el)
-    .setLngLat(geometry.coordinates)
-    .setPopup(
-      new mapboxgl.Popup({ offset: 25 }) // add popups
-        .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p>`)
-    )
-    .addTo(map);
-}
+      var states = map.queryRenderedFeatures(e.point, {
+          layers: ['test3']
+      });
+      let was_added = false;
+
+
+      if (states.length > 0) {
+          let pd = document.getElementById('pd1');
+          let pd2 = document.getElementById('pd2');
+
+          var image = new Image();
+          let imgPastName = states[0].properties.name_en;
+          let imgPresentName = states[0].properties.present;
+          image.src = './img/past/' + imgPastName + '.png';
+          image.style.width = "98%";
+
+          pd.innerHTML = '<h2>' + states[0].properties.name_en + '<br><div style="padding-top:10px">' + states[0].properties.name_ko + '</div></h2>';
+          pd2.innerHTML = '<p>' +states[0].properties.info + '</p>';
+          streetview.innerHTML = '';
+
+
+          image.onload = function() {
+              pd.appendChild(this);
+              streetview.appendChild(panorama);
+          //    console.log(imgPresentName);
+          }
+                } else {
+          pd.innerHTML = '<h2>Zoom in and click <br>the buildings to <br>explore a map</h2>';
+          pd2.innerHTML = '';
+          streetview.innerHTML = '';
+      }
+  });
