@@ -13,32 +13,11 @@ const map = new mapboxgl.Map({
   zoom: 14
 });
 
-map.on("load", function() {
+map.on("load", () => {
   map.resize();
-});
 
-map.addSource("my-data", {
-  type: "vector",
-  url: "mapbox://swu-test.cktnv714u217l21rupi3xtsiy"
-});
-
-map.addLayer({
-  id: "states-layer",
-  type: "fill",
-  source: "my-data",
-  paint: {
-    "fill-color": "rgba(200, 100, 240, 0.4)",
-    "fill-outline-color": "rgba(200, 100, 240, 1)"
-  }
-});
-map.on('click', 'states-layer', (e) => {
-new mapboxgl.Popup()
-.setHTML(e.features[0].properties.name)
-.addTo(map);
-});
-
-/*
-map.on("click", function(e) {
+  
+  map.on("click", function(e) {
   var places = map.queryRenderedFeatures(e.point, {
     layers: ["test3"]
   });
@@ -49,11 +28,32 @@ map.on("click", function(e) {
     let pd2 = document.getElementById("pd2");
 
     pd.innerHTML =
-      "<h1>" +
-      places[0].properties.title +
-      "<br>" +
-      places[0].properties.add +
-      "</div></h1>";
+      "<h1>" + places[0].properties.title + "<br>" + 
+      places[0].properties.add + "</div></h1>";
     pd2.innerHTML = "<p>" + places[0].properties.info + "</p>";
   }
-});*/
+  
+});
+
+// Change the cursor to a pointer when
+// the mouse is over the states layer.
+map.on('mouseenter', function(e) {
+  var places2 = map.queryRenderedFeatures(e.point, {
+    layers: ["test3"]
+  });
+map.getCanvas().style.cursor = 'pointer';
+});
+ 
+// Change the cursor back to a pointer
+// when it leaves the states layer.
+map.on('mouseleave', 'places', () => {
+map.getCanvas().style.cursor = '';
+});
+  
+  
+  
+  
+});
+
+
+
