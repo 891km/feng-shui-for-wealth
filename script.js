@@ -13,11 +13,6 @@ const map = new mapboxgl.Map({
   zoom: 14
 });
 
-let pd = document.getElementById("pd1");
-let pd2 = document.getElementById("pd2");
-
-
-
 map.on("load", () => {
   map.resize();
   // Add a source for the state polygons.
@@ -43,7 +38,51 @@ map.on("load", () => {
         ],
         type: "Polygon"
       }
-    }
+    },
+    {
+  "type": "Feature",
+  "properties": {
+    "title": "Place Name 1",
+    "info": "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
+    "add": "서울 중구 을지로 1-5"
+  },
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          126.940016,
+          37.562377
+        ],
+        [
+          126.940563,
+          37.561841
+        ],
+        [
+          126.94141,
+          37.561731
+        ],
+        [
+          126.941927,
+          37.562097
+        ],
+        [
+          126.94124,
+          37.562751
+        ],
+        [
+          126.941347,
+          37.562811
+        ],
+        [126.941004, 37.5631],
+        [
+          126.940016,
+          37.562377
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  }
+}
   });
 
   // Add a layer showing the state polygons.
@@ -60,62 +99,19 @@ map.on("load", () => {
   // open a popup at the location of the click, with description
   // HTML from the click event's properties.
   map.on("click", "test-layer", e => {
-    new mapboxgl.Popup()
-      .setLngLat(e.lngLat)
-      .setHTML(e.features[0].properties.name)
-      .addTo(map);
+    document.getElementById("pd1").innerHTML = "<h1>" + e.features[0].properties.title + "<br>" + 
+      e.features[0].properties.add + "</div></h1>";
+    document.getElementById("pd2").innerHTML = "<p>" + e.features[0].properties.info + "</p>";
   });
 
   // Change the cursor to a pointer when
-  // the mouse is over the states layer.
+  // the mouse is over the layer.
   map.on("mouseenter", "test-layer", () => {
     map.getCanvas().style.cursor = "pointer";
   });
 
   // Change the cursor back to a pointer
-  // when it leaves the states layer.
   map.on("mouseleave", "test-layer", () => {
     map.getCanvas().style.cursor = "";
   });
 });
-
-/*
-map.on("load", () => {
-  map.resize();
-  
-  map.on("click", function(e) {
-  var places = map.queryRenderedFeatures(e.point, {
-    layers: ["test3"]
-  });
-  let was_added = false;
-
-  if (places.length > 0) {
-    let pd = document.getElementById("pd1");
-    let pd2 = document.getElementById("pd2");
-
-    pd.innerHTML =
-      "<h1>" + places[0].properties.title + "<br>" + 
-      places[0].properties.add + "</div></h1>";
-    pd2.innerHTML = "<p>" + places[0].properties.info + "</p>";
-  }
-  
-});
-
-// Change the cursor to a pointer when
-// the mouse is over the states layer.
-map.on('mouseenter', function(e) {
-  var places2 = map.queryRenderedFeatures(e.point, {
-    layers: ["test3"]
-  });
-map.getCanvas().style.cursor = 'pointer';
-});
- 
-// Change the cursor back to a pointer
-// when it leaves the states layer.
-map.on('mouseleave', 'places', () => {
-map.getCanvas().style.cursor = '';
-});  
-  
-});
-
-*/
