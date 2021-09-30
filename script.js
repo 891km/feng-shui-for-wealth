@@ -15,75 +15,60 @@ const map = new mapboxgl.Map({
 
 map.on("load", () => {
   map.resize();
-  // Add a source for the state polygons.
-  map.addSource("places", {
-    type: "geojson",
-    data: {
+
+  map.addSource(
+    "places",
+    {
+      type: "geojson",
+      data: [{
+        type: "Feature",
+        properties: {
+          title: "Place Name 4",
+          info:
+            "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
+          add: "도서관"
+        },
+        geometry: {
+          coordinates: [
+            [
+              [126.945551, 37.55219],
+              [126.945371, 37.55138],
+              [126.945611, 37.551046],
+              [126.946416, 37.55116],
+              [126.94656, 37.552085],
+              [126.945551, 37.55219]
+            ]
+          ],
+          type: "Polygon"
+        }
+      }
+    ,
+
+    {
       type: "Feature",
       properties: {
-        title: "Place Name 4",
-        info: "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
-        add: "도서관"
+        title: "Place Name 3",
+        info:
+          "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
+        add: "이화여대"
       },
       geometry: {
         coordinates: [
           [
-            [126.945551, 37.55219],
-            [126.945371, 37.55138],
-            [126.945611, 37.551046],
-            [126.946416, 37.55116],
-            [126.94656, 37.552085],
-            [126.945551, 37.55219]
+            [126.940016, 37.562377],
+            [126.940563, 37.561841],
+            [126.94141, 37.561731],
+            [126.941927, 37.562097],
+            [126.94124, 37.562751],
+            [126.941347, 37.562811],
+            [126.941004, 37.5631],
+            [126.940016, 37.562377]
           ]
         ],
         type: "Polygon"
       }
-    },
-    {
-  "type": "Feature",
-  "properties": {
-    "title": "Place Name 1",
-    "info": "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
-    "add": "서울 중구 을지로 1-5"
-  },
-  "geometry": {
-    "coordinates": [
-      [
-        [
-          126.940016,
-          37.562377
-        ],
-        [
-          126.940563,
-          37.561841
-        ],
-        [
-          126.94141,
-          37.561731
-        ],
-        [
-          126.941927,
-          37.562097
-        ],
-        [
-          126.94124,
-          37.562751
-        ],
-        [
-          126.941347,
-          37.562811
-        ],
-        [126.941004, 37.5631],
-        [
-          126.940016,
-          37.562377
-        ]
-      ]
-    ],
-    "type": "Polygon"
-  }
-}
-  });
+    }]
+  );
 
   // Add a layer showing the state polygons.
   map.addLayer({
@@ -99,9 +84,14 @@ map.on("load", () => {
   // open a popup at the location of the click, with description
   // HTML from the click event's properties.
   map.on("click", "test-layer", e => {
-    document.getElementById("pd1").innerHTML = "<h1>" + e.features[0].properties.title + "<br>" + 
-      e.features[0].properties.add + "</div></h1>";
-    document.getElementById("pd2").innerHTML = "<p>" + e.features[0].properties.info + "</p>";
+    document.getElementById("pd1").innerHTML =
+      "<h1>" +
+      e.features[0].properties.title +
+      "<br>" +
+      e.features[0].properties.add +
+      "</div></h1>";
+    document.getElementById("pd2").innerHTML =
+      "<p>" + e.features[0].properties.info + "</p>";
   });
 
   // Change the cursor to a pointer when
