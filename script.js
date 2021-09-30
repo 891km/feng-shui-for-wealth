@@ -40,31 +40,3 @@ map.on("load", function() {
           pd2.innerHTML = '';
       }
   });
-
-  map.on('mouseenter', 'places', () => {
-        map.getCanvas().style.cursor = 'pointer';
-});
-
-map.on('mouseenter', function(e) {
-
-      var places2 = map.queryRenderedFeatures(e.point, {
-          layers: ['test3']
-      });
-      let was_added = false;
-
-      if (places.length > 0) {
-          let pd = document.getElementById('pd1');
-          let pd2 = document.getElementById('pd2');
-
-          pd.innerHTML = '<h1>' + places[0].properties.title + '<br>' + places[0].properties.add + '</div></h1>';
-          pd2.innerHTML = '<p>' + places[0].properties.info + '</p>';
-
-
-          image.onload = function() {
-              pd.appendChild(this);
-          }
-                } else {
-          pd.innerHTML = '<h2>Zoom in and click <br>the buildings to <br>explore a map</h2>';
-          pd2.innerHTML = '';
-      }
-  });
