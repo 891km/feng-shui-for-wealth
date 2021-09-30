@@ -40,16 +40,20 @@ h1 {
   margin: 0;
 }
 
-.mapboxgl-popup {
-max-width: 400px;
-font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
-
 .marker {
-  background-image: url('mapbox-icon.png');
+  background-image: url('https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Smirk_face_1024x1024.png?v=1571606093');
   background-size: cover;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
