@@ -8,7 +8,8 @@
   "properties": {
     "title": "Place Name 1",
     "info": "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
-    "add": "서울 중구 을지로 1-5"
+    "add": "서울 중구 을지로 1-5",
+    "img": "https://cdn.shopify.com/s/files/1/1061/1924/products/Emoji_Icon_-_Smirk_face_1024x1024.png"
   },
   "geometry": {
     "coordinates": [
@@ -54,7 +55,8 @@
   "properties": {
     "title": "Place Name 2",
     "info": "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
-    "add": "이화여자대학교"
+    "add": "이화여자대학교",
+    "img": "https://cdn.shopify.com/s/files/1/1061/1924/files/Blow_Kiss_Emoji.png?8026536574188759287"
   },
   "geometry": {
     "coordinates": [
@@ -91,7 +93,8 @@
   "properties": {
     "title": "Place Name 3",
     "add": "이화여자대학교 조형예술관",
-    "info": "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다."
+    "info": "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
+    "img": "https://cdn.pixabay.com/photo/2020/12/27/20/24/emoji-5865207_1280.png"
   },
   "geometry": {
     "coordinates": [
