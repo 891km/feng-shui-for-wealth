@@ -11,7 +11,7 @@ body {
 }
 
 
-#mapContainer {
+#map {
   position: fixed !important;
   top: 0;
   bottom: 0;
