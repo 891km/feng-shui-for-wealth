@@ -17,6 +17,9 @@ map.on("load", function() {
   map.resize();
 });
 
+
+
+
   map.on('click', function(e) {
 
       var places = map.queryRenderedFeatures(e.point, {
