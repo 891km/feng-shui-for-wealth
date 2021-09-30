@@ -36,9 +36,9 @@ const geojson = {
 
 const map = new mapboxgl.Map({
   container: "map",
-  style: "mapbox://styles/swu-test/ckotoiitv68eo17sfjxzk1i90",
-  center: [126.938, 37.549],
-  zoom: 12
+  style: "mapbox://styles/swu-test/cktnuxsl20nix17qowrvldwms",
+  center: [126.938, 37.57],
+  zoom: 15
 });
 
 map.on("load", function() {
