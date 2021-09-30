@@ -19,35 +19,52 @@ map.on("load", function() {
 
   map.on('click', function(e) {
 
-      var states = map.queryRenderedFeatures(e.point, {
+      var places = map.queryRenderedFeatures(e.point, {
           layers: ['test3']
       });
       let was_added = false;
 
-
-      if (states.length > 0) {
+      if (places.length > 0) {
           let pd = document.getElementById('pd1');
           let pd2 = document.getElementById('pd2');
 
-          var image = new Image();
-          let imgPastName = states[0].properties.name_en;
-          let imgPresentName = states[0].properties.present;
-          image.src = './img/past/' + imgPastName + '.png';
-          image.style.width = "98%";
-
-          pd.innerHTML = '<h2>' + states[0].properties.name_en + '<br><div style="padding-top:10px">' + states[0].properties.name_ko + '</div></h2>';
-          pd2.innerHTML = '<p>' +states[0].properties.info + '</p>';
-          streetview.innerHTML = '';
+          pd.innerHTML = '<h1>' + places[0].properties.title + '<br>' + places[0].properties.add + '</div></h1>';
+          pd2.innerHTML = '<p>' + places[0].properties.info + '</p>';
 
 
           image.onload = function() {
               pd.appendChild(this);
-              streetview.appendChild(panorama);
-          //    console.log(imgPresentName);
           }
                 } else {
           pd.innerHTML = '<h2>Zoom in and click <br>the buildings to <br>explore a map</h2>';
           pd2.innerHTML = '';
-          streetview.innerHTML = '';
+      }
+  });
+
+  map.on('mouseenter', 'places', () => {
+        map.getCanvas().style.cursor = 'pointer';
+});
+
+map.on('mouseenter', function(e) {
+
+      var places2 = map.queryRenderedFeatures(e.point, {
+          layers: ['test3']
+      });
+      let was_added = false;
+
+      if (places.length > 0) {
+          let pd = document.getElementById('pd1');
+          let pd2 = document.getElementById('pd2');
+
+          pd.innerHTML = '<h1>' + places[0].properties.title + '<br>' + places[0].properties.add + '</div></h1>';
+          pd2.innerHTML = '<p>' + places[0].properties.info + '</p>';
+
+
+          image.onload = function() {
+              pd.appendChild(this);
+          }
+                } else {
+          pd.innerHTML = '<h2>Zoom in and click <br>the buildings to <br>explore a map</h2>';
+          pd2.innerHTML = '';
       }
   });
