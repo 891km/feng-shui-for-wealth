@@ -1,7 +1,3 @@
-/*
-This is your site JavaScript code - you can add interactivity and carry out processing
-- Initially the JS writes a message to the console, and rotates a button you can add from the README
-*/
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoic3d1LXRlc3QiLCJhIjoiY2tvdG9mdWM1MDV4OTJ2bzdmdnA5ejEyZyJ9.uuSmjrOs4J48Xek-YT6bgw";
@@ -15,70 +11,10 @@ const map = new mapboxgl.Map({
 
 map.on("load", () => {
   map.resize();
-  
   map.addSource("places", {
   type: 'geojson',
   data: '/places.geojson'
 });
-/*
-  map.addSource("places", {
-    
-    type: "geojson",
-    data: [
-      [
-        {
-          type: "Feature",
-          properties: {
-            title: "Place Name 4",
-            info:
-              "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
-            add: "도서관"
-          },
-          geometry: {
-            coordinates: [
-              [
-                [126.945551, 37.55219],
-                [126.945371, 37.55138],
-                [126.945611, 37.551046],
-                [126.946416, 37.55116],
-                [126.94656, 37.552085],
-                [126.945551, 37.55219]
-              ]
-            ],
-            type: "Polygon"
-          }
-        }
-      ],
-
-      [
-        {
-          type: "Feature",
-          properties: {
-            title: "Place Name 3",
-            info:
-              "세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다. 세부 설명글이 들어갑니다. 테스트. 세부 설명글이 들어갑니다.",
-            add: "이화여대"
-          },
-          geometry: {
-            coordinates: [
-              [
-                [126.940016, 37.562377],
-                [126.940563, 37.561841],
-                [126.94141, 37.561731],
-                [126.941927, 37.562097],
-                [126.94124, 37.562751],
-                [126.941347, 37.562811],
-                [126.941004, 37.5631],
-                [126.940016, 37.562377]
-              ]
-            ],
-            type: "Polygon"
-          }
-        }
-      ]
-    ]
-  });
-  */
 
   // Add a layer showing the state polygons.
   map.addLayer({
@@ -86,13 +22,12 @@ map.on("load", () => {
     type: "fill",
     source: "places",
     paint: {
-      "fill-color": "rgba(200, 100, 240, 1)"
+      "fill-color": "rgba(255, 0, 255, 1)" //개체 컬러 바꾸기
     }
   });
 
-  // When a click event occurs on a feature in the states layer,
-  // open a popup at the location of the click, with description
-  // HTML from the click event's properties.
+  
+  // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
   map.on("click", "test-layer", e => {
     document.getElementById("pd1").innerHTML =
       "<h1>" +
@@ -101,16 +36,17 @@ map.on("load", () => {
       e.features[0].properties.add +
       "</div></h1>";
     document.getElementById("pd2").innerHTML =
-      "<p>" + e.features[0].properties.info + "</p>";
+      "<p>" + e.features[0].properties.info + "</p><img scr='https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=49ed3252c0b2ffb49cf8b508892e452d'>";
   });
 
-  // Change the cursor to a pointer when
-  // the mouse is over the layer.
+  
+  
+  // 마우스오버하면 마우스 포인터 모양 바뀜
   map.on("mouseenter", "test-layer", () => {
     map.getCanvas().style.cursor = "pointer";
   });
 
-  // Change the cursor back to a pointer
+  // 마우스가 이동하면 원래 마우스 모양으로 바뀜
   map.on("mouseleave", "test-layer", () => {
     map.getCanvas().style.cursor = "";
   });
