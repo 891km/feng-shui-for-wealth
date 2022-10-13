@@ -14,6 +14,7 @@ map.on("load", () => {
   map.addSource("places", {
   type: 'geojson',
   data: '/places.geojson'
+    
 });
 
   // Add a layer showing the state polygons.
