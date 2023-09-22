@@ -4,7 +4,7 @@ mapboxgl.accessToken =
 
 const map = new mapboxgl.Map({
   container: "map",
-  style: "mapbox://styles/goeun/cllzzdf6b00ag01r9bstd3ulk",
+  style: "mapbox://styles/goeun/clma51e5t012w01rdawt0062a",
   center: [126.942, 37.555],
   zoom: 14
 });
@@ -17,7 +17,7 @@ map.on("load", () => {
     
 });
 
-  // Add a layer showing the state polygons.
+  // Add a layer showing the state polygons. 폴리곤 디자인 커스텀
   map.addLayer({
     id: "test-layer",
     type: "fill",
