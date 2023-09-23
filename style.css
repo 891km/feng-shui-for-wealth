@@ -27,7 +27,7 @@ body {
   height: 30%;
   right: 0px;
   bottom: 0px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0);
   color: black;
 }
 
@@ -37,14 +37,14 @@ body {
   grid-template-rows: 20% 40% 40%;
   width: 50%;
 /*   background-color: red; */
-  margin: 22px;
+  margin: 42px;
 }
 
 .info-right {
   position: relative;
   width: 50%;
 /*   background-color: blue; */
-  margin: 22px;
+  margin: 42px;
   text-align: right;
 }
 

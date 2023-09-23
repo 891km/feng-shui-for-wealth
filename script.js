@@ -5,9 +5,10 @@ mapboxgl.accessToken =
 const map = new mapboxgl.Map({
   container: "map", // id
   style: "mapbox://styles/891km/clmr9ohkz01yj01r64l03bouv",
-  center: [127.047, 37.422],
-  zoom: 11,
-  pitch: 54,
+  center: [127.049304, 37.477148],
+  zoom: 10.5,
+  minZoom: 10.5,
+  pitch: 64.5,
   bearing: 16
 });
 
