@@ -30,13 +30,13 @@ map.on("load", () => {
   
   // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
   map.on("click", "test-layer", e => {
-    document.getElementById("pd1").innerHTML =
+    document.getElementById("info1").innerHTML =
       "<h1>" +
       e.features[0].properties.title +
       "<br>" +
       e.features[0].properties.add +
       "</div></h1>";
-    document.getElementById("pd2").innerHTML =
+    document.getElementById("info2").innerHTML =
       "<p>" + e.features[0].properties.info + "</p><img src='" + e.features[0].properties.img + "'/>";
   });
 
@@ -47,6 +47,7 @@ map.on("load", () => {
     map.getCanvas().style.cursor = "pointer";
   });
 
+  
   // 마우스가 이동하면 원래 마우스 모양으로 바뀜
   map.on("mouseleave", "test-layer", () => {
     map.getCanvas().style.cursor = "";
