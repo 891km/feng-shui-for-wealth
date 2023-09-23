@@ -16,7 +16,9 @@ map.on("load", () => {
   map.resize();
   // map.addSource("places", {
   // type: 'geojson',
-  // data: '/places.geojson' 
+  // data: '/places.geojson'
+  // });
+  
 });
   
 
