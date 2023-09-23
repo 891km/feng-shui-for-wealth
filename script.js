@@ -14,6 +14,8 @@ const map = new mapboxgl.Map({
 
 map.on("load", () => {
   map.resize();
+  // map.rotateTo(180, { duration: 100000 });
+  
   // map.addSource("places", {
   // type: 'geojson',
   // data: '/places.geojson'
