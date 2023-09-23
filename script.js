@@ -30,13 +30,13 @@ map.on("load", () => {
   
   // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
   map.on("click", "test-layer", e => {
-    document.getElementById("info1").innerHTML =
+    document.getElementById("address_sigu").innerHTML =
       "<h1>" +
       e.features[0].properties.title +
       "<br>" +
       e.features[0].properties.add +
       "</div></h1>";
-    document.getElementById("info2").innerHTML =
+    document.getElementById("address_dong").innerHTML =
       "<p>" + e.features[0].properties.info + "</p><img src='" + e.features[0].properties.img + "'/>";
   });
 
