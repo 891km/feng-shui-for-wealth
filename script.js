@@ -7,20 +7,27 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/891km/clmr9ohkz01yj01r64l03bouv",
   center: [127.047, 37.422],
   zoom: 11,
-  pitch: 54.00
+  pitch: 54,
+  bearing: 16
 });
 
-// map.on("load", () => {
-//   map.resize();
-//   map.addSource("places", {
-//   type: 'geojson',
-//   data: '/places.geojson' 
-// });
-  
 map.on("load", () => {
   map.resize();
+  map.addSource("places", {
+  type: 'geojson',
+  data: '/places.geojson' 
 });
   
+map.on("style.load", () => {
+  map.addSource('mapbox-dem', {
+  'type': 'raster-dem',
+  'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+  'tileSize': 512,
+  'maxzoom': 14
+  });
+// add the DEM source as a terrain layer with exaggerated height
+  map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 5.2 });
+});
 
   // Add a layer showing the state polygons. 폴리곤 디자인 커스텀
   map.addLayer({
