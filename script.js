@@ -1,12 +1,12 @@
  
 mapboxgl.accessToken =
-  "pk.eyJ1IjoiZ29ldW4iLCJhIjoiY2pyaG10Y2owMDk5NjQ0cWtocmd3NDgwbyJ9.6bAopN3CtvDMJKKWcqjbug";
+  "pk.eyJ1IjoiODkxa20iLCJhIjoiY2xsenowYWlpMTc5eTNpczZ3czJnaDNnZCJ9.MJ5L9o66OPTMzllWEW_17Q";
 
 const map = new mapboxgl.Map({
   container: "map",
-  style: "mapbox://styles/goeun/clma51e5t012w01rdawt0062a",
-  center: [126.942, 37.555],
-  zoom: 14
+  style: "mapbox://styles/891km/clmr9ohkz01yj01r64l03bouv",
+  center: [127.052525, 37.449937],
+  zoom: 10
 });
 
 map.on("load", () => {
