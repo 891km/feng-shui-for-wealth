@@ -10,13 +10,17 @@ const map = new mapboxgl.Map({
   pitch: 54.00
 });
 
+// map.on("load", () => {
+//   map.resize();
+//   map.addSource("places", {
+//   type: 'geojson',
+//   data: '/places.geojson' 
+// });
+  
 map.on("load", () => {
   map.resize();
-  map.addSource("places", {
-  type: 'geojson',
-  data: '/places.geojson'
-    
 });
+  
 
   // Add a layer showing the state polygons. 폴리곤 디자인 커스텀
   map.addLayer({
