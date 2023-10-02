@@ -20,19 +20,27 @@ map.on("load", () => {
   // type: 'geojson',
   // data: '/places.geojson'
   // });
-  
 });
   
 
 // Add a layer showing the state polygons. 폴리곤 디자인 커스텀
-map.addLayer({
-  id: "test-layer",
-  type: "fill",
-  source: "places",
-  paint: {
-    "fill-color": "rgba(255, 0, 255, 1)" //개체 컬러 바꾸기
-  }
-});
+// map.addLayer({
+//   id: "test-layer",
+//   type: "fill",
+//   source: "places",
+//   paint: {
+//     "fill-color": "rgba(255, 0, 255, 1)" //개체 컬러 바꾸기
+//   }
+// });
+
+  map.addLayer({
+    id: "text-field",
+    type: "layout",
+    source: "places",
+    paint: {
+      "fill-color": "rgba(255, 0, 255, 1)" // 개체 컬러 바꾸기
+    }
+  });
 
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
