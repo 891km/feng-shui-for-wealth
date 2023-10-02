@@ -49,7 +49,7 @@ map.on("load", () => {
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "Address_dong", e => {
-  document.getElementById("Address_si").innerHTML =
+  document.getElementById("info-box").innerHTML =
     "<h1>" +
     e.features[0].properties.title +
     "<br>" +

@@ -51,7 +51,7 @@ body {
   color: black;
 }
 
-.info-left, .info-right {
+#info-left, #info-right {
   position: relative;
   display: inline;
   width: 50%;
@@ -59,7 +59,7 @@ body {
   margin: 42px;
 }
 
-.info-right {
+#info-right {
   text-align: right;
 }
 
