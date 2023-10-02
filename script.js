@@ -34,9 +34,9 @@ map.on("load", () => {
 // });
 
   map.addLayer({
-    id: "text-field",
-    type: "layout",
-    source: "places",
+    id: "Address_dong",
+    type: "Feature",
+    source: "dongname",
     paint: {
       "fill-color": "rgba(255, 0, 255, 1)" // 개체 컬러 바꾸기
     }
