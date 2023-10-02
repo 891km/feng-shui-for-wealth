@@ -34,7 +34,7 @@ map.on("load", () => {
 
   map.addLayer({
     id: "Address_dong",
-    type: "Point",
+    type: "text-field",
     source: "dongname",
     // layout: {
     //   'text-field': ['get', 'label'], // 텍스트 레이블로 표시할 속성 필드 설정
@@ -42,7 +42,7 @@ map.on("load", () => {
     //   'text-anchor': 'center', // 텍스트 정렬 설정 (가운데 정렬)
     // },
     paint: {
-      "fill-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
+      "text-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
     }
   });
 
