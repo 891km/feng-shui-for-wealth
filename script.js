@@ -22,7 +22,6 @@ map.on("load", () => {
   // });
 });
   
-
 // Add a layer showing the state polygons. 폴리곤 디자인 커스텀
 // map.addLayer({
 //   id: "test-layer",
@@ -35,34 +34,39 @@ map.on("load", () => {
 
   map.addLayer({
     id: "Address_dong",
-    type: "Feature",
+    type: "Point",
     source: "dongname",
+    // layout: {
+    //   'text-field': ['get', 'label'], // 텍스트 레이블로 표시할 속성 필드 설정
+    //   'text-size': 12, // 텍스트 크기 설정
+    //   'text-anchor': 'center', // 텍스트 정렬 설정 (가운데 정렬)
+    // },
     paint: {
-      "fill-color": "rgba(255, 0, 255, 1)" // 개체 컬러 바꾸기
+      "fill-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
     }
   });
 
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
-map.on("click", "test-layer", e => {
-  document.getElementById("address_sigu").innerHTML =
+map.on("click", "Address_dong", e => {
+  document.getElementById("Address_si").innerHTML =
     "<h1>" +
     e.features[0].properties.title +
     "<br>" +
     e.features[0].properties.add +
     "</div></h1>";
-  document.getElementById("address_dong").innerHTML =
+  document.getElementById("Address_dong").innerHTML =
     "<p>" + e.features[0].properties.info + "</p><img src='" + e.features[0].properties.img + "'/>";
 });
 
 
 // 마우스오버하면 마우스 포인터 모양 바뀜
-map.on("mouseenter", "test-layer", () => {
+map.on("mouseenter", "Address_dong", () => {
   map.getCanvas().style.cursor = "pointer";
 });
 
 
 // 마우스가 이동하면 원래 마우스 모양으로 바뀜
-map.on("mouseleave", "test-layer", () => {
+map.on("mouseleave", "Address_dong", () => {
   map.getCanvas().style.cursor = "";
 });
