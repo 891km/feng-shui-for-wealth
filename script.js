@@ -36,13 +36,13 @@ map.on("load", () => {
     id: "Address_dong",
     type: "text-field",
     source: "dongname",
-    // layout: {
-    //   'text-field': ['get', 'label'], // 텍스트 레이블로 표시할 속성 필드 설정
-    //   'text-size': 12, // 텍스트 크기 설정
-    //   'text-anchor': 'center', // 텍스트 정렬 설정 (가운데 정렬)
-    // },
+    layout: {
+      'text-field': ['get', 'label'], // 텍스트 레이블로 표시할 속성 필드 설정
+      'text-size': 12, // 텍스트 크기 설정
+      'text-anchor': 'center', // 텍스트 정렬 설정 (가운데 정렬)
+    },
     paint: {
-      "text-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
+      "text-color": "rgba(255, 255, 255, 1)" // 개체 컬러 바꾸기
     }
   });
 
