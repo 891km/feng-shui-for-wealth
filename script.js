@@ -19,27 +19,18 @@ map.on("load", () => {
   // map.rotateTo(180, { duration: 200000 });
   
   map.addSource("dongname", {
-  type: 'geojson',
-  data: '/dongname.geojson'
-  });
+    type: 'geojson',
+    data: '/dongname.geojson' 
+  });  
   
 
   map.addLayer({
     id: "selected_dong",
     type: "symbol",
     source: "dongname",
-    'layout': {
+    layout: {
       'text-field': ['get', 'Address_dong'],
-      'text-size': 12, // 텍스트 크기
-      'text-color': "rgba(255,0,0,1)"
-
-      // 'icon-image': 'cat', // reference the image
-      // 'icon-size': 0.25
-
-      // 'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-      // 'text-radial-offset': 0.5,
-      // 'text-justify': 'auto',
-      // 'icon-image': ['get', 'icon']
+      'text-size': 12
     }
   });
   
