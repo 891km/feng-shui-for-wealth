@@ -62,7 +62,8 @@ map.on("click", "selected_dong", e => {
 
 
 // 마우스오버하면 마우스 포인터 모양 바뀜
-map.on("mouseenter", "selected_dong", () => {
+map.on("mouseenter", "selected_dong", (e) => {
+  
   map.getCanvas().style.cursor = "pointer";
 });
 
