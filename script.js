@@ -34,8 +34,7 @@ map.on("load", () => {
 
   map.addLayer({
     id: "Address_dong",
-    // type: "text-field",
-    type: "Point",
+    type: "text",
     source: "dongname",
     layout: {
       'text-field': ['get', 'label'], // 텍스트 레이블로 표시할 속성 필드 설정
