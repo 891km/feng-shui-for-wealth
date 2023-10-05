@@ -9,11 +9,13 @@ const map = new mapboxgl.Map({
   zoom: 10.8,
   minZoom: 10.3,
   pitch: 64.5,
-  bearing: 16
+  bearing: 16,
+  renderingMode: '3d'
 });
 
 map.on("load", () => {
   
+  map.getCanvas().getContext('webgl'),
   map.resize();
   
   // map.rotateTo(180, { duration: 200000 });
@@ -31,11 +33,12 @@ map.on("load", () => {
     source: "dongname",
     layout: {
       'text-field': ['get', 'Address_dong'],
-      'text-size': 12
+      'text-size': 12,
+      'text-offset': [0, -16],
+      // 'text-anchor' : "center",
     },
     paint: {
       "text-color": "rgba(0, 0, 255, 1)",
-      "text-translate": [0, 0, 1] //
     }    
   });
   
