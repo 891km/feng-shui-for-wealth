@@ -65,18 +65,29 @@ body {
   text-align: right;
   width: 100%;
   background-color: grey;
+  
+  display: grid;
+  grid-template-rows : 30% 70%;
+}
+
+.right_title {
+  text-align: bottom;
+  background-color: yellow;
 }
 
 #profile_grid {
   background-color: blue;
   display: flex;
   height: 100%;
+
 }
 
 .profile {
   background-color: yellow;
   width: 50px;
   height: 100%;
+  text-align: center;
+  margin-left : 1.5vw;
 }
 
 
