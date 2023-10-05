@@ -14,37 +14,30 @@ const map = new mapboxgl.Map({
 
 map.on("load", () => {
   map.resize();
-  // map.rotateTo(180, { duration: 100000 });
   
-  // map.addSource("places", {
-  // type: 'geojson',
-  // data: '/places.geojson'
-  // });
-});
+  map.rotateTo(180, { duration: 200000 });
   
-// Add a layer showing the state polygons. 폴리곤 디자인 커스텀
-// map.addLayer({
-//   id: "test-layer",
-//   type: "fill",
-//   source: "places",
-//   paint: {
-//     "fill-color": "rgba(255, 0, 255, 1)" //개체 컬러 바꾸기
-//   }
-// });
+  map.addSource("dongname", {
+  type: 'geojson',
+  data: '/dongname.geojson'
+  });
 
   map.addLayer({
     id: "Address_dong",
-    type: "text",
+    type: "symbol",
     source: "dongname",
-    layout: {
-      'text-field': ['get', 'label'], // 텍스트 레이블로 표시할 속성 필드 설정
-      'text-size': 12, // 텍스트 크기 설정
-      'text-anchor': 'center', // 텍스트 정렬 설정 (가운데 정렬)
-    },
+    layout: {},
+    // layout: {
+    //   'text-field': ['get', 'label'], // 텍스트 레이블로 표시할 속성 필드 설정
+    //   'text-size': 12, // 텍스트 크기 설정
+    //   'text-anchor': 'center', // 텍스트 정렬 설정 (가운데 정렬)
+    // },
     paint: {
-      "text-color": "rgba(255, 255, 255, 1)" // 개체 컬러 바꾸기
+      "text-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
     }
   });
+  
+});
 
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역

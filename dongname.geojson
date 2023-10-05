@@ -6,6 +6,9 @@
         "Address_si": "서울특별시",
         "Address_gu": "강남구",
         "Address_dong": "청담동"
+        
+        "Info" : "--동에 대한 설명"
+        "Profile" : "--동에 거주중인 자산가"
       },
       "geometry": {
         "coordinates": [
