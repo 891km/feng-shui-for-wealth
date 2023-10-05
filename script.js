@@ -15,7 +15,7 @@ const map = new mapboxgl.Map({
 map.on("load", () => {
   map.resize();
   
-  map.rotateTo(180, { duration: 200000 });
+  // map.rotateTo(180, { duration: 200000 });
   
   map.addSource("dongname", {
   type: 'geojson',
@@ -23,8 +23,9 @@ map.on("load", () => {
   });
 
   map.addLayer({
-    id: "Address_dong",
-    type: "symbol",
+    id: "selected_dong",
+    // type: "fill",
+    type: "point",
     source: "dongname",
     layout: {},
     // layout: {
@@ -33,7 +34,7 @@ map.on("load", () => {
     //   'text-anchor': 'center', // 텍스트 정렬 설정 (가운데 정렬)
     // },
     paint: {
-      "text-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
+      "fill-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
     }
   });
   
@@ -41,7 +42,7 @@ map.on("load", () => {
 
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
-map.on("click", "Address_dong", e => {
+map.on("click", "selected_dong", e => {
   document.getElementById("info-box").innerHTML =
     "<h1>" +
     e.features[0].properties.title +
