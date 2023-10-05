@@ -94,9 +94,19 @@ p {
   width: 50%;
 }
 
+/*마커 디자인*/
+.marker {
+  background-image: url('https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014');
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 0%;
+  cursor: pointer;
+}
+
 
 /*맵박스 로고 가리기*/
-.mapbox-logo{ 
+.mapbox-logo { 
   display: none; 
 }
 .mapboxgl-ctrl-logo { 
