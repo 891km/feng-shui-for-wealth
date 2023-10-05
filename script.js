@@ -24,21 +24,33 @@ map.on("load", () => {
 
   map.addLayer({
     id: "selected_dong",
-    // type: "fill",
     type: "point",
     source: "dongname",
     layout: {},
-    // layout: {
-    //   'text-field': ['get', 'label'], // 텍스트 레이블로 표시할 속성 필드 설정
-    //   'text-size': 12, // 텍스트 크기 설정
-    //   'text-anchor': 'center', // 텍스트 정렬 설정 (가운데 정렬)
-    // },
     paint: {
       "fill-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
     }
   });
   
 });
+
+const geojson = '/dongname.geojson';
+      
+// 마커 아이콘을 화면에 나타내고, 각 마커와 위 json 정보를 연결하는 부분
+for (const { geometry, properties } of geojson.features) {
+  // create a HTML element for each feature
+  const el = document.createElement("div");
+  el.className = "dongname";
+
+  // make a marker for each feature and add it to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(geometry.coordinates)
+    .setPopup(
+      new mapboxgl.Point({ offset: 35 }) // add popups
+        .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
+    )
+    .addTo(map);
+}
 
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
@@ -55,12 +67,12 @@ map.on("click", "selected_dong", e => {
 
 
 // 마우스오버하면 마우스 포인터 모양 바뀜
-map.on("mouseenter", "Address_dong", () => {
+map.on("mouseenter", "selected_dong", () => {
   map.getCanvas().style.cursor = "pointer";
 });
 
 
 // 마우스가 이동하면 원래 마우스 모양으로 바뀜
-map.on("mouseleave", "Address_dong", () => {
+map.on("mouseleave", "selected_dong", () => {
   map.getCanvas().style.cursor = "";
 });
