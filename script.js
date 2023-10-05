@@ -26,33 +26,19 @@ map.on("load", () => {
     id: "selected_dong",
     type: "symbol",
     source: "dongname",
-    layout: {
+  'layout': {
+    'text-field': ['get', 'Address_dong'],
+    'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+    'text-radial-offset': 0.5,
+    'text-justify': 'auto',
+    // 'icon-image': ['get', 'icon']
     },
     paint: {
-      "fill-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
+      'fill-color': "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
     }
   });
   
 });
-
-const geojson = '/dongname.geojson';
-      
-// 마커 아이콘을 화면에 나타내고, 각 마커와 위 json 정보를 연결하는 부분
-for (const { geometry, properties } of geojson.features) {
-  // create a HTML element for each feature
-  const el = document.createElement("div");
-  el.className = "dongname";
-
-  // make a marker for each feature and add it to the map
-  new mapboxgl.Marker(el)
-    .setLngLat(geometry.coordinates)
-    .setPopup(
-      new mapboxgl.Point({ offset: 35 }) // add popups
-        .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
-    )
-    .addTo(map);
-}
-
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "selected_dong", e => {
