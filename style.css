@@ -55,13 +55,28 @@ body {
   position: relative;
   display: inline;
   width: 50%;
-/*   background-color: red; */
-  margin: 42px;
+  background-color: red;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 
 #info-right {
   text-align: right;
+  width: 100%;
+  background-color: grey;
 }
+
+#profile_grid {
+  background-color: blue;
+  display: flex;
+}
+
+.profile {
+  background-color: yellow;
+  width: 50px;
+  height: 100%;
+}
+
 
 
 h1 {
