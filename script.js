@@ -57,14 +57,15 @@ map.on("click", "selected_dong", e => {
   
     map.setCenter(coord);
     map.setZoom(12); // 동네마다 값 저장하기
-    map.setPitch(50);
+    map.setPitch(55);
 });
 
 
 // 마우스오버하면 마우스 포인터 모양 바뀜
-map.on("mouseenter", "selected_dong", (e) => {
+map.on("mouseenter", "selected_dong", () => {
   
   map.getCanvas().style.cursor = "pointer";
+  // map.setPaintProperty('text-layer', 'text-color', 'rgba(255, 0, 0, 1)');
 });
 
 
