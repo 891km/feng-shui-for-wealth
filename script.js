@@ -31,8 +31,9 @@ map.on("load", () => {
     source: "dongname",
     layout: {
       'text-field': ['get', 'Address_dong'],
-      'text-size': 14,
-      'text-offset': [0, -1]
+      'text-size': 15,
+      'text-offset': [0, -2],
+      'text-anchor': 'center' 
     },
     paint: {
       "text-color": "rgba(0, 0, 0, 1)",
@@ -49,8 +50,14 @@ map.on("click", "selected_dong", e => {
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
 
   document.getElementById("address_dong").innerHTML =
-    e.features[0].properties.Address_dong  
-
+    e.features[0].properties.Address_dong 
+  
+  
+    const coord = e.features[0].geometry.coordinates;
+  
+    map.setCenter(coord);
+    map.setZoom(12); // 동네마다 값 저장하기
+    map.setPitch(50);
 });
 
 
