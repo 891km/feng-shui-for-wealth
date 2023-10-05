@@ -24,6 +24,7 @@ map.on("load", () => {
   });  
   
 
+  // 질문 : text 안 나타남
   map.addLayer({
     id: "selected_dong",
     type: "symbol",
@@ -31,7 +32,11 @@ map.on("load", () => {
     layout: {
       'text-field': ['get', 'Address_dong'],
       'text-size': 12
-    }
+    },
+    paint: {
+      "text-color": "rgba(0, 0, 255, 1)",
+      "text-translate": [0, 0, 1] //
+    }    
   });
   
 });
