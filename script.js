@@ -24,9 +24,10 @@ map.on("load", () => {
 
   map.addLayer({
     id: "selected_dong",
-    type: "point",
+    type: "symbol",
     source: "dongname",
-    layout: {},
+    layout: {
+    },
     paint: {
       "fill-color": "rgba(255, 0, 0, 1)" // 개체 컬러 바꾸기
     }
