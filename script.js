@@ -43,24 +43,6 @@ map.on("load", () => {
 
 
 
-
-//marker
-// const geojson = "/dongname.geojson";
-
-const 
-  
-for (const { geometry, properties } of geojson.features) {
-  // create a HTML element for each feature
-  const el = document.createElement("div");
-  el.className = "marker";
-
-  // make a marker for each feature and add it to the map
-  new mapboxgl.Marker(el)
-    .setLngLat(geometry.coordinates)  
-}
-
-
-
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "selected_dong", e => {
   document.getElementById("info-box").innerHTML =
