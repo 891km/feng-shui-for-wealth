@@ -2,16 +2,11 @@
   "features": [
     {
       "type": "Feature",
-      
       "properties": {
         "Address_si": "서울특별시",
         "Address_gu": "강남구",
         "Address_dong": "청담동"
-        
-        "Info" : "--동에 대한 설명"
-        "Profile" : "--동에 거주중인 자산가"
       },
-      
       "geometry": {
         "coordinates": [
           127.049291,
@@ -19,13 +14,8 @@
         ],
         "type": "Point"
       },
-      
       "id": "0ea0b5ef4d1ccdf237a8ef226bc365f6"
     },
-    
-    
-    
-    
     {
       "type": "Feature",
       "properties": {

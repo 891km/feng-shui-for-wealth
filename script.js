@@ -9,8 +9,7 @@ const map = new mapboxgl.Map({
   zoom: 10.8,
   minZoom: 10.3,
   pitch: 64.5,
-  bearing: 16,
-  renderingMode: '3d'
+  bearing: 16
 });
 
 map.on("load", () => {
@@ -26,19 +25,17 @@ map.on("load", () => {
   });  
   
 
-  // 질문 : text 안 나타남
   map.addLayer({
     id: "selected_dong",
     type: "symbol",
     source: "dongname",
     layout: {
       'text-field': ['get', 'Address_dong'],
-      'text-size': 12,
-      'text-offset': [0, -16],
-      // 'text-anchor' : "center",
+      'text-size': 14,
+      'text-offset': [0, -1]
     },
     paint: {
-      "text-color": "rgba(0, 0, 255, 1)",
+      "text-color": "rgba(0, 0, 0, 1)",
     }    
   });
   
@@ -48,14 +45,12 @@ map.on("load", () => {
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "selected_dong", e => {
-  document.getElementById("info-box").innerHTML =
-    "<h1>" +
-    e.features[0].properties.title +
-    "<br>" +
-    e.features[0].properties.add +
-    "</div></h1>";
-  document.getElementById("Address_dong").innerHTML =
-    "<p>" + e.features[0].properties.info + "</p><img src='" + e.features[0].properties.img + "'/>";
+  document.getElementById("address_sigu").innerHTML =
+    e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
+
+  document.getElementById("address_dong").innerHTML =
+    e.features[0].properties.Address_dong  
+
 });
 
 
