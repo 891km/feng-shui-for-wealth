@@ -53,9 +53,17 @@ map.on("click", "selected_dong", e => {
     e.features[0].properties.Address_dong;
   
     const coord = e.features[0].geometry.coordinates;
-    map.setCenter(coord);
-    map.setZoom(12); // 동네마다 값 저장하기
-    map.setPitch(55);
+    // map.setCenter(coord);
+    // map.setZoom(12); // 동네마다 값 저장하기
+    // map.setPitch(55);
+  
+  map.flyTo({
+    center: coord,
+    zoom: 13,
+    // pitch: 55,
+    essential: true // this animation is considered essential with respect to prefers-reduced-motion
+  });  
+  
 });
 
 
