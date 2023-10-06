@@ -18,67 +18,50 @@ map.on("load", () => {
   map.resize();
   
   // map.rotateTo(180, { duration: 200000 });
-  
+
+
+  // dong_name
   map.addSource("dongname", {
     type: 'geojson',
     data: '/dongname.geojson' 
   });
   
-  // map.addLayer({
-  //   id: "selected_dong",
-  //   type: "symbol",
-  //   source: "dongname",
-  //   layout: {
-  //     'text-field': ['get', 'Address_dong'],
-  //     'text-size': 15,
-  //     'text-offset': [0, -2],
-  //     'text-anchor': 'center' 
-  //   },
-  //   paint: {
-  //     "text-color": "rgba(0, 0, 0, 1)"
-  //   }    
-  // });
+  map.addLayer({
+    id: "dong_name",
+    type: "symbol",
+    source: "dongname",
+    layout: {
+      'text-field': ['get', 'Address_dong'],
+      'text-size': 15,
+      'text-offset': [0, -2],
+      'text-anchor': 'center' 
+    },
+    paint: {
+      "text-color": "rgba(0, 0, 0, 1)"
+    }    
+  });
+
   
-  // map.addLayer({
-  //   id: "selected_dong",
-  //   type: "symbol",
-  //   source: "donginfo",
-  //   layout: {
-  //     'text-field': ['get', 'Address_dong'],
-  //     'text-size': 15,
-  //     'text-offset': [0, -2],
-  //     'text-anchor': 'center' 
-  //   },
-  //   paint: {
-  //     "text-color": "rgba(0, 0, 0, 1)"
-  //   }    
-  // });
- 
-  
+  // dong_fill
   map.addSource("donginfo", {
     type: 'geojson',
     data: '/donginfo.geojson' 
-  });  
-  
+  });
+   
   map.addLayer({
-    id: "selected_dong",
+    id: "dong_fill",
     type: "fill",
     source: "donginfo",
     paint: {
       "fill-color": "rgba(255, 0, 255, 1)"
     }    
   });
-  
-  
-  
-  
 });
 
 
 
-
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
-map.on("click", "selected_dong", e => {
+map.on("click", "dong_fill", e => {
   document.getElementById("address_sigu").innerHTML =
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
 
@@ -101,7 +84,7 @@ map.on("click", "selected_dong", e => {
 
 
 // 마우스오버하면 마우스 포인터 모양 바뀜
-map.on("mouseenter", "selected_dong", () => {
+map.on("mouseenter", "dong_fill", () => {
   
   map.getCanvas().style.cursor = "pointer";
   // map.setPaintProperty('text-layer', 'text-color', 'rgba(255, 0, 0, 0)');
@@ -109,6 +92,6 @@ map.on("mouseenter", "selected_dong", () => {
 
 
 // 마우스가 이동하면 원래 마우스 모양으로 바뀜
-map.on("mouseleave", "selected_dong", () => {
+map.on("mouseleave", "dong_fill", () => {
   map.getCanvas().style.cursor = "";
 });
