@@ -5,7 +5,7 @@ mapboxgl.accessToken =
 const map = new mapboxgl.Map({
   container: "map", // id
   style: "mapbox://styles/891km/clmr9ohkz01yj01r64l03bouv/draft",
-  center: [127.073, 37.457],
+  center: [127.063, 37.457],
   zoom: 10.8,
   minZoom: 10.3,
   pitch: 64.5,
@@ -50,11 +50,9 @@ map.on("click", "selected_dong", e => {
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
 
   document.getElementById("address_dong").innerHTML =
-    e.features[0].properties.Address_dong 
-  
+    e.features[0].properties.Address_dong;
   
     const coord = e.features[0].geometry.coordinates;
-  
     map.setCenter(coord);
     map.setZoom(12); // 동네마다 값 저장하기
     map.setPitch(55);
@@ -65,7 +63,7 @@ map.on("click", "selected_dong", e => {
 map.on("mouseenter", "selected_dong", () => {
   
   map.getCanvas().style.cursor = "pointer";
-  // map.setPaintProperty('text-layer', 'text-color', 'rgba(255, 0, 0, 1)');
+  // map.setPaintProperty('text-layer', 'text-color', 'rgba(255, 0, 0, 0)');
 });
 
 
