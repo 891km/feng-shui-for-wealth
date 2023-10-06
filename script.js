@@ -22,25 +22,58 @@ map.on("load", () => {
   map.addSource("dongname", {
     type: 'geojson',
     data: '/dongname.geojson' 
+  });
+  
+  // map.addLayer({
+  //   id: "selected_dong",
+  //   type: "symbol",
+  //   source: "dongname",
+  //   layout: {
+  //     'text-field': ['get', 'Address_dong'],
+  //     'text-size': 15,
+  //     'text-offset': [0, -2],
+  //     'text-anchor': 'center' 
+  //   },
+  //   paint: {
+  //     "text-color": "rgba(0, 0, 0, 1)"
+  //   }    
+  // });
+  
+  // map.addLayer({
+  //   id: "selected_dong",
+  //   type: "symbol",
+  //   source: "donginfo",
+  //   layout: {
+  //     'text-field': ['get', 'Address_dong'],
+  //     'text-size': 15,
+  //     'text-offset': [0, -2],
+  //     'text-anchor': 'center' 
+  //   },
+  //   paint: {
+  //     "text-color": "rgba(0, 0, 0, 1)"
+  //   }    
+  // });
+ 
+  
+  map.addSource("donginfo", {
+    type: 'geojson',
+    data: '/donginfo.geojson' 
   });  
   
-
   map.addLayer({
     id: "selected_dong",
-    type: "symbol",
-    source: "dongname",
-    layout: {
-      'text-field': ['get', 'Address_dong'],
-      'text-size': 15,
-      'text-offset': [0, -2],
-      'text-anchor': 'center' 
-    },
+    type: "fill",
+    source: "donginfo",
     paint: {
-      "text-color": "rgba(0, 0, 0, 1)",
+      "fill-color": "rgba(255, 0, 255, 1)"
     }    
   });
   
+  
+  
+  
 });
+
 
 
 
