@@ -14,6 +14,7 @@ const map = new mapboxgl.Map({
 
 
 
+
 map.on("load", () => {
   
   map.getCanvas().getContext('webgl'),
@@ -28,10 +29,25 @@ map.on("load", () => {
     data: '/dong_point.geojson' 
   });
   
+  // map.addLayer({
+  //   id: "dong_point",
+  //   type: "symbol",
+  //   source: "dong_point",
+  //   layout: {
+  //     'text-field': ['get', 'Address_dong'],
+  //     'text-size': 15,
+  //     'text-offset': [0, -2],
+  //     'text-anchor': 'center' 
+  //   },
+  //   paint: {
+  //     "text-color": "rgba(0, 0, 0, 1)"
+  //   }    
+  // });
+  
   map.addLayer({
     id: "dong_point",
     type: "symbol",
-    source: "dong_point",
+    source: "dong_polygon",
     layout: {
       'text-field': ['get', 'Address_dong'],
       'text-size': 15,
@@ -41,7 +57,7 @@ map.on("load", () => {
     paint: {
       "text-color": "rgba(0, 0, 0, 1)"
     }    
-  });
+  });  
 
   
   // dong_polygon
@@ -77,9 +93,10 @@ map.on("load", () => {
     'line-width': 1
     }
   });
+  
+});
 
-  
-  
+
 let hoveredPolygonId = null;
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
