@@ -82,9 +82,9 @@ map.on("load", () => {
 });
 
 
-// const leftBtn = document.getElementById("ctl_left");
-// const rightBtn = document.getElementById("ctl_right");
-const currentIndex = 0;
+var leftBtn = document.getElementById("ctl_left");
+var rightBtn = document.getElementById("ctl_right");
+var currentIndex = 1;
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "dong_polygon", e => {
@@ -115,10 +115,26 @@ map.on("click", "dong_polygon", e => {
   
 });
 
-// leftBtn.addEventListener('click', function() {
-//     // 알림창을 띄웁니다.
-//     alert('Left Button을 클릭했습니다!');
-// });
+leftBtn.addEventListener("click", function() {
+  currentIndex = ((currentIndex - 1 + 16) % 16);
+  console.log(currentIndex);
+//   var selected = map.getSource('dong_polygon')._data.features.filter(feature => feature.properties.Index === currentIndex);
+  
+//   var pos = JSON.parse(selected.features[0].properties.Pos);
+//   var coord = [pos[0], pos[1]];
+//   var zoom = selected.features[0].properties.Zoom;
+//   var pitch = selected.features[0].properties.Pitch;
+  
+//   map.flyTo({
+//     center: coord,
+//     zoom: zoom,
+//     pitch: pitch,
+//     essential: true
+//   });   
+  
+  
+});
+
 
 
 // 마우스가 이동하면 원래 마우스 모양으로 바뀜

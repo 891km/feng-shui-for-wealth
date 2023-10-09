@@ -3,7 +3,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 14,
+        "Index": 13,
         "Address_si": "성남시",
         "Address_gu": "분당구",
         "Address_dong": "하산운동",
@@ -21,7 +21,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 1,
+        "Index": 0,
         "Address_si": "서울특별시",
         "Address_gu": "종로구",
         "Address_dong": "평창동",
@@ -40,7 +40,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 3,
+        "Index": 1,
         "Address_si": "서울특별시",
         "Address_gu": "성북구",
         "Address_dong": "성북동",
@@ -58,7 +58,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 5,
+        "Index": 4,
         "Address_si": "서울특별시",
         "Address_gu": "용산구",
         "Address_dong": "이태원동",
@@ -76,7 +76,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 12,
+        "Index": 11,
         "Address_si": "서울특별시",
         "Address_gu": "강남구",
         "Address_dong": "삼성동",
@@ -94,7 +94,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 8,
+        "Index": 7,
         "Address_si": "서울특별시",
         "Address_gu": "강남구",
         "Address_dong": "논현동",
@@ -112,7 +112,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": "7",
+        "Index": 6,
         "Address_si": "서울특별시",
         "Address_gu": "송파구",
         "Address_dong": "신천동",
@@ -130,7 +130,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 5,
+        "Index": 3,
         "Address_si": "서울특별시",
         "Address_gu": "용산구",
         "Address_dong": "한남동",
@@ -148,7 +148,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 14,
+        "Index": 12,
         "Address_si": "서울특별시",
         "Address_gu": "서초구",
         "Address_dong": "우면동",
@@ -166,7 +166,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 9,
+        "Index": 8,
         "Address_si": "서울특별시",
         "Address_gu": "서초구",
         "Address_dong": "반포동",
@@ -184,7 +184,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 3,
+        "Index": 2,
         "Address_si": "서울특별시",
         "Address_gu": "중구",
         "Address_dong": "장충동",
@@ -202,7 +202,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 15,
+        "Index": 14,
         "Address_si": "성남시",
         "Address_gu": "분당구",
         "Address_dong": "구미동",
@@ -220,7 +220,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 12,
+        "Index": 10,
         "Address_si": "서울특별시",
         "Address_gu": "서초구",
         "Address_dong": "서초동",
@@ -238,7 +238,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 10,
+        "Index": 9,
         "Address_si": "서울특별시",
         "Address_gu": "강남구",
         "Address_dong": "대치동",
@@ -256,7 +256,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Index": 7,
+        "Index": 5,
         "Address_si": "서울특별시",
         "Address_gu": "강남구",
         "Address_dong": "청담동",
