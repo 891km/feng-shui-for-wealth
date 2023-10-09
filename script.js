@@ -64,12 +64,6 @@ map.on("load", () => {
       
     }    
   });
-
-  
-  // map.fitBounds(polygonData.geometry), {
-  //   padding: 20, // 폴리곤 주변 여백 설정
-  // });  
-  
   
 });
 
