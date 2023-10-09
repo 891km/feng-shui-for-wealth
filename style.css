@@ -31,7 +31,7 @@ body {
 /*   pointer-events: none; */
 }
 
-#ctl_left:hover, #ctl_right:hover {
+#ctl_left:hover, #ctl_right:hover, #home:hover {
   cursor: pointer;
 }
 
@@ -42,6 +42,15 @@ body {
 #ctl_right {
   right: 0;
 }
+
+#home {
+  position: fixed;
+  z-index: 100;  
+  width: var(--ctl_width);
+  height: var(--ctl_width);
+  background-color: yellow;
+}
+
 
 #header {
   position: fixed;

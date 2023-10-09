@@ -84,7 +84,8 @@ map.on("load", () => {
 // test
 var leftBtn = document.getElementById("ctl_left");
 var rightBtn = document.getElementById("ctl_right");
-var currentIndex = -1;
+var homeBtn = document.getElementById("home");
+var currentIndex = 0;
 var target;
 
 function findByIndex(currentIndex) {
@@ -113,6 +114,7 @@ function loadTargetInfo(target) {
     center: coord,
     zoom: zoom,
     pitch: pitch,
+    duration: 1500,
     essential: true
   });    
 }
@@ -141,6 +143,28 @@ rightBtn.addEventListener("click", function() {
 
   loadTargetInfo(target); 
 });
+
+homeBtn.addEventListener("click", function() {
+  currentIndex = -1;
+  
+  if (currentIndex == -1) {
+    document.getElementById("info-box").style.opacity = "0";
+    document.getElementById("project-title").style.opacity = "100";
+    document.getElementById("ctl_left").style.visibility = "hidden"; 
+    document.getElementById("ctl_right").style.visibility = "hidden";    
+
+    map.flyTo({
+      center: [127.063, 37.447],
+      zoom: 11.1,
+      minZoom: 10.3,
+      pitch: 64.5,
+      bearing: 16,
+      duration: 1500,
+      essential: true
+    });         
+  }  
+});
+
 
 
 
