@@ -21,15 +21,15 @@ map.on("load", () => {
 
 
   // dong_name
-  map.addSource("dongname", {
+  map.addSource("dong_polygon", {
     type: 'geojson',
-    data: '/dongname.geojson' 
+    data: '/dong_polygon.geojson' 
   });
   
   map.addLayer({
-    id: "dongname",
+    id: "dong_polygon",
     type: "symbol",
-    source: "dongname",
+    source: "dong_polygon",
     layout: {
       'text-field': ['get', 'Address_dong'],
       'text-size': 15,
@@ -43,15 +43,15 @@ map.on("load", () => {
 
   
   // dong_fill
-  map.addSource("donginfo", {
+  map.addSource("dong_point", {
     type: 'geojson',
-    data: '/donginfo.geojson' 
+    data: '/dong_point.geojson' 
   });
    
   map.addLayer({
-    id: "donginfo",
+    id: "dong_point",
     type: "fill",
-    source: "donginfo",
+    source: "dong_point",
     paint: {
       "fill-color": "rgba(255, 0, 255, 0.5)",
       'fill-opacity': [
@@ -70,18 +70,15 @@ map.on("load", () => {
 
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
-map.on("click", "donginfo", e => {
+map.on("click", "dong_point", e => {
   document.getElementById("address_sigu").innerHTML =
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
 
   document.getElementById("address_dong").innerHTML =
     e.features[0].properties.Address_dong;
   
-  const pos = array(e.features[0].properties.Pos);
-  const lng = pos[0]; // 경도
-  const lat = pos[1]; // 위도
-    console.log(typeof(pos), lng, lat);
-  const lngLat = new mapboxgl.LngLat(lng, lat);
+  const pos = JSON.parse(e.features[0].properties.Pos);
+  const coord = [pos[0], pos[1]];
 
   
   var zoom = e.features[0].properties.Zoom;
@@ -92,7 +89,7 @@ map.on("click", "donginfo", e => {
   // map.setPitch(pitch);
   
   map.flyTo({
-    // center: lngLat,
+    center: coord,
     zoom: zoom,
     pitch: pitch,
     essential: true
