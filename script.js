@@ -91,8 +91,8 @@ map.on("click", "dong_polygon", e => {
   index = e.features[0].properties.Index;
   document.getElementById("info-box").style.opacity = "100";
   document.getElementById("project-title").style.opacity = "0";
-  document.getElementById("ctl_left").style.opacity = "100"; 
-  document.getElementById("ctl_right").style.opacity = "100";  
+  document.getElementById("ctl_left").style.visibility = "visible"; 
+  document.getElementById("ctl_right").style.visibility = "visible";  
   
   document.getElementById("address_sigu").innerHTML =
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;

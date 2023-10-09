@@ -27,7 +27,12 @@ body {
   height: var(--ctl_width);
   margin: 2.4vw;
   background-color: yellow;
-  opacity: 0;
+  visibility: hidden;
+/*   pointer-events: none; */
+}
+
+#ctl_left:hover, #ctl_right:hover {
+  cursor: pointer;
 }
 
 #ctl_left {
