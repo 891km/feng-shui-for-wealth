@@ -77,16 +77,17 @@ map.on("click", "donginfo", e => {
   document.getElementById("address_dong").innerHTML =
     e.features[0].properties.Address_dong;
   
-  const coord = e.features[0].geometry.Pos;
-  const zoom = e.features[0].properties.Zoom;
-  const pitch = e.features[0].properties.Pitch;
+  var coord = e.features[0].properties.Pos;
+  console.log([coord[0], coord[1]]);
+  var zoom = e.features[0].properties.Zoom;
+  var pitch = e.features[0].properties.Pitch;
 
   // map.setCenter(coord);
   // map.setZoom(zoom); // 동네마다 값 저장하기
   // map.setPitch(pitch);
   
   map.flyTo({
-    // center: coord,
+    center: [coord[0], coord[1]],
     zoom: zoom,
     pitch: pitch,
     essential: true
