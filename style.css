@@ -28,13 +28,18 @@ body {
 /*   background-color: yellow; */
 }
 
-.project-title, .project-info {
+#project-title, #project-info {
   position: absolute;
-  margin: 2.4vw;
+  margin: 2.5vw;
   margin-top: 30px;
 }
 
-.project-info {
+#project-title {
+  opacity: 100;
+  font-size: 1.8rem;
+}
+
+#project-info {
   right: 0;
 }
 
@@ -100,7 +105,7 @@ body {
 }
 
 .pict {
-  background-color: yellow;
+  background-color: black;
   border-radius: 50%;
   width: var(--pict_width);
   height: var(--pict_width);
