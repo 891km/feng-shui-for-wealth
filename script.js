@@ -29,25 +29,10 @@ map.on("load", () => {
     data: '/dong_point.geojson' 
   });
   
-  // map.addLayer({
-  //   id: "dong_point",
-  //   type: "symbol",
-  //   source: "dong_point",
-  //   layout: {
-  //     'text-field': ['get', 'Address_dong'],
-  //     'text-size': 15,
-  //     'text-offset': [0, -2],
-  //     'text-anchor': 'center' 
-  //   },
-  //   paint: {
-  //     "text-color": "rgba(0, 0, 0, 1)"
-  //   }    
-  // });
-  
   map.addLayer({
     id: "dong_point",
     type: "symbol",
-    source: "dong_polygon",
+    source: "dong_point",
     layout: {
       'text-field': ['get', 'Address_dong'],
       'text-size': 15,
@@ -57,9 +42,9 @@ map.on("load", () => {
     paint: {
       "text-color": "rgba(0, 0, 0, 1)"
     }    
-  });  
-
+  });
   
+
   // dong_polygon
   map.addSource("dong_polygon", {
     type: 'geojson',
