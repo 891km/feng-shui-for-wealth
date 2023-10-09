@@ -77,8 +77,13 @@ map.on("click", "donginfo", e => {
   document.getElementById("address_dong").innerHTML =
     e.features[0].properties.Address_dong;
   
-  var coord = e.features[0].properties.Pos;
-  console.log([coord[0], coord[1]]);
+  const pos = array(e.features[0].properties.Pos);
+  const lng = pos[0]; // 경도
+  const lat = pos[1]; // 위도
+    console.log(typeof(pos), lng, lat);
+  const lngLat = new mapboxgl.LngLat(lng, lat);
+
+  
   var zoom = e.features[0].properties.Zoom;
   var pitch = e.features[0].properties.Pitch;
 
@@ -87,7 +92,7 @@ map.on("click", "donginfo", e => {
   // map.setPitch(pitch);
   
   map.flyTo({
-    center: [coord[0], coord[1]],
+    // center: lngLat,
     zoom: zoom,
     pitch: pitch,
     essential: true
