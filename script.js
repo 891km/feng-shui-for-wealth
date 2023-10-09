@@ -53,7 +53,7 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "rgba(255, 0, 255, 0.5)",
+      "fill-color": "rgba(255, 0, 255, 0)",
       
       'fill-opacity': [
         'case',
@@ -79,6 +79,8 @@ map.on("load", () => {
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "dong_polygon", e => {
+  document.getElementById("info-box").style.opacity = "100";
+  
   document.getElementById("address_sigu").innerHTML =
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
 

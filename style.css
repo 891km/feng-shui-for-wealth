@@ -1,6 +1,6 @@
-/* * {
-   transition: all 2s;
-} */
+* {
+   transition: opacity 1s;
+}
 
 html,
 body {
@@ -18,7 +18,7 @@ body {
 }
 
 
-.header {
+#header {
   position: fixed;
   display: flex;
   top: 0;
@@ -50,6 +50,8 @@ body {
 }
 
 #info-box {
+  /*   클릭시 opacity : 100 */
+  opacity: 0; 
   display: flex;
   position: fixed;
   left: 0;
@@ -133,6 +135,10 @@ body {
   margin: 0;
   padding-top: 1rem;
   word-break: keep-all;
+}
+
+.controller {
+  background-color: yellow;
 }
 
 
