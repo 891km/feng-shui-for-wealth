@@ -53,7 +53,13 @@ map.on("load", () => {
     type: "fill",
     source: "donginfo",
     paint: {
-      "fill-color": "rgba(255, 0, 255, 0.5)"
+      "fill-color": "rgba(255, 0, 255, 0.5)",
+      'fill-opacity': [
+        'case',
+        ['boolean', ['feature-state', 'hover'], false],
+        1,
+        0.5
+      ]      
     }    
   });
 });
@@ -80,21 +86,38 @@ map.on("click", "dong_fill", e => {
     center: coord,
     zoom: zoom,
     pitch: pitch,
-    essential: true // this animation is considered essential with respect to prefers-reduced-motion
+    essential: true
   });  
   
 });
 
 
-// 마우스오버하면 마우스 포인터 모양 바뀜
-map.on("mouseenter", "dong_fill", () => {
+map.on('mousemove', 'state-fills', (e) => {
+  if (e.features.length > 0) {
+    if (hoveredPolygonId !== null) {
+      map.setFeatureState(
+          { source: 'states', id: hoveredPolygonId },
+          { hover: false }
+        );
+    }
+      hoveredPolygonId = e.features[0].id;
+      map.setFeatureState(
+        { source: 'states', id: hoveredPolygonId },
+        { hover: true }
+      );
+    }
+});
+
+// // 마우스오버하면 마우스 포인터 모양 바뀜
+// map.on("mouseenter", "dong_fill", (e) => {
   
-  map.getCanvas().style.cursor = "pointer";
-  map.setPaintProperty('text-layer', 'text-color', 'rgba(255, 0, 0, 0)');
-});
+//   map.getCanvas().style.cursor = "pointer";
+//   map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
+// });
 
 
-// 마우스가 이동하면 원래 마우스 모양으로 바뀜
-map.on("mouseleave", "dong_fill", () => {
-  map.getCanvas().style.cursor = "";
-});
+// // 마우스가 이동하면 원래 마우스 모양으로 바뀜
+// map.on("mouseleave", "dong_fill", (e) => {
+//   map.getCanvas().style.cursor = "";
+//   map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 255, 0.5)');
+// });
