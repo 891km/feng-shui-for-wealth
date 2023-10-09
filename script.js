@@ -84,64 +84,26 @@ map.on("load", () => {
 // test
 var leftBtn = document.getElementById("ctl_left");
 var rightBtn = document.getElementById("ctl_right");
-var currentIndex = 1;
-var target = None;
+var currentIndex = -1;
+var target;
 
-// 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
-map.on("click", "dong_polygon", e => {
-  target = e.features[0];
-  currentIndex = target.properties.Index;
-  
+function findByIndex(currentIndex) {
+  const targetFeatures = map.querySourceFeatures('dong_polygon');
+  return targetFeatures.find(feature => feature.properties.Index === currentIndex);
+}
 
-});
-
-function targetInfo(target) {
+function loadTargetInfo(target) {
   document.getElementById("info-box").style.opacity = "100";
   document.getElementById("project-title").style.opacity = "0";
   document.getElementById("ctl_left").style.visibility = "visible"; 
   document.getElementById("ctl_right").style.visibility = "visible";  
   
   document.getElementById("address_sigu").innerHTML =
-    target.properties.Address_si + " " + currentDong.properties.Address_gu;
+    target.properties.Address_si + " " + target.properties.Address_gu;
   
   document.getElementById("address_dong").innerHTML =
-    currentDong.properties.Address_dong;
+    target.properties.Address_dong;
   
-  var pos = JSON.parse(currentDong.properties.Pos);
-  var coord = [pos[0], pos[1]];
-  var zoom = currentDong.properties.Zoom;
-  var pitch = currentDong.properties.Pitch;
-  
-  map.flyTo({
-    center: coord,
-    zoom: zoom,
-    pitch: pitch,
-    essential: true
-  });    
-}
-
-// test
-
-
-function findByIndex(currentIndex) {
-  const features = map.querySourceFeatures('dong_polygon');
-  return features.find(feature => feature.properties.Index === currentIndex);
-}
-
-
-leftBtn.addEventListener("click", function() {
-  currentIndex = ((currentIndex - 1 + 15) % 15);
-  console.log(currentIndex);
-  
-  const target = findByIndex(currentIndex);
-
-  // if (target) {
-  //   const target_name = target.properties.Address_dong;
-  //   console.log('target_name:', target_name);
-  // } else {
-  //   console.log('Feature with Index', currentIndex, 'not found.');
-  // }
-    
   var pos = JSON.parse(target.properties.Pos);
   var coord = [pos[0], pos[1]];
   var zoom = target.properties.Zoom;
@@ -152,10 +114,32 @@ leftBtn.addEventListener("click", function() {
     zoom: zoom,
     pitch: pitch,
     essential: true
-  });   
+  });    
+}
+
+// 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
+map.on("click", "dong_polygon", e => {
+  target = e.features[0];
+  currentIndex = target.properties.Index;
   
-  
-  
+  loadTargetInfo(target);
+
+});
+
+leftBtn.addEventListener("click", function() {
+  currentIndex = ((currentIndex - 1 + 15) % 15);
+  target = findByIndex(currentIndex);
+  console.log(currentIndex)
+
+  loadTargetInfo(target); 
+});
+
+rightBtn.addEventListener("click", function() {
+  currentIndex = ((currentIndex + 1 + 15) % 15);
+  target = findByIndex(currentIndex);
+  console.log(currentIndex)
+
+  loadTargetInfo(target); 
 });
 
 
