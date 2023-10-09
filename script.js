@@ -53,23 +53,33 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "rgba(255, 0, 255, 0.5)",
+      "fill-color": "rgb(59, 64, 84)",
       
       'fill-opacity': [
         'case',
         ['boolean', ['feature-state', 'hover'], false],
         1,
-        0.5
+        0.8
       ]
       
     }    
   });
   
+  map.addLayer({
+    'id': 'dong_line',
+    'type': 'line',
+    'source': 'dong_polygon',
+    'layout': {},
+    'paint': {
+    'line-color': "rgba(255, 255, 255, 0.5)",
+    'line-width': 1
+    }
+  });
+  
 });
 
 
-
-
+let hoveredPolygonId = null;
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "dong_polygon", e => {
