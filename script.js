@@ -20,16 +20,16 @@ map.on("load", () => {
   // map.rotateTo(180, { duration: 200000 });
 
 
-  // dong_name
-  map.addSource("dong_polygon", {
+  // dong_point
+  map.addSource("dong_point", {
     type: 'geojson',
-    data: '/dong_polygon.geojson' 
+    data: '/dong_point.geojson' 
   });
   
   map.addLayer({
-    id: "dong_polygon",
+    id: "dong_point",
     type: "symbol",
-    source: "dong_polygon",
+    source: "dong_point",
     layout: {
       'text-field': ['get', 'Address_dong'],
       'text-size': 15,
@@ -42,27 +42,35 @@ map.on("load", () => {
   });
 
   
-  // dong_fill
-  map.addSource("dong_point", {
+  // dong_polygon
+  map.addSource("dong_polygon", {
     type: 'geojson',
-    data: '/dong_point.geojson' 
+    data: '/dong_polygon.geojson' 
   });
    
   map.addLayer({
-    id: "dong_point",
+    id: "dong_polygon",
     type: "fill",
-    source: "dong_point",
+    source: "dong_polygon",
     paint: {
       "fill-color": "rgba(255, 0, 255, 0.5)",
+      
       'fill-opacity': [
         'case',
         ['boolean', ['feature-state', 'hover'], false],
         1,
         0.5
-      ]      
+      ]
+      
     }    
   });
 
+  
+  // map.fitBounds(polygonData.geometry), {
+  //   padding: 20, // 폴리곤 주변 여백 설정
+  // });  
+  
+  
 });
 
 
@@ -70,23 +78,17 @@ map.on("load", () => {
 
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
-map.on("click", "dong_point", e => {
+map.on("click", "dong_polygon", e => {
   document.getElementById("address_sigu").innerHTML =
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
 
   document.getElementById("address_dong").innerHTML =
     e.features[0].properties.Address_dong;
   
-  const pos = JSON.parse(e.features[0].properties.Pos);
-  const coord = [pos[0], pos[1]];
-
-  
+  var pos = JSON.parse(e.features[0].properties.Pos);
+  var coord = [pos[0], pos[1]];
   var zoom = e.features[0].properties.Zoom;
   var pitch = e.features[0].properties.Pitch;
-
-  // map.setCenter(coord);
-  // map.setZoom(zoom); // 동네마다 값 저장하기
-  // map.setPitch(pitch);
   
   map.flyTo({
     center: coord,
@@ -98,21 +100,21 @@ map.on("click", "dong_point", e => {
 });
 
 
-// map.on('mousemove', 'state-fills', (e) => {
-//   if (e.features.length > 0) {
-//     if (hoveredPolygonId !== null) {
-//       map.setFeatureState(
-//           { source: 'states', id: hoveredPolygonId },
-//           { hover: false }
-//         );
-//     }
-//       hoveredPolygonId = e.features[0].id;
-//       map.setFeatureState(
-//         { source: 'states', id: hoveredPolygonId },
-//         { hover: true }
-//       );
-//     }
-// });
+map.on('mousemove', 'dong_polygon', (e) => {
+  if (e.features.length > 0) {
+    if (hoveredPolygonId !== null) {
+      map.setFeatureState(
+          { source: 'states', id: hoveredPolygonId },
+          { hover: false }
+        );
+    }
+      hoveredPolygonId = e.features[0].id;
+      map.setFeatureState(
+        { source: 'states', id: hoveredPolygonId },
+        { hover: true }
+      );
+    }
+});
 
 // // 마우스오버하면 마우스 포인터 모양 바뀜
 // map.on("mouseenter", "dong_fill", (e) => {
