@@ -82,13 +82,14 @@ map.on("load", () => {
 });
 
 
-var leftBtn = document.getElementById("ctl_left");
-var leftBtn = document.getElementById("ctl_right");
-var currentIndex = 0;
+// const leftBtn = document.getElementById("ctl_left");
+// const rightBtn = document.getElementById("ctl_right");
+const currentIndex = 0;
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "dong_polygon", e => {
-  index = e.features[0].properties.Index;
+  currentIndex = e.features[0].properties.Index;
+  
   document.getElementById("info-box").style.opacity = "100";
   document.getElementById("project-title").style.opacity = "0";
   document.getElementById("ctl_left").style.visibility = "visible"; 
@@ -96,7 +97,7 @@ map.on("click", "dong_polygon", e => {
   
   document.getElementById("address_sigu").innerHTML =
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
-
+  
   document.getElementById("address_dong").innerHTML =
     e.features[0].properties.Address_dong;
   
@@ -114,15 +115,10 @@ map.on("click", "dong_polygon", e => {
   
 });
 
-
-map.on("click", "leftBtn", () => {
-  currentIndex = (currentIndex - 1 + 16) % 16;
-});
-
-
-map.on("click", "leftBtn", () => {
-  currentIndex = (currentIndex - 1 + 16) % 16;
-});
+// leftBtn.addEventListener('click', function() {
+//     // 알림창을 띄웁니다.
+//     alert('Left Button을 클릭했습니다!');
+// });
 
 
 // 마우스가 이동하면 원래 마우스 모양으로 바뀜
