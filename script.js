@@ -53,7 +53,7 @@ map.on("load", () => {
     type: "fill",
     source: "donginfo",
     paint: {
-      "fill-color": "rgba(255, 0, 255, 1)"
+      "fill-color": "rgba(255, 0, 255, 0.5)"
     }    
   });
 });
@@ -68,15 +68,18 @@ map.on("click", "dong_fill", e => {
   document.getElementById("address_dong").innerHTML =
     e.features[0].properties.Address_dong;
   
-    const coord = e.features[0].geometry.coordinates;
-    // map.setCenter(coord);
-    // map.setZoom(12); // 동네마다 값 저장하기
-    // map.setPitch(55);
+  const coord = e.features[0].geometry.coordinates;
+  const zoom = e.features[0].properties.Zoom;
+  const pitch = e.features[0].properties.Pitch;
+  
+  // map.setCenter(coord);
+  // map.setZoom(zoom); // 동네마다 값 저장하기
+  // map.setPitch(pitch);
   
   map.flyTo({
     center: coord,
-    zoom: 13,
-    // pitch: 55,
+    zoom: zoom,
+    pitch: pitch,
     essential: true // this animation is considered essential with respect to prefers-reduced-motion
   });  
   
@@ -87,7 +90,7 @@ map.on("click", "dong_fill", e => {
 map.on("mouseenter", "dong_fill", () => {
   
   map.getCanvas().style.cursor = "pointer";
-  // map.setPaintProperty('text-layer', 'text-color', 'rgba(255, 0, 0, 0)');
+  map.setPaintProperty('text-layer', 'text-color', 'rgba(255, 0, 0, 0)');
 });
 
 

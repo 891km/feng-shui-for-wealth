@@ -56,8 +56,8 @@ body {
   bottom: 0;
   width: 100%;
   height: 32vh;
-  background: rgba(0,0,0,0);
   color: black;
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1)); 
 }
 
 #info-left, #info-right {
