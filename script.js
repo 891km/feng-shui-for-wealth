@@ -27,7 +27,7 @@ map.on("load", () => {
   });
   
   map.addLayer({
-    id: "dong_name",
+    id: "dongname",
     type: "symbol",
     source: "dongname",
     layout: {
@@ -49,7 +49,7 @@ map.on("load", () => {
   });
    
   map.addLayer({
-    id: "dong_fill",
+    id: "donginfo",
     type: "fill",
     source: "donginfo",
     paint: {
@@ -70,7 +70,7 @@ map.on("load", () => {
 
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
-map.on("click", "dong_fill", e => {
+map.on("click", "donginfo", e => {
   document.getElementById("address_sigu").innerHTML =
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
 
@@ -78,7 +78,8 @@ map.on("click", "dong_fill", e => {
     e.features[0].properties.Address_dong;
   
   
-  const coord = e.features[0].properties.Pos;
+  const coord = e.features[0].geometry.Pos;
+  // const coord = [127.063, 37.457];
   const zoom = e.features[0].properties.Zoom;
   const pitch = e.features[0].properties.Pitch;
 
@@ -96,21 +97,21 @@ map.on("click", "dong_fill", e => {
 });
 
 
-map.on('mousemove', 'state-fills', (e) => {
-  if (e.features.length > 0) {
-    if (hoveredPolygonId !== null) {
-      map.setFeatureState(
-          { source: 'states', id: hoveredPolygonId },
-          { hover: false }
-        );
-    }
-      hoveredPolygonId = e.features[0].id;
-      map.setFeatureState(
-        { source: 'states', id: hoveredPolygonId },
-        { hover: true }
-      );
-    }
-});
+// map.on('mousemove', 'state-fills', (e) => {
+//   if (e.features.length > 0) {
+//     if (hoveredPolygonId !== null) {
+//       map.setFeatureState(
+//           { source: 'states', id: hoveredPolygonId },
+//           { hover: false }
+//         );
+//     }
+//       hoveredPolygonId = e.features[0].id;
+//       map.setFeatureState(
+//         { source: 'states', id: hoveredPolygonId },
+//         { hover: true }
+//       );
+//     }
+// });
 
 // // 마우스오버하면 마우스 포인터 모양 바뀜
 // map.on("mouseenter", "dong_fill", (e) => {
