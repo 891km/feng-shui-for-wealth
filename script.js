@@ -116,21 +116,26 @@ map.on("click", "dong_polygon", e => {
 });
 
 leftBtn.addEventListener("click", function() {
-  currentIndex = ((currentIndex - 1 + 16) % 16);
+  currentIndex = ((currentIndex - 1 + 15) % 15);
   console.log(currentIndex);
-//   var selected = map.getSource('dong_polygon')._data.features.filter(feature => feature.properties.Index === currentIndex);
   
-//   var pos = JSON.parse(selected.features[0].properties.Pos);
-//   var coord = [pos[0], pos[1]];
-//   var zoom = selected.features[0].properties.Zoom;
-//   var pitch = selected.features[0].properties.Pitch;
+  const target = geojson.features.find(feature => feature.properties.Index === currentIndex);
+
+
+  console.log("Coordinates:", coordinates);  
+  var selected = map.getSource('dong_polygon')._data.features.filter(feature => feature.properties.Index === currentIndex);
   
-//   map.flyTo({
-//     center: coord,
-//     zoom: zoom,
-//     pitch: pitch,
-//     essential: true
-//   });   
+  var pos = JSON.parse(target.features[0].properties.Pos);
+  var coord = [pos[0], pos[1]];
+  var zoom = target.features[0].properties.Zoom;
+  var pitch = target.features[0].properties.Pitch;
+  
+  map.flyTo({
+    center: coord,
+    zoom: zoom,
+    pitch: pitch,
+    essential: true
+  });   
   
   
 });
