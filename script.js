@@ -77,9 +77,7 @@ map.on("click", "donginfo", e => {
   document.getElementById("address_dong").innerHTML =
     e.features[0].properties.Address_dong;
   
-  
   const coord = e.features[0].geometry.Pos;
-  // const coord = [127.063, 37.457];
   const zoom = e.features[0].properties.Zoom;
   const pitch = e.features[0].properties.Pitch;
 
