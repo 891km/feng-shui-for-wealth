@@ -83,12 +83,12 @@ map.on("click", "donginfo", e => {
   const zoom = e.features[0].properties.Zoom;
   const pitch = e.features[0].properties.Pitch;
 
-//   map.setCenter(coord);
-//   map.setZoom(zoom); // 동네마다 값 저장하기
-//   map.setPitch(pitch);
+  // map.setCenter(coord);
+  // map.setZoom(zoom); // 동네마다 값 저장하기
+  // map.setPitch(pitch);
   
   map.flyTo({
-    center: coord,
+    // center: coord,
     zoom: zoom,
     pitch: pitch,
     essential: true
