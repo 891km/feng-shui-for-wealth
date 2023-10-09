@@ -62,7 +62,10 @@ map.on("load", () => {
       ]      
     }    
   });
+
 });
+
+
 
 
 
@@ -74,13 +77,14 @@ map.on("click", "dong_fill", e => {
   document.getElementById("address_dong").innerHTML =
     e.features[0].properties.Address_dong;
   
-  const coord = e.features[0].geometry.coordinates;
+  
+  const coord = e.features[0].properties.Pos;
   const zoom = e.features[0].properties.Zoom;
   const pitch = e.features[0].properties.Pitch;
-  
-  // map.setCenter(coord);
-  // map.setZoom(zoom); // 동네마다 값 저장하기
-  // map.setPitch(pitch);
+
+//   map.setCenter(coord);
+//   map.setZoom(zoom); // 동네마다 값 저장하기
+//   map.setPitch(pitch);
   
   map.flyTo({
     center: coord,
