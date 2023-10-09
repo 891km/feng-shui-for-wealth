@@ -12,6 +12,8 @@ const map = new mapboxgl.Map({
   bearing: 16
 });
 
+
+
 map.on("load", () => {
   
   map.getCanvas().getContext('webgl'),
@@ -75,10 +77,9 @@ map.on("load", () => {
     'line-width': 1
     }
   });
+
   
-});
-
-
+  
 let hoveredPolygonId = null;
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
