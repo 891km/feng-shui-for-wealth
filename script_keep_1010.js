@@ -85,40 +85,37 @@ map.on("load", () => {
 var leftBtn = document.getElementById("ctl_left");
 var rightBtn = document.getElementById("ctl_right");
 var currentIndex = 1;
-var target = None;
+var currentDong = None;
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "dong_polygon", e => {
-  target = e.features[0];
-  currentIndex = target.properties.Index;
+  currentIndex = e.features[0].properties.Index;
   
-
-});
-
-function targetInfo(target) {
   document.getElementById("info-box").style.opacity = "100";
   document.getElementById("project-title").style.opacity = "0";
   document.getElementById("ctl_left").style.visibility = "visible"; 
   document.getElementById("ctl_right").style.visibility = "visible";  
   
   document.getElementById("address_sigu").innerHTML =
-    target.properties.Address_si + " " + currentDong.properties.Address_gu;
+    e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
   
   document.getElementById("address_dong").innerHTML =
-    currentDong.properties.Address_dong;
+    e.features[0].properties.Address_dong;
   
-  var pos = JSON.parse(currentDong.properties.Pos);
+  var pos = JSON.parse(e.features[0].properties.Pos);
   var coord = [pos[0], pos[1]];
-  var zoom = currentDong.properties.Zoom;
-  var pitch = currentDong.properties.Pitch;
+  var zoom = e.features[0].properties.Zoom;
+  var pitch = e.features[0].properties.Pitch;
   
   map.flyTo({
     center: coord,
     zoom: zoom,
     pitch: pitch,
     essential: true
-  });    
-}
+  });  
+  
+});
+
 
 // test
 
