@@ -43,8 +43,8 @@ map.on("load", () => {
       "text-color": "rgba(0, 0, 0, 1)"
     }    
   });
-  
 
+  
   // dong_polygon
   map.addSource("dong_polygon", {
     type: 'geojson',
@@ -64,10 +64,10 @@ map.on("load", () => {
         1,
         0.8
       ]
-      
     }    
   });
   
+  // dong_line
   map.addLayer({
     'id': 'dong_line',
     'type': 'line',
@@ -82,12 +82,17 @@ map.on("load", () => {
 });
 
 
-let hoveredPolygonId = null;
+var leftBtn = document.getElementById("ctl_left");
+var leftBtn = document.getElementById("ctl_right");
+var currentIndex = 0;
 
 // 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
 map.on("click", "dong_polygon", e => {
+  index = e.features[0].properties.Index;
   document.getElementById("info-box").style.opacity = "100";
-  document.getElementById("project-title").style.opacity = "0";                                     
+  document.getElementById("project-title").style.opacity = "0";
+  document.getElementById("ctl_left").style.opacity = "100"; 
+  document.getElementById("ctl_right").style.opacity = "100";  
   
   document.getElementById("address_sigu").innerHTML =
     e.features[0].properties.Address_si + " " + e.features[0].properties.Address_gu;
@@ -110,32 +115,29 @@ map.on("click", "dong_polygon", e => {
 });
 
 
-map.on('mousemove', 'dong_polygon', (e) => {
-  if (e.features.length > 0) {
-    if (hoveredPolygonId !== null) {
-      map.setFeatureState(
-          { source: 'states', id: hoveredPolygonId },
-          { hover: false }
-        );
-    }
-      hoveredPolygonId = e.features[0].id;
-      map.setFeatureState(
-        { source: 'states', id: hoveredPolygonId },
-        { hover: true }
-      );
-    }
+map.on("click", "leftBtn", () => {
+  currentIndex = (currentIndex - 1 + 16) % 16;
 });
 
-// // 마우스오버하면 마우스 포인터 모양 바뀜
-// map.on("mouseenter", "dong_fill", (e) => {
-  
-//   map.getCanvas().style.cursor = "pointer";
-//   map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
-// });
+
+map.on("click", "leftBtn", () => {
+  currentIndex = (currentIndex - 1 + 16) % 16;
+});
 
 
-// // 마우스가 이동하면 원래 마우스 모양으로 바뀜
-// map.on("mouseleave", "dong_fill", (e) => {
-//   map.getCanvas().style.cursor = "";
-//   map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 255, 0.5)');
-// });
+// 마우스가 이동하면 원래 마우스 모양으로 바뀜
+map.on("mouseleave", "dong_fill", (e) => {
+  map.getCanvas().style.cursor = "";
+});
+
+
+// 마우스오버하면 마우스 포인터 모양 바뀜
+map.on("mouseenter", "dong_fill", (e) => {
+  map.getCanvas().style.cursor = "pointer";
+  // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
+});
+
+// 마우스가 이동하면 원래 마우스 모양으로 바뀜
+map.on("mouseleave", "dong_fill", (e) => {
+  map.getCanvas().style.cursor = "";
+});
