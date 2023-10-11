@@ -22,7 +22,7 @@ body {
   position: fixed;
   z-index: 100;
   display: flex;
-  top: calc(50vh - (var(--ctl_width) * 0.5));
+  top: calc(50vh - var(--ctl_width) * 1.5);
   width: var(--ctl_width);
   height: var(--ctl_width);
   margin: 2.4vw;
@@ -31,9 +31,6 @@ body {
 /*   pointer-events: none; */
 }
 
-#ctl_left:hover, #ctl_right:hover, #home:hover {
-  cursor: pointer;
-}
 
 #ctl_left {
   left: 0;
@@ -41,6 +38,10 @@ body {
 
 #ctl_right {
   right: 0;
+}
+
+#ctl_left:hover, #ctl_right:hover, #home:hover {
+  cursor: pointer;
 }
 
 #home {
