@@ -89,8 +89,9 @@ var currentIndex = 0;
 var target;
 
 function targetByIndex(currentIndex) {
-  const targetFeatures = map.querySourceFeatures('dong_polygon');
-  return targetFeatures.find(feature => feature.properties.Index === currentIndex);
+  const features = map.querySourceFeatures('dong_polygon');
+  const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
+  return targetFeature;
 }
 
 function loadTargetInfo(target) {
