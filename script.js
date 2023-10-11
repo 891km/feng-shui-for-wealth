@@ -43,8 +43,7 @@ map.on("load", () => {
       "text-color": "rgba(0, 0, 0, 1)"
     }    
   });
-
-  
+ 
   // dong_polygon
   map.addSource("dong_polygon", {
     type: 'geojson',
@@ -81,6 +80,7 @@ map.on("load", () => {
   
 });
 
+
 // test
 var leftBtn = document.getElementById("ctl_left");
 var rightBtn = document.getElementById("ctl_right");
@@ -88,7 +88,7 @@ var homeBtn = document.getElementById("home");
 var currentIndex = 0;
 var target;
 
-function findByIndex(currentIndex) {
+function targetByIndex(currentIndex) {
   const targetFeatures = map.querySourceFeatures('dong_polygon');
   return targetFeatures.find(feature => feature.properties.Index === currentIndex);
 }
@@ -130,17 +130,17 @@ map.on("click", "dong_polygon", e => {
 
 leftBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex - 1 + 15) % 15);
-  target = findByIndex(currentIndex);
-  console.log(currentIndex)
+  target = targetByIndex(currentIndex);
+  console.log(currentIndex, target)
 
-  loadTargetInfo(target); 
+  loadTargetInfo(target);
 });
 
 rightBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex + 1 + 15) % 15);
-  target = findByIndex(currentIndex);
-  console.log(currentIndex)
-
+  target = targetByIndex(currentIndex);
+  console.log(currentIndex, target)
+  
   loadTargetInfo(target); 
 });
 
