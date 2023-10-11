@@ -108,8 +108,10 @@ function loadTargetInfo(target) {
     target.properties.Address_dong;
   
   
-  var pos = JSON.parse(target.properties.Pos);
-  var coord = [pos[0], pos[1]];
+  var lat = target.properties.Latitude;
+  var long = target.properties.Longitude;
+  // var pos = JSON.parse(target.properties.Pos);
+  var coord = [long, lat];
   var zoom = target.properties.Zoom;
   var pitch = target.properties.Pitch;
   
@@ -125,7 +127,7 @@ function loadTargetInfo(target) {
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
-  currentIndex = target.properties.Index;
+  currentIndex = (target.properties.Index);
   
   loadTargetInfo(target);
 
@@ -208,10 +210,10 @@ map.on('mousemove', 'dong_polygon', (e) => {
  
 // When the mouse leaves the state-fill layer, update the feature state of the
 // previously hovered feature.
-map.on('mouseleave', 'state-fills', () => {
+map.on('mouseleave', 'dong_polygon', () => {
   if (hoveredPolygonId !== null) {
     map.setFeatureState(
-      { source: 'states', id: hoveredPolygonId },
+      { source: 'dong_polygon', id: hoveredPolygonId },
       { hover: false }
     );
   }
