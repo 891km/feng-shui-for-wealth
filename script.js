@@ -87,6 +87,7 @@ var rightBtn = document.getElementById("ctl_right");
 var homeBtn = document.getElementById("home");
 var currentIndex = 0;
 var target;
+let hoveredPolygonId = null;
 
 function targetByIndex(currentIndex) {
   const features = map.querySourceFeatures('dong_polygon');
@@ -106,6 +107,7 @@ function loadTargetInfo(target) {
   document.getElementById("address_dong").innerHTML =
     target.properties.Address_dong;
   
+  
   var pos = JSON.parse(target.properties.Pos);
   var coord = [pos[0], pos[1]];
   var zoom = target.properties.Zoom;
@@ -120,7 +122,7 @@ function loadTargetInfo(target) {
   });    
 }
 
-// 개체를 클릭하면 일어나는 이벤트를 설정하는 영역
+
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = target.properties.Index;
@@ -132,7 +134,7 @@ map.on("click", "dong_polygon", e => {
 leftBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
-  console.log(currentIndex, target)
+  console.log(currentIndex, target) // error
 
   loadTargetInfo(target);
 });
@@ -167,21 +169,51 @@ homeBtn.addEventListener("click", function() {
 });
 
 
-
-
 // 마우스가 이동하면 원래 마우스 모양으로 바뀜
-map.on("mouseleave", "dong_fill", (e) => {
+map.on("mouseleave", "dong_polygon", (e) => {
   map.getCanvas().style.cursor = "";
 });
 
 
 // 마우스오버하면 마우스 포인터 모양 바뀜
-map.on("mouseenter", "dong_fill", (e) => {
+map.on("mouseenter", "dong_polygon", (e) => {
   map.getCanvas().style.cursor = "pointer";
   // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
 });
 
 // 마우스가 이동하면 원래 마우스 모양으로 바뀜
-map.on("mouseleave", "dong_fill", (e) => {
+map.on("mouseleave", "dong_polygon", (e) => {
   map.getCanvas().style.cursor = "";
+});
+
+
+
+// When the user moves their mouse over the state-fill layer, we'll update the
+// feature state for the feature under the mouse.
+map.on('mousemove', 'dong_polygon', (e) => {
+  if (e.features.length > 0) {
+    if (hoveredPolygonId !== null) {
+      map.setFeatureState(
+        { source: 'dong_polygon', id: hoveredPolygonId },
+        { hover: false }
+      );
+      }
+      hoveredPolygonId = e.features[0].id;
+      map.setFeatureState(
+        { source: 'dong_polygon', id: hoveredPolygonId },
+        { hover: true }
+    );
+  }
+});
+ 
+// When the mouse leaves the state-fill layer, update the feature state of the
+// previously hovered feature.
+map.on('mouseleave', 'state-fills', () => {
+  if (hoveredPolygonId !== null) {
+    map.setFeatureState(
+      { source: 'states', id: hoveredPolygonId },
+      { hover: false }
+    );
+  }
+  hoveredPolygonId = null;
 });
