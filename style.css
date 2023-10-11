@@ -22,7 +22,7 @@ body {
   position: fixed;
   z-index: 100;
   display: flex;
-  top: calc(50vh - var(--ctl_width) * 0.5);
+  top: calc(50vh - (var(--ctl_width) * 0.5));
   width: var(--ctl_width);
   height: var(--ctl_width);
   margin: 2.4vw;
