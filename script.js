@@ -54,7 +54,10 @@ map.on("load", () => {
     paint: {
       "fill-color": "rgb(59, 64, 84)",
       'fill-opacity': [
-        'case', ['boolean', ['feature-state', 'hover'], false], 1, 0.5
+        'case', 
+        ['boolean', ['get', 'hover'], false],
+        1, // hover : true
+        0.5 // hover: false
       ]
     }    
   });
