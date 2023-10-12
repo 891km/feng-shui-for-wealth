@@ -90,36 +90,32 @@ map.on("load", () => {
   // When the user moves their mouse over the state-fill layer, we'll update the
   // feature state for the feature under the mouse.
   map.on('mousemove', 'dong_polygon', (e) => {
-    if (e.features.length > 0) {
-      hoveredPolygonId = Boolean(e.features[0].properties.EMD_CD);
-      console.log(Boolean(hoveredPolygonId))
-      
-      map.setFeatureState(
-        { source: 'dong_polygon', id: hoveredPolygonId },
-        { hover: true }
-      );
-      
+      hoveredPolygonId = e.features[0].properties.EMD_CD;
+      console.log(hoveredPolygonId, Boolean(hoveredPolygonId))
+          
       if (hoveredPolygonId !== null) {
         map.setFeatureState(
           { source: 'dong_polygon', id: hoveredPolygonId },
-          { hover: false }
+          { hover: true }
         );
-      }      
-    }
+      } else {
+        map.setFeatureState(
+          { source: 'dong_polygon', id: hoveredPolygonId }, 
+          { hover: true }
+        );        
+      }     
   });
 
   // When the mouse leaves the state-fill layer, update the feature state of the
   // previously hovered feature.
   map.on('mouseleave', 'dong_polygon', () => {
     hoveredPolygonId = null;
-    console.log(Boolean(hoveredPolygonId))
+    console.log(hoveredPolygonId, Boolean(hoveredPolygonId))
 
-    if (hoveredPolygonId !== null) {
-      map.setFeatureState(
-        { source: 'dong_polygon', id: hoveredPolygonId },
-        { hover: false }
-      );
-    }    
+    map.setFeatureState(
+      { source: 'dong_polygon', id: hoveredPolygonId },
+      { hover: false }
+    );   
 });  
   
   
