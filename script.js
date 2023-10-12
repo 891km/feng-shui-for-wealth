@@ -19,7 +19,7 @@ map.on("load", () => {
   
   map.resize();
   
-  // map.rotateTo(180, { duration: 200000 });
+  map.rotateTo(180, { duration: 200000 });
 
   // dong_point
   map.addSource("dong_point", {
@@ -54,11 +54,11 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "#A4AF9E", // rgb(59, 64, 84)
+      "fill-color": "#6AB886", // rgb(59, 64, 84)  #A4AF9E rgba(106, 183 , 84)
       'fill-opacity': [
         'case', 
         ['boolean', ['feature-state', 'hover'], false],
-        1, // hover : true
+        0.9, // hover : true
         0.5 // hover: false
       ]
     } 
@@ -71,8 +71,8 @@ map.on("load", () => {
     'source': 'dong_polygon',
     'layout': {},
     'paint': {
-    'line-color': "rgba(255, 255, 255, 0.5)",
-    'line-width': 1
+    'line-color': "6AB886",
+    'line-width': 2
     }
   });
   
@@ -82,9 +82,9 @@ map.on("load", () => {
   map.on('mouseenter', 'dong_polygon', (e) => {
     map.getCanvas().style.cursor = "pointer";
     
-    hoveredPolygonId = e.features[0].id;
+    hoveredPolygonId = e.features[0].id; // 0번부터 시작
 
-    if (hoveredPolygonId !== null) {
+    if (hoveredPolygonId + 1 > 0) {
       map.setFeatureState(
         { source: 'dong_polygon', id: hoveredPolygonId },
         { hover: true }
@@ -97,7 +97,7 @@ map.on("load", () => {
   map.on('mouseleave', 'dong_polygon', () => {
     map.getCanvas().style.cursor = "";
     
-    if(hoveredPolygonId) {
+    if(hoveredPolygonId + 1 > 0) {
       map.setFeatureState(
         { source: 'dong_polygon', id: hoveredPolygonId },
         { hover: false }
