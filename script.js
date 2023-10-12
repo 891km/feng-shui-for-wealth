@@ -13,14 +13,12 @@ const map = new mapboxgl.Map({
 });
 
 
-
-
+let hoveredPolygonId = null; 
 map.on("load", () => {
   
   map.resize();
   
   // map.rotateTo(180, { duration: 200000 });
-
 
   // dong_point
   map.addSource("dong_point", {
@@ -43,8 +41,6 @@ map.on("load", () => {
     }    
   });
   
-  
-  
   // dong_polygon
   map.addSource("dong_polygon", {
     type: 'geojson',
@@ -58,10 +54,7 @@ map.on("load", () => {
     paint: {
       "fill-color": "rgb(59, 64, 84)",
       'fill-opacity': [
-        'case',
-        ['boolean', ['feature-state', 'hover'], false],
-        1,
-        0.8
+        'case', ['boolean', ['feature-state', 'hover'], false], 1, 0.5
       ]
     }    
   });
@@ -78,21 +71,19 @@ map.on("load", () => {
     }
   });
   
-
   
-  // 마우스오버하면 마우스 포인터 모양 바뀜
-  map.on("mouseenter", "dong_polygon", (e) => {
-    map.getCanvas().style.cursor = "pointer";
-    // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
-  });
+//   // 마우스오버하면 마우스 포인터 모양 바뀜
+//   map.on("mouseenter", "dong_polygon", (e) => {
+//     map.getCanvas().style.cursor = "pointer";
+//     // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
+//   });
 
-  // 마우스가 이동하면 원래 마우스 모양으로 바뀜
-  map.on("mouseleave", "dong_polygon", (e) => {
-    map.getCanvas().style.cursor = "";
-  });
+//   // 마우스가 이동하면 원래 마우스 모양으로 바뀜
+//   map.on("mouseleave", "dong_polygon", (e) => {
+//     map.getCanvas().style.cursor = "";
+//   });
 
 
-  let hoveredPolygonId = null;
   // When the user moves their mouse over the state-fill layer, we'll update the
   // feature state for the feature under the mouse.
   map.on('mousemove', 'dong_polygon', (e) => {
@@ -103,7 +94,7 @@ map.on("load", () => {
           { hover: false }
         );
       }
-      hoveredPolygonId = e.features[0].id;
+      hoveredPolygonId = e.features[0].index;
       map.setFeatureState(
         { source: 'dong_polygon', id: hoveredPolygonId },
         { hover: true }
