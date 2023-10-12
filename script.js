@@ -14,6 +14,7 @@ const map = new mapboxgl.Map({
 
 
 let hoveredPolygonId = null; 
+
 map.on("load", () => {
   
   map.resize();
@@ -53,7 +54,7 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "rgb(59, 64, 84)",
+      "fill-color": "#A4AF9E", // rgb(59, 64, 84)
       'fill-opacity': [
         'case', 
         ['boolean', ['feature-state', 'hover'], false],
@@ -81,20 +82,14 @@ map.on("load", () => {
   map.on('mouseenter', 'dong_polygon', (e) => {
     map.getCanvas().style.cursor = "pointer";
     
-    hoveredPolygonId = e.features[0].properties.EMD_CD;
-    console.log(hoveredPolygonId, Boolean(hoveredPolygonId))
+    hoveredPolygonId = e.features[0].id;
 
     if (hoveredPolygonId !== null) {
       map.setFeatureState(
         { source: 'dong_polygon', id: hoveredPolygonId },
         { hover: true }
       );
-    } else {
-      map.setFeatureState(
-        { source: 'dong_polygon', id: hoveredPolygonId }, 
-        { hover: true }
-      );        
-    }     
+    }
   });
 
   // When the mouse leaves the state-fill layer, update the feature state of the
@@ -108,10 +103,8 @@ map.on("load", () => {
         { hover: false }
       );        
     }    
-    
+  
     hoveredPolygonId = null;
-    
-    console.log(hoveredPolygonId, Boolean(hoveredPolygonId))
 });  
   
   
@@ -137,7 +130,8 @@ function loadTargetInfo(target) {
   document.getElementById("info-box").style.opacity = "100";
   document.getElementById("project-title").style.opacity = "0";
   document.getElementById("ctl_left").style.visibility = "visible"; 
-  document.getElementById("ctl_right").style.visibility = "visible";  
+  document.getElementById("ctl_right").style.visibility = "visible";
+  document.getElementById("home").style.visibility = "visible";  
   
   document.getElementById("address_sigu").innerHTML =
     target.properties.Address_si + " " + target.properties.Address_gu;
@@ -194,7 +188,8 @@ homeBtn.addEventListener("click", function() {
     document.getElementById("info-box").style.opacity = "0";
     document.getElementById("project-title").style.opacity = "100";
     document.getElementById("ctl_left").style.visibility = "hidden"; 
-    document.getElementById("ctl_right").style.visibility = "hidden";    
+    document.getElementById("ctl_right").style.visibility = "hidden";
+    document.getElementById("home").style.visibility = "hidden"; 
 
     map.flyTo({
       center: [127.063, 37.447],

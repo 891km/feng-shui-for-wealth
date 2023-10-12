@@ -50,6 +50,7 @@ body {
   width: var(--ctl_width);
   height: var(--ctl_width);
   background-color: yellow;
+  visibility: hidden;
 }
 
 
