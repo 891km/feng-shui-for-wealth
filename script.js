@@ -54,7 +54,7 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "#6AB886", // rgb(59, 64, 84)  #A4AF9E rgba(106, 183 , 84)
+      "fill-color": "rgb(59, 64, 84)", // blue : rgb(59, 64, 84),  green : 6AB886
       'fill-opacity': [
         'case', 
         ['boolean', ['feature-state', 'hover'], false],
@@ -71,8 +71,8 @@ map.on("load", () => {
     'source': 'dong_polygon',
     'layout': {},
     'paint': {
-    'line-color': "6AB886",
-    'line-width': 2
+    'line-color': "rgba(59, 64, 84, 0.8)",
+    'line-width': 1
     }
   });
   
@@ -119,6 +119,23 @@ var homeBtn = document.getElementById("home");
 var currentIndex = 0;
 var target;
 
+function setHome() {
+  document.getElementById("info-box").style.opacity = "0";
+  document.getElementById("project-title").style.opacity = "100";
+  document.getElementById("ctl_left").style.visibility = "hidden"; 
+  document.getElementById("ctl_right").style.visibility = "hidden";
+  document.getElementById("home").style.visibility = "hidden"; 
+
+  map.flyTo({
+    center: [127.063, 37.447],
+    zoom: 11.1,
+    minZoom: 10.3,
+    pitch: 64.5,
+    bearing: 16,
+    duration: 1500,
+    essential: true
+  });    
+}
 
 function targetByIndex(currentIndex) {
   const features = map.querySourceFeatures('dong_polygon');
@@ -184,23 +201,7 @@ rightBtn.addEventListener("click", function() {
 homeBtn.addEventListener("click", function() {
   currentIndex = -1;
   
-  if (currentIndex == -1) {
-    document.getElementById("info-box").style.opacity = "0";
-    document.getElementById("project-title").style.opacity = "100";
-    document.getElementById("ctl_left").style.visibility = "hidden"; 
-    document.getElementById("ctl_right").style.visibility = "hidden";
-    document.getElementById("home").style.visibility = "hidden"; 
-
-    map.flyTo({
-      center: [127.063, 37.447],
-      zoom: 11.1,
-      minZoom: 10.3,
-      pitch: 64.5,
-      bearing: 16,
-      duration: 1500,
-      essential: true
-    });         
-  }  
+  setHome();
 });
 
 
