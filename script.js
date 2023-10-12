@@ -72,46 +72,51 @@ map.on("load", () => {
   });
   
   
-//   // 마우스오버하면 마우스 포인터 모양 바뀜
-//   map.on("mouseenter", "dong_polygon", (e) => {
-//     map.getCanvas().style.cursor = "pointer";
-//     // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
-//   });
+  // 마우스오버하면 마우스 포인터 모양 바뀜
+  map.on("mouseenter", "dong_polygon", (e) => {
+    map.getCanvas().style.cursor = "pointer";
+    // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
+  });
 
-//   // 마우스가 이동하면 원래 마우스 모양으로 바뀜
-//   map.on("mouseleave", "dong_polygon", (e) => {
-//     map.getCanvas().style.cursor = "";
-//   });
+  // 마우스가 이동하면 원래 마우스 모양으로 바뀜
+  map.on("mouseleave", "dong_polygon", (e) => {
+    map.getCanvas().style.cursor = "";
+  });
 
 
   // When the user moves their mouse over the state-fill layer, we'll update the
   // feature state for the feature under the mouse.
   map.on('mousemove', 'dong_polygon', (e) => {
     if (e.features.length > 0) {
+      hoveredPolygonId = Boolean(e.features[0].properties.EMD_CD);
+      console.log(Boolean(hoveredPolygonId))
+      
+      map.setFeatureState(
+        { source: 'dong_polygon', id: hoveredPolygonId },
+        { hover: true }
+      );
+      
       if (hoveredPolygonId !== null) {
         map.setFeatureState(
           { source: 'dong_polygon', id: hoveredPolygonId },
           { hover: false }
         );
-      }
-      hoveredPolygonId = e.features[0].index;
-      map.setFeatureState(
-        { source: 'dong_polygon', id: hoveredPolygonId },
-        { hover: true }
-      );
+      }      
     }
   });
 
   // When the mouse leaves the state-fill layer, update the feature state of the
   // previously hovered feature.
   map.on('mouseleave', 'dong_polygon', () => {
+    hoveredPolygonId = null;
+    console.log(Boolean(hoveredPolygonId))
+
     if (hoveredPolygonId !== null) {
       map.setFeatureState(
         { source: 'dong_polygon', id: hoveredPolygonId },
         { hover: false }
       );
-    }
-    hoveredPolygonId = null;
+    }    
 });  
   
   
