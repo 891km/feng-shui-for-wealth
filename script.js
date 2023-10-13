@@ -1,6 +1,7 @@
 // 전역 변수
 let hoveredPolygonId = null; 
 let features;
+let isTarget;
 
 // geojson 파일 불러오기
 fetch('dong_polygon.geojson')
@@ -72,15 +73,15 @@ map.on("load", () => {
       "fill-color": [
         'case',
         ['boolean', ['feature-state', 'selected'], false],
-        "rgba(59, 64, 84, 1)",
-        "rgba(59, 64, 84, 0.5)"
+        "rgba(59, 64, 84, 0.9)", // selected: true
+        "rgba(59, 64, 84, 1)" // selected: false
       ], // blue : rgb(59, 64, 84),  green : 6AB886
-      // 'fill-opacity': [
-      //   'case', 
-      //   ['boolean', ['feature-state', 'hover'], false],
-      //   0.9, // hover : true
-      //   0.5 // hover: false
-      // ]
+      'fill-opacity': [
+        'case', 
+        ['boolean', ['feature-state', 'hover'], false],
+        0.9, // hover : true
+        0.5 // hover: false
+      ]
     } 
   });
   
@@ -112,14 +113,15 @@ map.on("load", () => {
   map.on('mouseleave', 'dong_polygon', () => {
     map.getCanvas().style.cursor = "";
     
-    if(hoveredPolygonId + 1 > 0) {
+    if(hoveredPolygonId + 1 > 0 && isTarget != true) {
       map.setFeatureState(
         { source: 'dong_polygon', id: hoveredPolygonId },
         { hover: false }
       );        
     }    
-  
+    
     hoveredPolygonId = null;
+    isTarget = false;
   });  
 });
 
@@ -157,6 +159,7 @@ map.on("load", () => {
   }
 
   function loadTargetInfo(target) {
+    isTarget = true;
     document.getElementById("info-box").style.opacity = "100";
     document.getElementById("project-title").style.opacity = "0";
     document.getElementById("ctl_left").style.visibility = "visible"; 
@@ -169,13 +172,15 @@ map.on("load", () => {
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
     
-    hoveredPolygonId = target.id; // 0번부터 시작
-    map.setFeatureState(
-      { source: 'dong_polygon', id: hoveredPolygonId },
-      { seleted: true }
-    );
-      
+    if(isTarget) {
+      hoveredPolygonId = target.id; // 0번부터 시작
+      map.setFeatureState(
+        { source: 'dong_polygon', id: hoveredPolygonId },
+        { hover: true }
+      );      
+    }
 
+    
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
     var coord = [long, lat];
@@ -202,6 +207,7 @@ map.on("click", "dong_polygon", e => {
 });
 
 leftBtn.addEventListener("click", function() {
+  isTarget = false;
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -210,6 +216,7 @@ leftBtn.addEventListener("click", function() {
 });
 
 rightBtn.addEventListener("click", function() {
+  isTarget = false;
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -217,6 +224,7 @@ rightBtn.addEventListener("click", function() {
 });
 
 homeBtn.addEventListener("click", function() {
+  isTarget = false;
   currentIndex = -1;
   
   setHome();
