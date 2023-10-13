@@ -1,4 +1,21 @@
- 
+// 전역 변수
+let hoveredPolygonId = null; 
+let features;
+
+// geojson 파일 불러오기
+fetch('dong_polygon.geojson')
+  .then(response => response.json())
+  .then(data => {
+    // 파일이 성공적으로 로드된 후에 데이터를 사용
+    features = data.features;
+    console.log(features);
+  })
+  .catch(error => {
+    // 오류 처리
+    console.error('파일 로딩 중 오류 발생:', error);
+  });
+
+// mapbox
 mapboxgl.accessToken =
   "pk.eyJ1IjoiODkxa20iLCJhIjoiY2xsenowYWlpMTc5eTNpczZ3czJnaDNnZCJ9.MJ5L9o66OPTMzllWEW_17Q";
 
@@ -12,9 +29,6 @@ const map = new mapboxgl.Map({
   bearing: 16
 });
 
-
-let hoveredPolygonId = null; 
-let features = [];
 
 map.on("load", () => {
   
@@ -135,10 +149,7 @@ map.on("load", () => {
     });    
   }
 
-  function targetByIndex(currentIndex) {
-    features = map.querySourceFeatures('dong_polygon')
-                              
-    console.log(features);    
+  function targetByIndex(currentIndex) {                              
     const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
     console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
 
@@ -169,7 +180,8 @@ map.on("load", () => {
       zoom: zoom,
       pitch: pitch,
       duration: 1500,
-      essential: true
+      essential: true,
+      easing: t => t/2, // 부드러운 고도 변경 설정
     }); 
   } 
 
