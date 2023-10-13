@@ -69,13 +69,18 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "rgb(59, 64, 84)", // blue : rgb(59, 64, 84),  green : 6AB886
-      'fill-opacity': [
-        'case', 
-        ['boolean', ['feature-state', 'hover'], false],
-        0.9, // hover : true
-        0.5 // hover: false
-      ]
+      "fill-color": [
+        'case',
+        ['boolean', ['feature-state', 'selected'], false],
+        "rgba(59, 64, 84, 1)",
+        "rgba(59, 64, 84, 0.5)"
+      ], // blue : rgb(59, 64, 84),  green : 6AB886
+      // 'fill-opacity': [
+      //   'case', 
+      //   ['boolean', ['feature-state', 'hover'], false],
+      //   0.9, // hover : true
+      //   0.5 // hover: false
+      // ]
     } 
   });
   
@@ -146,7 +151,7 @@ map.on("load", () => {
 
   function targetByIndex(currentIndex) {                              
     const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
-    console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
+    // console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
 
     return targetFeature;
   }
@@ -167,7 +172,7 @@ map.on("load", () => {
     hoveredPolygonId = target.id; // 0번부터 시작
     map.setFeatureState(
       { source: 'dong_polygon', id: hoveredPolygonId },
-      { hover: true }
+      { seleted: true }
     );
       
 
