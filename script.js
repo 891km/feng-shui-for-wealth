@@ -163,10 +163,13 @@ map.on("load", () => {
     map.setFeatureState(
       { source: 'dong_polygon', id: hoveredPolygonId },
       { hover: true }
-    );          
+    );
+    isTarget = false;
   }
 
   function loadTargetInfo(target) {
+    targetByIndex(currentIndex);
+    
     document.getElementById("info-box").style.opacity = "100";
     document.getElementById("project-title").style.opacity = "0";
     document.getElementById("ctl_left").style.visibility = "visible"; 
@@ -180,7 +183,7 @@ map.on("load", () => {
       target.properties.Address_dong;
     
     isTarget = true;
-    // hoverOpacity(target);
+    hoverOpacity(target);
     console.log("hoveredPolygonId :", hoveredPolygonId);
     
     var lat = target.properties.Latitude;
@@ -201,6 +204,7 @@ map.on("load", () => {
 
 
 map.on("click", "dong_polygon", e => {
+  isTarget = false;
   target = e.features[0];
   currentIndex = (target.properties.Index);
   
@@ -209,6 +213,7 @@ map.on("click", "dong_polygon", e => {
 });
 
 leftBtn.addEventListener("click", function() {  
+  isTarget = false;
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -217,6 +222,7 @@ leftBtn.addEventListener("click", function() {
 });
 
 rightBtn.addEventListener("click", function() {
+  isTarget = false;
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -224,6 +230,7 @@ rightBtn.addEventListener("click", function() {
 });
 
 homeBtn.addEventListener("click", function() {
+  isTarget = false;
   currentIndex = -1;
   
   setHome();
