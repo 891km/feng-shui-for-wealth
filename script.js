@@ -14,6 +14,7 @@ const map = new mapboxgl.Map({
 
 
 let hoveredPolygonId = null; 
+let features;
 
 map.on("load", () => {
   
@@ -76,18 +77,14 @@ map.on("load", () => {
     }
   });
   
-  const features = [];
-  for (let index = 0; index < 15; i++) {
-    features.push(map.querySourceFeatures('source-id', {
-    sourceLayer: 'your-source-layer', // 소스 레이어 이름
-    filter: ['==', 'Index', index]
-      ); 
-  });                                         
-  console.log()
+  features = [];
+  map.querySourceFeatures('source-id').forEach(function (feature) {
+    allFeatures.push(feature);
+  });                                        
+  console.log(features)
   
 
-  // When the user moves their mouse over the state-fill layer, we'll update the
-  // feature state for the feature under the mouse.
+
   map.on('mouseenter', 'dong_polygon', (e) => {
     
     map.getCanvas().style.cursor = "pointer";
@@ -102,8 +99,7 @@ map.on("load", () => {
     }
   });
 
-  // When the mouse leaves the state-fill layer, update the feature state of the
-  // previously hovered feature.
+
   map.on('mouseleave', 'dong_polygon', () => {
     map.getCanvas().style.cursor = "";
     
@@ -146,9 +142,8 @@ map.on("load", () => {
     });    
   }
 
-  function targetByIndex(currentIndex) {
-    // const features = [];
-    const features = map.querySourceFeatures('dong_polygon');
+  function targetByIndex(currentIndex, features) {
+    
     const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
     // console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
 
@@ -168,8 +163,6 @@ map.on("load", () => {
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
 
-
-
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
     var coord = [long, lat];
@@ -183,12 +176,6 @@ map.on("load", () => {
       duration: 1500,
       essential: true
     }); 
-
-    // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
-    // map.setFeatureState(
-    //   { source: 'dong_polygon', id: hoveredPolygonId },
-    //   { hover: true }  
-    // )
   } 
 
 
