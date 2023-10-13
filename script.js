@@ -158,14 +158,14 @@ map.on("load", () => {
     return targetFeature;
   }
 
-  function hoverOpacity(target) {
-    hoveredPolygonId = target.id;
-    map.setFeatureState(
-      { source: 'dong_polygon', id: hoveredPolygonId },
-      { hover: true }
-    );
-    isTarget = false;
-  }
+  // function hoverOpacity(target) {
+  //   hoveredPolygonId = target.id;
+  //   map.setFeatureState(
+  //     { source: 'dong_polygon', id: hoveredPolygonId },
+  //     { hover: true }
+  //   );
+  //   isTarget = false;
+  // }
 
   function loadTargetInfo(target) {
     targetByIndex(currentIndex);
@@ -181,10 +181,7 @@ map.on("load", () => {
 
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
-    
-    isTarget = true;
-    hoverOpacity(target);
-    console.log("hoveredPolygonId :", hoveredPolygonId);
+  
     
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
@@ -204,25 +201,26 @@ map.on("load", () => {
 
 
 map.on("click", "dong_polygon", e => {
-  isTarget = false;
   target = e.features[0];
   currentIndex = (target.properties.Index);
   
+  hoveredPolygonId = target.id;
+  map.setFeatureState(
+    { source: 'dong_polygon', id: hoveredPolygonId },
+    { hover: true }
+  );
+  
   loadTargetInfo(target);
-
 });
 
 leftBtn.addEventListener("click", function() {  
-  isTarget = false;
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
   loadTargetInfo(target);
-
 });
 
 rightBtn.addEventListener("click", function() {
-  isTarget = false;
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -230,7 +228,6 @@ rightBtn.addEventListener("click", function() {
 });
 
 homeBtn.addEventListener("click", function() {
-  isTarget = false;
   currentIndex = -1;
   
   setHome();
