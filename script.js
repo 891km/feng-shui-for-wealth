@@ -70,7 +70,7 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "rgba(59, 64, 84, 0.5)", // blue : rgb(59, 64, 84),  green : 6AB886
+      "fill-color": "rgb(59, 64, 84)", // blue : rgb(59, 64, 84),  green : 6AB886
       'fill-opacity': [
         'case', 
         ['boolean', ['feature-state', 'hover'], false],
@@ -168,15 +168,22 @@ map.on("load", () => {
 
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
-    
-    hoveredPolygonId = target.features[0].id; // 0번부터 시작
-    console.log(hoveredPolygonId)
 
-    if (hoveredPolygonId + 1 > 0) {
-      map.setFeatureState(
-        { source: 'dong_polygon', id: hoveredPolygonId },
-        { hover: true }
-      );
+    map.setPaintProperty('dong_polygon', 'fill-opacity', [
+      'case',
+      ['==', ['id'], featureId], 
+      0.9, // 선택한 개체의 fill-opacity 값을 설정
+      0.5 // 선택하지 않은 개체의 fill-opacity 값을 설정
+    ]);    
+    
+//     hoveredPolygonId = target.id; // 0번부터 시작
+//     console.log("hoveredPolygonId", hoveredPolygonId)
+
+//     if (hoveredPolygonId + 1 > 0) {
+//       map.setFeatureState(
+//         { source: 'dong_polygon', id: hoveredPolygonId },
+//         { hover: true }
+//       );
     }
 
     var lat = target.properties.Latitude;
