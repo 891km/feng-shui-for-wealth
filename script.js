@@ -76,13 +76,20 @@ map.on("load", () => {
     }
   });
   
-  const features = map.querySourceFeatures('dong_polygon', { sourceLayer : 'dong_polygon' });
-  console.log(features);
+  const features = [];
+  for (let index = 0; index < 15; i++) {
+    features.push(map.querySourceFeatures('source-id', {
+    sourceLayer: 'your-source-layer', // 소스 레이어 이름
+    filter: ['==', 'Index', index]
+      ); 
+  });                                         
+  console.log()
   
 
   // When the user moves their mouse over the state-fill layer, we'll update the
   // feature state for the feature under the mouse.
   map.on('mouseenter', 'dong_polygon', (e) => {
+    
     map.getCanvas().style.cursor = "pointer";
     
     hoveredPolygonId = e.features[0].id; // 0번부터 시작
@@ -141,9 +148,9 @@ map.on("load", () => {
 
   function targetByIndex(currentIndex) {
     // const features = [];
-    const features = map.querySourceFeatures('dong_polygon', { sourceLayer : 'dong_polygon' });
+    const features = map.querySourceFeatures('dong_polygon');
     const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
-    console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
+    // console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
 
     return targetFeature;
   }
