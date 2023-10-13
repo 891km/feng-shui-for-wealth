@@ -171,6 +171,7 @@ function loadTargetInfo(target) {
     essential: true
   }); 
   
+  // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
   // map.setFeatureState(
   //   { source: 'dong_polygon', id: hoveredPolygonId },
   //   { hover: true }  
