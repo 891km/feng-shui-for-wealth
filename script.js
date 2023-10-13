@@ -14,7 +14,7 @@ const map = new mapboxgl.Map({
 
 
 let hoveredPolygonId = null; 
-let features;
+let features = [];
 
 map.on("load", () => {
   
@@ -77,13 +77,6 @@ map.on("load", () => {
     }
   });
   
-  features = [];
-  map.querySourceFeatures('source-id').forEach(function (feature) {
-    allFeatures.push(feature);
-  });                                        
-  console.log(features)
-  
-
 
   map.on('mouseenter', 'dong_polygon', (e) => {
     
@@ -142,10 +135,12 @@ map.on("load", () => {
     });    
   }
 
-  function targetByIndex(currentIndex, features) {
-    
+  function targetByIndex(currentIndex) {
+    features = map.querySourceFeatures('dong_polygon')
+                              
+    console.log(features);    
     const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
-    // console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
+    console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
 
     return targetFeature;
   }
