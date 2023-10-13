@@ -160,20 +160,10 @@ map.on("load", () => {
 
   function hoverOpacity(target) {
     hoveredPolygonId = target.id;
-    
-    if(isTarget) {
-      map.setFeatureState(
-        { source: 'dong_polygon', id: hoveredPolygonId },
-        { hover: true }
-      );       
-    } else {
-       map.setFeatureState(
-        { source: 'dong_polygon', id: hoveredPolygonId },
-        { hover: false }
-      )     
-    }
-    
-    isTarget = false;
+    map.setFeatureState(
+      { source: 'dong_polygon', id: hoveredPolygonId },
+      { hover: true }
+    );          
   }
 
   function loadTargetInfo(target) {
