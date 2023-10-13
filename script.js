@@ -30,6 +30,7 @@ const map = new mapboxgl.Map({
 });
 
 
+
 map.on("load", () => {
   
   map.resize();
@@ -69,7 +70,7 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "rgb(59, 64, 84)", // blue : rgb(59, 64, 84),  green : 6AB886
+      "fill-color": "rgba(59, 64, 84, 0.5)", // blue : rgb(59, 64, 84),  green : 6AB886
       'fill-opacity': [
         'case', 
         ['boolean', ['feature-state', 'hover'], false],
@@ -92,8 +93,7 @@ map.on("load", () => {
   });
   
 
-  map.on('mouseenter', 'dong_polygon', (e) => {
-    
+  map.on('mouseenter', 'dong_polygon', (e) => {   
     map.getCanvas().style.cursor = "pointer";
     
     hoveredPolygonId = e.features[0].id; // 0번부터 시작
@@ -168,6 +168,16 @@ map.on("load", () => {
 
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
+    
+    hoveredPolygonId = target.features[0].id; // 0번부터 시작
+    console.log(hoveredPolygonId)
+
+    if (hoveredPolygonId + 1 > 0) {
+      map.setFeatureState(
+        { source: 'dong_polygon', id: hoveredPolygonId },
+        { hover: true }
+      );
+    }
 
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
@@ -180,8 +190,7 @@ map.on("load", () => {
       zoom: zoom,
       pitch: pitch,
       duration: 1500,
-      essential: true,
-      easing: t => t/2, // 부드러운 고도 변경 설정
+      essential: true
     }); 
   } 
 
