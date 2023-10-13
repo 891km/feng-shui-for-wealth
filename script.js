@@ -76,6 +76,9 @@ map.on("load", () => {
     }
   });
   
+  const features = map.querySourceFeatures('dong_polygon', { sourceLayer : 'dong_polygon' });
+  console.log(features);
+  
 
   // When the user moves their mouse over the state-fill layer, we'll update the
   // feature state for the feature under the mouse.
@@ -105,82 +108,82 @@ map.on("load", () => {
     }    
   
     hoveredPolygonId = null;
-});  
+  });  
   
   
 });
 
 
-// test
-var leftBtn = document.getElementById("ctl_left");
-var rightBtn = document.getElementById("ctl_right");
-var homeBtn = document.getElementById("home");
-var currentIndex = 0;
-var target;
+  // test
+  var leftBtn = document.getElementById("ctl_left");
+  var rightBtn = document.getElementById("ctl_right");
+  var homeBtn = document.getElementById("home");
+  var currentIndex = 0;
+  var target;
 
-function setHome() {
-  document.getElementById("info-box").style.opacity = "0";
-  document.getElementById("project-title").style.opacity = "100";
-  document.getElementById("ctl_left").style.visibility = "hidden"; 
-  document.getElementById("ctl_right").style.visibility = "hidden";
-  document.getElementById("home").style.visibility = "hidden"; 
+  function setHome() {
+    document.getElementById("info-box").style.opacity = "0";
+    document.getElementById("project-title").style.opacity = "100";
+    document.getElementById("ctl_left").style.visibility = "hidden"; 
+    document.getElementById("ctl_right").style.visibility = "hidden";
+    document.getElementById("home").style.visibility = "hidden"; 
 
-  map.flyTo({
-    center: [127.063, 37.447],
-    zoom: 11.1,
-    minZoom: 10.3,
-    pitch: 64.5,
-    bearing: 16,
-    duration: 1500,
-    essential: true
-  });    
-}
+    map.flyTo({
+      center: [127.063, 37.447],
+      zoom: 11.1,
+      minZoom: 10.3,
+      pitch: 64.5,
+      bearing: 16,
+      duration: 1500,
+      essential: true
+    });    
+  }
 
-function targetByIndex(currentIndex) {
-  // const features = [];
-  const features = map.querySourceFeatures('dong_polygon', { sourceLayer : 'dong_polygon' });
-  // const features = map.querySourceFeatures('dong_polygon', {filter: ['==', 'Index', '0']});
-  const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
-  console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
-  
-  return targetFeature;
-}
+  function targetByIndex(currentIndex) {
+    // const features = [];
+    const features = map.querySourceFeatures('dong_polygon', { sourceLayer : 'dong_polygon' });
+    const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
+    console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
 
-function loadTargetInfo(target) {
-  document.getElementById("info-box").style.opacity = "100";
-  document.getElementById("project-title").style.opacity = "0";
-  document.getElementById("ctl_left").style.visibility = "visible"; 
-  document.getElementById("ctl_right").style.visibility = "visible";
-  document.getElementById("home").style.visibility = "visible";  
-  
-  document.getElementById("address_sigu").innerHTML =
-    target.properties.Address_si + " " + target.properties.Address_gu;
-  
-  document.getElementById("address_dong").innerHTML =
-    target.properties.Address_dong;
-  
-  
-  
-  var lat = target.properties.Latitude;
-  var long = target.properties.Longitude;
-  var coord = [long, lat];
-  var zoom = target.properties.Zoom;
-  var pitch = target.properties.Pitch;
-  
-  map.flyTo({
-    center: coord,
-    zoom: zoom,
-    pitch: pitch,
-    duration: 1500,
-    essential: true
-  }); 
-  
-  // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
-  // map.setFeatureState(
-  //   { source: 'dong_polygon', id: hoveredPolygonId },
-  //   { hover: true }  
-  // )
-}
+    return targetFeature;
+  }
+
+  function loadTargetInfo(target) {
+    document.getElementById("info-box").style.opacity = "100";
+    document.getElementById("project-title").style.opacity = "0";
+    document.getElementById("ctl_left").style.visibility = "visible"; 
+    document.getElementById("ctl_right").style.visibility = "visible";
+    document.getElementById("home").style.visibility = "visible";  
+
+    document.getElementById("address_sigu").innerHTML =
+      target.properties.Address_si + " " + target.properties.Address_gu;
+
+    document.getElementById("address_dong").innerHTML =
+      target.properties.Address_dong;
+
+
+
+    var lat = target.properties.Latitude;
+    var long = target.properties.Longitude;
+    var coord = [long, lat];
+    var zoom = target.properties.Zoom;
+    var pitch = target.properties.Pitch;
+
+    map.flyTo({
+      center: coord,
+      zoom: zoom,
+      pitch: pitch,
+      duration: 1500,
+      essential: true
+    }); 
+
+    // map.setPaintProperty('dong_fill', 'fill-color', 'rgba(255, 0, 0, 0)');
+    // map.setFeatureState(
+    //   { source: 'dong_polygon', id: hoveredPolygonId },
+    //   { hover: true }  
+    // )
+  } 
+
 
 
 map.on("click", "dong_polygon", e => {
