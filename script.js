@@ -139,6 +139,7 @@ function setHome() {
 function targetByIndex(currentIndex) {
   const features = map.querySourceFeatures('dong_polygon');
   const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
+  console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
   return targetFeature;
 }
 
@@ -192,7 +193,8 @@ leftBtn.addEventListener("click", function() {
   target = targetByIndex(currentIndex);
   
   loadTargetInfo(target);
-  console.log(currentIndex, target) // error
+  // console.log(currentIndex, target) // error
+  console.log(target) // error
 
 });
 
