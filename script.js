@@ -172,6 +172,8 @@ map.on("load", () => {
         { hover: false }
       )     
     }
+    
+    isTarget = false;
   }
 
   function loadTargetInfo(target) {
@@ -215,10 +217,7 @@ map.on("click", "dong_polygon", e => {
 
 });
 
-leftBtn.addEventListener("click", function() {
-  isTarget = false;
-  hoverOpacity(target);
-  
+leftBtn.addEventListener("click", function() {  
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -227,9 +226,6 @@ leftBtn.addEventListener("click", function() {
 });
 
 rightBtn.addEventListener("click", function() {
-  isTarget = false;
-  hoverOpacity(target);
-  
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -237,9 +233,6 @@ rightBtn.addEventListener("click", function() {
 });
 
 homeBtn.addEventListener("click", function() {
-  isTarget = false;
-  hoverOpacity(target);
-  
   currentIndex = -1;
   
   setHome();
