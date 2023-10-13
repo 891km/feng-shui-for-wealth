@@ -71,12 +71,6 @@ map.on("load", () => {
     source: "dong_polygon",
     paint: {
       "fill-color": "rgb(59, 64, 84)",
-      // "fill-color": [
-      //   'case',
-      //   ['boolean', ['feature-state', 'selected'], false],
-      //   "rgba(59, 64, 84, 0.9)", // selected: true
-      //   "rgba(59, 64, 84, 1)" // selected: false
-      // ], // blue : rgb(59, 64, 84),  green : 6AB886
       'fill-opacity': [
         'case', 
         ['boolean', ['feature-state', 'hover'], false],
@@ -122,7 +116,6 @@ map.on("load", () => {
     }    
     
     hoveredPolygonId = null;
-    isTarget = false;
   });  
 });
 
@@ -153,8 +146,7 @@ map.on("load", () => {
 
   function targetByIndex(currentIndex) {                              
     const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
-    // console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
-
+    
     return targetFeature;
   }
 
@@ -168,7 +160,7 @@ map.on("load", () => {
   // }
 
   function loadTargetInfo(target) {
-    targetByIndex(currentIndex);
+    hoveredPolygonId = target.id;
     
     document.getElementById("info-box").style.opacity = "100";
     document.getElementById("project-title").style.opacity = "0";
@@ -198,17 +190,9 @@ map.on("load", () => {
     }); 
   } 
 
-
-
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
-  
-  hoveredPolygonId = target.id;
-  map.setFeatureState(
-    { source: 'dong_polygon', id: hoveredPolygonId },
-    { hover: true }
-  );
   
   loadTargetInfo(target);
 });
