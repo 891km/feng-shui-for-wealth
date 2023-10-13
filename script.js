@@ -137,7 +137,9 @@ function setHome() {
 }
 
 function targetByIndex(currentIndex) {
-  const features = map.querySourceFeatures('dong_polygon');
+  // const features = [];
+  const features = map.querySourceFeatures('dong_polygon', { sourceLayer : 'dong_polygon' });
+  // const features = map.querySourceFeatures('dong_polygon', {filter: ['==', 'Index', '0']});
   const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
   console.log(currentIndex, "features: ", features, "targetFeature: ", targetFeature);
   
