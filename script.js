@@ -181,6 +181,7 @@ map.on("load", () => {
     
     isTarget = true;
     // hoverOpacity(target);
+    console.log("hoveredPolygonId :", hoveredPolygonId);
     
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
