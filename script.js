@@ -70,12 +70,13 @@ map.on("load", () => {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": [
-        'case',
-        ['boolean', ['feature-state', 'selected'], false],
-        "rgba(59, 64, 84, 0.9)", // selected: true
-        "rgba(59, 64, 84, 1)" // selected: false
-      ], // blue : rgb(59, 64, 84),  green : 6AB886
+      "fill-color": "rgb(59, 64, 84)",
+      // "fill-color": [
+      //   'case',
+      //   ['boolean', ['feature-state', 'selected'], false],
+      //   "rgba(59, 64, 84, 0.9)", // selected: true
+      //   "rgba(59, 64, 84, 1)" // selected: false
+      // ], // blue : rgb(59, 64, 84),  green : 6AB886
       'fill-opacity': [
         'case', 
         ['boolean', ['feature-state', 'hover'], false],
@@ -125,7 +126,6 @@ map.on("load", () => {
   });  
 });
 
-
   // test
   var leftBtn = document.getElementById("ctl_left");
   var rightBtn = document.getElementById("ctl_right");
@@ -158,8 +158,23 @@ map.on("load", () => {
     return targetFeature;
   }
 
+  function hoverOpacity(target) {
+    hoveredPolygonId = target.id;
+    
+    if(isTarget) {
+      map.setFeatureState(
+        { source: 'dong_polygon', id: hoveredPolygonId },
+        { hover: true }
+      );       
+    } else {
+       map.setFeatureState(
+        { source: 'dong_polygon', id: hoveredPolygonId },
+        { hover: false }
+      )     
+    }
+  }
+
   function loadTargetInfo(target) {
-    isTarget = true;
     document.getElementById("info-box").style.opacity = "100";
     document.getElementById("project-title").style.opacity = "0";
     document.getElementById("ctl_left").style.visibility = "visible"; 
@@ -172,14 +187,8 @@ map.on("load", () => {
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
     
-    if(isTarget) {
-      hoveredPolygonId = target.id; // 0번부터 시작
-      map.setFeatureState(
-        { source: 'dong_polygon', id: hoveredPolygonId },
-        { hover: true }
-      );      
-    }
-
+    isTarget = true;
+    hoverOpacity(target);
     
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
@@ -208,6 +217,8 @@ map.on("click", "dong_polygon", e => {
 
 leftBtn.addEventListener("click", function() {
   isTarget = false;
+  hoverOpacity(target);
+  
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -217,6 +228,8 @@ leftBtn.addEventListener("click", function() {
 
 rightBtn.addEventListener("click", function() {
   isTarget = false;
+  hoverOpacity(target);
+  
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
@@ -225,6 +238,8 @@ rightBtn.addEventListener("click", function() {
 
 homeBtn.addEventListener("click", function() {
   isTarget = false;
+  hoverOpacity(target);
+  
   currentIndex = -1;
   
   setHome();
