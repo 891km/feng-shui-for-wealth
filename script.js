@@ -188,7 +188,7 @@ map.on("load", () => {
       target.properties.Address_dong;
     
     isTarget = true;
-    hoverOpacity(target);
+    // hoverOpacity(target);
     
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
