@@ -19,7 +19,7 @@ map.on("load", () => {
   
   map.resize();
   
-  map.rotateTo(180, { duration: 200000 });
+  map.rotateTo(180, { duration: 600000 });
 
   // dong_point
   map.addSource("dong_point", {
@@ -108,7 +108,6 @@ map.on("load", () => {
 });  
   
   
-  
 });
 
 
@@ -157,9 +156,9 @@ function loadTargetInfo(target) {
     target.properties.Address_dong;
   
   
+  
   var lat = target.properties.Latitude;
   var long = target.properties.Longitude;
-  // var pos = JSON.parse(target.properties.Pos);
   var coord = [long, lat];
   var zoom = target.properties.Zoom;
   var pitch = target.properties.Pitch;
@@ -170,7 +169,12 @@ function loadTargetInfo(target) {
     pitch: pitch,
     duration: 1500,
     essential: true
-  });    
+  }); 
+  
+  // map.setFeatureState(
+  //   { source: 'dong_polygon', id: hoveredPolygonId },
+  //   { hover: true }  
+  // )
 }
 
 
@@ -185,17 +189,18 @@ map.on("click", "dong_polygon", e => {
 leftBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
+  
+  loadTargetInfo(target);
   console.log(currentIndex, target) // error
 
-  loadTargetInfo(target);
 });
 
 rightBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
-  console.log(currentIndex, target)
   
   loadTargetInfo(target); 
+  console.log(currentIndex, target)
 });
 
 homeBtn.addEventListener("click", function() {
