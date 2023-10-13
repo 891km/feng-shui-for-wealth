@@ -8,7 +8,6 @@ fetch('dong_polygon.geojson')
   .then(data => {
     // 파일이 성공적으로 로드된 후에 데이터를 사용
     features = data.features;
-    console.log(features);
   })
   .catch(error => {
     // 오류 처리
@@ -92,7 +91,6 @@ map.on("load", () => {
     }
   });
   
-
   map.on('mouseenter', 'dong_polygon', (e) => {   
     map.getCanvas().style.cursor = "pointer";
     
@@ -106,7 +104,6 @@ map.on("load", () => {
     }
   });
 
-
   map.on('mouseleave', 'dong_polygon', () => {
     map.getCanvas().style.cursor = "";
     
@@ -119,8 +116,6 @@ map.on("load", () => {
   
     hoveredPolygonId = null;
   });  
-  
-  
 });
 
 
@@ -168,23 +163,13 @@ map.on("load", () => {
 
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
-
-    map.setPaintProperty('dong_polygon', 'fill-opacity', [
-      'case',
-      ['==', ['id'], featureId], 
-      0.9, // 선택한 개체의 fill-opacity 값을 설정
-      0.5 // 선택하지 않은 개체의 fill-opacity 값을 설정
-    ]);    
     
-//     hoveredPolygonId = target.id; // 0번부터 시작
-//     console.log("hoveredPolygonId", hoveredPolygonId)
-
-//     if (hoveredPolygonId + 1 > 0) {
-//       map.setFeatureState(
-//         { source: 'dong_polygon', id: hoveredPolygonId },
-//         { hover: true }
-//       );
-    }
+    hoveredPolygonId = target.id; // 0번부터 시작
+    map.setFeatureState(
+      { source: 'dong_polygon', id: hoveredPolygonId },
+      { hover: true }
+    );
+      
 
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
