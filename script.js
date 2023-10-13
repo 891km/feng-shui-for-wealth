@@ -1,7 +1,7 @@
 // 전역 변수
 let hoveredPolygonId = null; 
 let features;
-let isTarget;
+// let isTarget;
 
 // geojson 파일 불러오기
 fetch('dong_polygon.geojson')
@@ -108,7 +108,7 @@ map.on("load", () => {
   map.on('mouseleave', 'dong_polygon', () => {
     map.getCanvas().style.cursor = "";
     
-    if(hoveredPolygonId + 1 > 0 && isTarget != true) {
+    if(hoveredPolygonId + 1 > 0) {
       map.setFeatureState(
         { source: 'dong_polygon', id: hoveredPolygonId },
         { hover: false }
@@ -150,14 +150,6 @@ map.on("load", () => {
     return targetFeature;
   }
 
-  // function hoverOpacity(target) {
-  //   hoveredPolygonId = target.id;
-  //   map.setFeatureState(
-  //     { source: 'dong_polygon', id: hoveredPolygonId },
-  //     { hover: true }
-  //   );
-  //   isTarget = false;
-  // }
 
   function loadTargetInfo(target) {
     hoveredPolygonId = target.id;
