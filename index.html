@@ -8,6 +8,17 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js'></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'qmn7ekv',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
     
   
     <link rel="stylesheet" href="/style.css" />
@@ -17,8 +28,8 @@
   <body>
     <div id="map"></div>
     
-    <div id="ctl_left"> 이전 </div>
-    <div id="ctl_right"> 다음 </div>
+    <button id="ctl_left"> <i class="fa-solid fa-arrow-left"></i> </button>
+    <button id="ctl_right"> 다음 </button>
     <div id="home"> 홈 </div>
     
     <div id="header">
