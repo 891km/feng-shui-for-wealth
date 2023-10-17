@@ -22,11 +22,11 @@ body {
   position: fixed;
   z-index: 100;
   display: flex;
-  top: calc(50vh - var(--ctl_width) * 1.5);
+  top: calc(50vh - var(--ctl_width) * 2);
   width: var(--ctl_width);
   height: var(--ctl_width);
-  margin: 2.4vw;
-  background-color: rgba(0,0,0,0);
+  margin: 2.5vw;
+  background-color: rgba(0,0,0,0.5);
   visibility: hidden;
   border-radius: 20%;
 /*   pointer-events: none; */
@@ -53,12 +53,17 @@ body {
 i {
   height: auto;
   margin: auto;
-  color: white;
-  background-color: yellow;
+  color: black;
+  transform: scale(1.1);
+  transition: all .2s ease-in-out;
 }
 
 #ctl_left:hover, #ctl_right:hover, #home:hover {
   cursor: pointer;
+}
+
+#ctl_left:hover > i, #ctl_right:hover > i {
+  transform: scale(1.35);
 }
 
 
