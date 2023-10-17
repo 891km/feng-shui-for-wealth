@@ -26,7 +26,7 @@ body {
   width: var(--ctl_width);
   height: var(--ctl_width);
   margin: 2.4vw;
-  background-color: grey;
+  background-color: rgba(0,0,0,0);
   visibility: hidden;
   border-radius: 20%;
 /*   pointer-events: none; */
@@ -51,12 +51,10 @@ body {
 }
 
 i {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  height: auto;
+  margin: auto;
   color: white;
+  background-color: yellow;
 }
 
 #ctl_left:hover, #ctl_right:hover, #home:hover {
