@@ -41,6 +41,15 @@ body {
   right: 0;
 }
 
+#home {
+  position: fixed;
+  z-index: 100;  
+  width: var(--ctl_width);
+  height: var(--ctl_width);
+  background-color: yellow;
+  visibility: hidden;
+}
+
 i {
   position: absolute;
   top: 0;
@@ -52,15 +61,6 @@ i {
 
 #ctl_left:hover, #ctl_right:hover, #home:hover {
   cursor: pointer;
-}
-
-#home {
-  position: fixed;
-  z-index: 100;  
-  width: var(--ctl_width);
-  height: var(--ctl_width);
-  background-color: yellow;
-  visibility: hidden;
 }
 
 
@@ -126,8 +126,8 @@ i {
 }
 
 #info-right {
-/*   text-align: right; */
-  text-align: left;
+  text-align: right;
+/*   text-align: left; */
   width: 100%;
   
   display: grid;
@@ -142,9 +142,10 @@ i {
 
 #profile_grid {
   display: flex;
-/*   justify-content: flex-end; */
-  justify-content: start;
+  justify-content: flex-end;
+/*   justify-content: start; */
   height: 100%;
+/*   margin-left: -20px; */
 }
 
 .profile {

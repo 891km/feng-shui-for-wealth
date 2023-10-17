@@ -50,7 +50,7 @@ map.on("load", () => {
     layout: {
       'text-field': ['get', 'Address_dong'],
       'text-size': 15,
-      'text-offset': [0, -2],
+      'text-offset': [0, -3],
       'text-anchor': 'center' 
     },
     paint: {
@@ -169,7 +169,7 @@ map.on("load", () => {
     
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
-    var coord = [long, lat-0.01];
+    var coord = [long, lat-0.005];
     var zoom = target.properties.Zoom;
     var pitch = target.properties.Pitch;
 
