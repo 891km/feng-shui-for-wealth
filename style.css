@@ -1,5 +1,9 @@
 * {
-   transition: opacity 1s;
+  transition: opacity 1s;
+  
+  font-family: "rixseoulstation-pro", sans-serif;
+  font-weight: 500;
+  font-style: normal;  
 }
 
 html,
@@ -22,11 +26,11 @@ body {
   position: fixed;
   z-index: 100;
   display: flex;
-  top: calc(50vh - var(--ctl_width) * 2);
+  top: calc(50vh - var(--ctl_width) * 1.8);
   width: var(--ctl_width);
   height: var(--ctl_width);
-  margin: 2.5vw;
-  background-color: rgba(0,0,0,0.5);
+  margin: 2.4vw;
+  background-color: rgba(0,0,0,0);
   visibility: hidden;
   border-radius: 20%;
 /*   pointer-events: none; */
@@ -43,14 +47,26 @@ body {
 
 #home {
   position: fixed;
+  margin: 2.4vw;
   z-index: 100;  
-  width: var(--ctl_width);
-  height: var(--ctl_width);
-  background-color: yellow;
+  width: calc(var(--ctl_width) * 0.8);
+  height: calc(var(--ctl_width) * 0.8);
+  background-color: black;
   visibility: hidden;
+  border-radius: 20%;
+}
+
+#home_x {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  color: white;
+  background-color: yellow;
+  transform: scale(0.9);
 }
 
 i {
+  width: auto;
   height: auto;
   margin: auto;
   color: black;
@@ -73,14 +89,14 @@ i {
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 80px;
 /*   background-color: yellow; */
 }
 
 #project-title, #project-info {
   position: absolute;
   margin: 2.5vw;
-  margin-top: 30px;
+  margin-top: 44px;
 
   font-family: "rixseoulstation-pro", sans-serif;
   font-weight: 500;
@@ -126,6 +142,7 @@ i {
   display: inline;
   width: 50%;
   margin: 2.4vw;
+  
 }
 
 #info-right {
@@ -175,24 +192,19 @@ i {
 
 /* text */
 #address_dong {
-  font-family: 'helvetica', sans-serif;
   font-size: 2.3rem; /*   2.3rem */
-  font-weight: 400;
   margin: 0;
   padding-top: 0.4rem;
   word-break: keep-all;
 }
 
 #address_sigu {
-  font-family: 'helvetica', sans-serif;
   font-size: 1.rem; /*   2.3rem */
-  font-weight: 400;
   margin: 0;
   word-break: keep-all;
 }
 
 #address_des {
-  font-family: 'helvetica', sans-serif;
   font-size: 1.2rem;
   margin: 0;
   padding-top: 1rem;
