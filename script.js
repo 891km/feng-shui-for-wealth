@@ -169,7 +169,7 @@ map.on("load", () => {
     
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
-    var coord = [long, lat];
+    var coord = [long, lat-0.01];
     var zoom = target.properties.Zoom;
     var pitch = target.properties.Pitch;
 
