@@ -28,7 +28,7 @@ body {
 }
 
 :root {
-  --pict_width: 72px;
+  --pict_width: 80px;
   --ctl_width :54px;
 }
 
@@ -188,12 +188,14 @@ i {
   width: 80px;
   height: 100%;
   text-align: center;
-  margin-left : 1%;
+  margin-left : 2%;
   /*   background-color: grey; */
 }
 
 .pict {
-  background-color: black;
+  display: flex;
+  align-items: center;
+  background-color: #242733;
   border-radius: 50%;
   width: var(--pict_width);
   height: var(--pict_width);
@@ -202,6 +204,14 @@ i {
 
 .name {
   padding-top: 0.8rem;
+}
+
+img {
+  position: relative;
+  border-radius: 50%;
+  width: 90%;
+  height: 90%;
+  margin: auto;
 }
 
 /* text */
