@@ -55,7 +55,7 @@ map.on("load", () => {
     },
     paint: {
       "text-color": "rgba(0, 0, 0, 1)"
-    }    
+    }  
   });
   
   // dong_polygon
