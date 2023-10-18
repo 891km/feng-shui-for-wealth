@@ -1,7 +1,14 @@
 ::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
+  width: 1px;  /* 스크롤바의 너비 */
 }
+
+::-webkit-scrollbar-thumb {
+  height: 5%; /* 스크롤바의 길이 */
+  background: rgba(0, 0, 0, 0.3); /* 스크롤바의 색상 */
+
+/*   border-radius: 10px; */
+}
+
 
 * {
   transition: opacity 1s;
@@ -146,8 +153,7 @@ i {
 #info-box {
   opacity: 0; 
   display: grid;
-/*   grid-template-columns: 35% 65%; */
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 30% 70%;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -177,11 +183,7 @@ i {
   display: grid;
   grid-template-rows : 15% 20% 65%;
   padding-right: 2.4vw;
-  background-color: yellow;
-}
-
-.right_title {
-  font-size: 1.0rem;
+/*   background-color: yellow; */
 }
 
 #profile_grid {
@@ -189,7 +191,10 @@ i {
   width: 100%;
   justify-content: start;
   height: 100%;
+  
+  pointer-events: auto;
   overflow: scroll;
+  white-space: nowrap;
 }
 
 .profile {
@@ -213,14 +218,19 @@ i {
   margin: auto;
 }
 
+
+/* text - right */
+.right_title {
+  font-size: 1.15rem;
+}
+
 .name {
   font-size: 1rem;
   width: 100%;
-/*   padding-top: 0.8rem; */
+  padding-top: 0.5rem;
 }
 
-
-/* text */
+/* text - left */
 #address_dong {
   font-size: 3.8rem;
   margin: 0;
