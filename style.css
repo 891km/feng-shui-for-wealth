@@ -169,13 +169,12 @@ i {
 
 #info-left {
   display: grid;
-  grid-template-rows : 10% 30% 60%;
+  grid-template-rows : 10% 25% 65%;
   padding-left: 2.4vw;
 /*   background-color: orange; */
 }
 
 #info-right {
-/*   text-align: right; */
   text-align: left;
   
   display: grid;
@@ -202,8 +201,8 @@ i {
   width: auto;
   height: 100%;
   text-align: center;
-  margin-left : 2%;
-/*     background-color: grey; */
+  margin-right : 2%;
+/*   background-color: grey; */
 }
 
 .pict {
@@ -219,13 +218,14 @@ i {
 
 /* text - right */
 .right_title {
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.05rem;
 }
 
 .name {
-  font-size: 1rem;
+  font-size: 1.05rem;
   width: 100%;
-  padding-top: 0.5rem;
+  padding-top: 0.7rem;
 }
 
 /* text - left */
@@ -237,7 +237,7 @@ i {
 }
 
 #address_sigu {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   margin: 0;
   word-break: keep-all;
 }
