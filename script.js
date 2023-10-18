@@ -170,6 +170,12 @@ map.on("load", () => {
 
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
+    
+    // <div class="profile">
+    //   <div class="pict"> <img src="https://www.w3schools.com/whatis/img_js.png"> </div>
+    //   <div class="name"> 이름 </div>
+    // </div>    
+    
   
     
     var lat = target.properties.Latitude;
