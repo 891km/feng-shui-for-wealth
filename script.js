@@ -48,6 +48,7 @@ map.on("load", () => {
     type: "symbol",
     source: "dong_point",
     layout: {
+      'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
       'text-size': 15,
       'text-offset': [0, -3],
@@ -55,7 +56,9 @@ map.on("load", () => {
     },
     paint: {
       "text-color": "rgba(0, 0, 0, 1)"
-    }  
+    },
+    minzoom: 0, // 최소 줌 레벨
+    maxzoom: 24, // 최대 줌 레벨
   });
   
   // dong_polygon
