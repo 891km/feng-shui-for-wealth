@@ -183,25 +183,18 @@ map.on("load", () => {
     
     // profile grid to html
     const targetProfiles = features_dong.filter(dong => dong.Address_dong === target.properties.Address_dong);
-    // console.log(target.properties.Address_dong, targetProfiles);
-    // console.log("first : ", targetProfiles[0])
     
-
     var parentDiv = document.getElementById("profile_grid");
-    
-    var profileDiv = document.createElement('div');
-    profileDiv.className = 'profile';
-
-    var imgElement = document.createElement('img');
-    imgElement.className = 'pict';
-    
-    var nameDiv = document.createElement('div');
-    nameDiv.className = 'name';
-    
-
     for (let i = 0; i < targetProfiles.length; i++) {
-      console.log(i, targetProfiles[i]);
+      var profileDiv = document.createElement('div');
+      profileDiv.className = 'profile';
+
+      var imgElement = document.createElement('img');
+      imgElement.className = 'pict';
       imgElement.src = targetProfiles[i].url;
+      
+      var nameDiv = document.createElement('div');
+      nameDiv.className = 'name';      
       nameDiv.textContent = targetProfiles[i].name;
       
       profileDiv.appendChild(imgElement);
