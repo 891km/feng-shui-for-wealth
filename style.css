@@ -6,6 +6,18 @@
   font-style: normal; */
 }
 
+#project-title, #project-info, #address_dong {
+  font-family: "zw-songganggasa", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+/*   font-family: "zw-mogujasusimgyeol", sans-serif;
+  font-weight: 700;
+  font-style: normal; */ 
+}
+
+
+
 html,
 body {
   width: 100%;
@@ -97,32 +109,16 @@ i {
   position: absolute;
   margin: 2.5vw;
   margin-top: 44px;
-
-  font-family: "zw-songganggasa", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-
-  font-family: "zw-mogujasusimgyeol", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  
-  font-family: "zw-jijanggyeongeonhae", sans-serif;
-  font-weight: 700;
-  font-style: normal;  
-  
-  font-family: "zw-seokbosangjeol", sans-serif;
-  font-weight: 700;
-  font-style: normal;
 }
 
 #project-title {
   opacity: 100;
-  font-size: 1.8rem;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
 }
 
 #project-info {
   right: 0;
+  font-size: 1.8rem;
 }
 
 #map {
@@ -205,14 +201,14 @@ i {
 
 /* text */
 #address_dong {
-  font-size: 2.3rem; /*   2.3rem */
+  font-size: 2.8rem; /*   2.3rem */
   margin: 0;
   padding-top: 0.4rem;
   word-break: keep-all;
 }
 
 #address_sigu {
-  font-size: 1.rem; /*   2.3rem */
+  font-size: 1rem; /*   2.3rem */
   margin: 0;
   word-break: keep-all;
 }
