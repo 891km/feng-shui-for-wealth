@@ -1,9 +1,9 @@
 * {
   transition: opacity 1s;
   
-  font-family: "source-han-sans-korean", sans-serif;
+/*   font-family: "source-han-sans-korean", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: normal; */
 }
 
 html,
@@ -98,7 +98,19 @@ i {
   margin: 2.5vw;
   margin-top: 44px;
 
+  font-family: "zw-songganggasa", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
   font-family: "zw-mogujasusimgyeol", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  
+  font-family: "zw-jijanggyeongeonhae", sans-serif;
+  font-weight: 700;
+  font-style: normal;  
+  
+  font-family: "zw-seokbosangjeol", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
