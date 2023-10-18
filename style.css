@@ -7,9 +7,9 @@
 }
 
 #project-title, #project-info, #address_dong {
-/*   font-family: "zw-songganggasa", sans-serif;
+  font-family: "zw-songganggasa", sans-serif;
   font-weight: 700;
-  font-style: normal; */
+  font-style: normal;
 
   font-family: "zw-mogujasusimgyeol", sans-serif;
   font-weight: 700;
@@ -146,7 +146,7 @@ i {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 34vh;
+  height: 36vh;
   color: black;
   background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1)); 
   pointer-events: none;
@@ -206,7 +206,7 @@ i {
 
 /* text */
 #address_dong {
-  font-size: 2.8rem; /*   2.3rem */
+  font-size: 3.8rem; /*   2.3rem */
   margin: 0;
   padding-top: 0.4rem;
   word-break: keep-all;
