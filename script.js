@@ -158,7 +158,9 @@ map.on("load", () => {
 
   function loadTargetInfo(target) {
     hoveredPolygonId = target.id;
+    document.getElementById("profile_grid").innerHTML = '';
     
+    // elem visibility
     document.getElementById("info-box").style.opacity = "100";
     document.getElementById("project-title").style.opacity = "0";
     document.getElementById("ctl_left").style.visibility = "visible"; 
@@ -171,17 +173,26 @@ map.on("load", () => {
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
     
-    // <div class="profile">
-    //   <img class="pict" src="https://www.w3schools.com/whatis/img_js.png">
-    //   <div class="name"> 이름 </div>
-    // </div>
     
-    var profile = document.createElement('div');
-    profile.className = "profile"
+    // profile grid to html
+    var profileDiv = document.createElement('div');
+    profileDiv.className = 'profile';
+
+    var imgElement = document.createElement('img');
+    imgElement.className = 'pict';
+    imgElement.src = 'https://www.w3schools.com/whatis/img_js.png';
+
+    var nameDiv = document.createElement('div');
+    nameDiv.className = 'name';
+    nameDiv.textContent = '김민주';
+
+    profileDiv.appendChild(imgElement);
+    profileDiv.appendChild(nameDiv);
+    
+    document.getElementById("profile_grid").appendChild(profileDiv);
     
     
-  
-    
+    // target coord
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
     var coord = [long, lat-0.005];
@@ -196,6 +207,8 @@ map.on("load", () => {
       essential: true
     }); 
   } 
+
+
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
