@@ -28,7 +28,7 @@ body {
 }
 
 :root {
-  --pict_width: 80px;
+  --pict_width: 76px;
   --ctl_width :54px;
 }
 
@@ -166,12 +166,10 @@ i {
   
   display: grid;
   grid-template-rows : 10% 20% 70%;
-/*   background-color: blue; */
 }
 
 .right_title {
   font-size: 1.0rem;
-/*   background-color: orange; */
 }
 
 #profile_grid {
@@ -185,11 +183,11 @@ i {
 .profile {
   position: relative;
   display: inline;
-  width: 80px;
+  width: auto;
   height: 100%;
   text-align: center;
-  margin-left : 2%;
-  /*   background-color: grey; */
+  margin-left : 1.5%;
+/*     background-color: grey; */
 }
 
 .pict {
@@ -197,22 +195,17 @@ i {
   align-items: center;
   background-color: #242733;
   border-radius: 50%;
+  border: 5px solid #242733;
   width: var(--pict_width);
   height: var(--pict_width);
   margin: auto;
 }
 
 .name {
+  width: 100%;
   padding-top: 0.8rem;
 }
 
-img {
-  position: relative;
-  border-radius: 50%;
-  width: 90%;
-  height: 90%;
-  margin: auto;
-}
 
 /* text */
 #address_dong {

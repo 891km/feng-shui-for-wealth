@@ -172,9 +172,13 @@ map.on("load", () => {
       target.properties.Address_dong;
     
     // <div class="profile">
-    //   <div class="pict"> <img src="https://www.w3schools.com/whatis/img_js.png"> </div>
+    //   <img class="pict" src="https://www.w3schools.com/whatis/img_js.png">
     //   <div class="name"> 이름 </div>
-    // </div>    
+    // </div>
+    
+    var profile = document.createElement('div');
+    profile.className = "profile"
+    
     
   
     
