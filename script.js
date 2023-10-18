@@ -94,6 +94,7 @@ map.on("load", () => {
   
   map.on('mouseenter', 'dong_polygon', (e) => {   
     map.getCanvas().style.cursor = "pointer";
+    console.log("pointer: ", map.getCanvas().style.cursor);
     
     hoveredPolygonId = e.features[0].id; // 0번부터 시작
 
@@ -107,6 +108,7 @@ map.on("load", () => {
 
   map.on('mouseleave', 'dong_polygon', () => {
     map.getCanvas().style.cursor = "";
+    console.log("pointer: ", map.getCanvas().style.cursor);
     
     if(hoveredPolygonId + 1 > 0) {
       map.setFeatureState(

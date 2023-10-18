@@ -58,13 +58,13 @@ body {
   opacity: 100;
   left: 0;
   font-size: 2.8rem;
-  z-index: 0;
+  z-index: 10;
 }
 
 #project-info {
   right: 0;
   font-size: 1.8rem;
-  z-index: 110;
+  z-index: 50;
 }
 
 #home {
@@ -76,7 +76,7 @@ body {
   margin: 0 2.4vw;
   border-radius: 20%;
   visibility: hidden;
-  z-index: 
+  z-index: 50;
 }
 
 #home_x {
@@ -116,7 +116,6 @@ i {
   transform: scale(1.1);
   transition: transform .15s ease-in-out;
 }
-
 
 #ctl_left:hover, #ctl_right:hover, #home:hover, #project-info:hover {
   cursor: pointer !important;
