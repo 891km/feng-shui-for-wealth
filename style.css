@@ -1,12 +1,10 @@
 ::-webkit-scrollbar {
-  width: 1px;  /* 스크롤바의 너비 */
+  width: 0;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-  height: 5%; /* 스크롤바의 길이 */
-  background: rgba(0, 0, 0, 0.3); /* 스크롤바의 색상 */
-
-/*   border-radius: 10px; */
+  background: rgba(36, 39, 51, 0.4); /* 스크롤바의 색상 */
 }
 
 
@@ -23,9 +21,9 @@
   font-weight: 700;
   font-style: normal;
 
-  font-family: "zw-mogujasusimgyeol", sans-serif;
+/*   font-family: "zw-mogujasusimgyeol", sans-serif;
   font-weight: 700;
-  font-style: normal; 
+  font-style: normal;  */
 }
 
 html,
@@ -171,7 +169,7 @@ i {
 
 #info-left {
   display: grid;
-  grid-template-rows : 10% 30% 40%;
+  grid-template-rows : 10% 30% 60%;
   padding-left: 2.4vw;
 /*   background-color: orange; */
 }
@@ -181,7 +179,7 @@ i {
   text-align: left;
   
   display: grid;
-  grid-template-rows : 15% 20% 65%;
+  grid-template-rows : 20% 15% 65%;
   padding-right: 2.4vw;
 /*   background-color: yellow; */
 }
@@ -221,7 +219,7 @@ i {
 
 /* text - right */
 .right_title {
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 
 .name {
