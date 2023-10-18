@@ -195,7 +195,7 @@ i {
   align-items: center;
   background-color: #242733;
   border-radius: 50%;
-  border: 5px solid #242733;
+  border: 3.5px solid #242733;
   width: var(--pict_width);
   height: var(--pict_width);
   margin: auto;
