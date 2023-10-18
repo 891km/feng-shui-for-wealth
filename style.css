@@ -1,9 +1,9 @@
 * {
   transition: opacity 1s;
   
-  font-family: "rixseoulstation-pro", sans-serif;
-  font-weight: 500;
-  font-style: normal;  
+  font-family: "source-han-sans-korean", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 html,
@@ -98,14 +98,15 @@ i {
   margin: 2.5vw;
   margin-top: 44px;
 
-  font-family: "rixseoulstation-pro", sans-serif;
-  font-weight: 500;
-  font-style: normal;  
+  font-family: "zw-mogujasusimgyeol", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 #project-title {
   opacity: 100;
   font-size: 1.8rem;
+  font-size: 2.4rem;
 }
 
 #project-info {
