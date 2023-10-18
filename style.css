@@ -7,13 +7,13 @@
 }
 
 #project-title, #project-info, #address_dong {
-  font-family: "zw-songganggasa", sans-serif;
+/*   font-family: "zw-songganggasa", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: normal; */
 
-/*   font-family: "zw-mogujasusimgyeol", sans-serif;
+  font-family: "zw-mogujasusimgyeol", sans-serif;
   font-weight: 700;
-  font-style: normal;  */
+  font-style: normal; 
 }
 
 html,
