@@ -1,19 +1,28 @@
 // 전역 변수
 let hoveredPolygonId = null; 
 let features;
+let features_dong;
 // let isTarget;
 
 // geojson 파일 불러오기
 fetch('dong_polygon.geojson')
   .then(response => response.json())
   .then(data => {
-    // 파일이 성공적으로 로드된 후에 데이터를 사용
     features = data.features;
   })
   .catch(error => {
-    // 오류 처리
     console.error('파일 로딩 중 오류 발생:', error);
   });
+
+fetch('dong_profile.json')
+  .then(response => response.json())
+  .then(data => {
+    features_dong = data;
+  })
+  .catch(error => {
+    console.error('파일 로딩 중 오류 발생:', error);
+  });
+
 
 // mapbox
 mapboxgl.accessToken =
@@ -30,8 +39,8 @@ const map = new mapboxgl.Map({
 });
 
 
-
 map.on("load", () => {
+
   
   map.resize();
   
@@ -97,7 +106,6 @@ map.on("load", () => {
   
   map.on('mouseenter', 'dong_polygon', (e) => {   
     map.getCanvas().style.cursor = "pointer";
-    console.log("pointer: ", map.getCanvas().style.cursor);
     
     hoveredPolygonId = e.features[0].id; // 0번부터 시작
 
@@ -111,7 +119,6 @@ map.on("load", () => {
 
   map.on('mouseleave', 'dong_polygon', () => {
     map.getCanvas().style.cursor = "";
-    console.log("pointer: ", map.getCanvas().style.cursor);
     
     if(hoveredPolygonId + 1 > 0) {
       map.setFeatureState(
@@ -175,6 +182,9 @@ map.on("load", () => {
     
     
     // profile grid to html
+    
+    const targetProfiles = features_dong.filter(Address_dong => Address_dong === target.properties.Address_dong);
+    console.log(targetProfiles);
     var profileDiv = document.createElement('div');
     profileDiv.className = 'profile';
 
