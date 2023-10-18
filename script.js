@@ -18,6 +18,7 @@ fetch('dong_profile.json')
   .then(response => response.json())
   .then(data => {
     features_dong = data;
+    console.log("features_dong: ", features_dong);
   })
   .catch(error => {
     console.error('파일 로딩 중 오류 발생:', error);
@@ -183,23 +184,31 @@ map.on("load", () => {
     
     // profile grid to html
     
-    const targetProfiles = features_dong.filter(Address_dong => Address_dong === target.properties.Address_dong);
-    console.log(targetProfiles);
+    const targetProfiles = features_dong.filter(dong => dong.Address_dong === target.properties.Address_dong);
+    console.log(targetProfiles.length, target.properties.Address_dong);
+    
+
     var profileDiv = document.createElement('div');
     profileDiv.className = 'profile';
 
     var imgElement = document.createElement('img');
     imgElement.className = 'pict';
-    imgElement.src = 'https://www.w3schools.com/whatis/img_js.png';
-
+    
     var nameDiv = document.createElement('div');
     nameDiv.className = 'name';
-    nameDiv.textContent = '김민주';
-
-    profileDiv.appendChild(imgElement);
-    profileDiv.appendChild(nameDiv);
     
-    document.getElementById("profile_grid").appendChild(profileDiv);
+
+    for (let i = 0; i < targetProfiles.length; i++) {
+      imgElement.src = targetProfiles[i].url;
+      nameDiv.textContent = targetProfiles[i].name;
+      
+      profileDiv.appendChild(imgElement);
+      profileDiv.appendChild(nameDiv);
+
+      document.getElementById("profile_grid").appendChild(profileDiv);      
+    }    
+    
+
     
     
     // target coord
