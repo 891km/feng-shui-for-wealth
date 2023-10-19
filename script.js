@@ -114,7 +114,7 @@ map.on("load", () => {
             ]
           },
         'icon-anchor': 'top',
-        'icon-padding': 5,
+        // 'icon-padding': 5,
         'icon-offset': [0, -600]
       }
     });
@@ -234,8 +234,6 @@ map.on("load", () => {
     }
   }
 
-
-
   function loadTargetInfo(target) {
     removeNature();
     
@@ -296,9 +294,9 @@ map.on("load", () => {
         'text-allow-overlap': true, // 레이블 겹침 방지
         'symbol-placement': 'point',
         'text-field': ['get', 'Name'],
-        'text-size': 16.5,
+        'text-size': 15,
         'text-offset': [0, 500],
-        'text-anchor': 'center' 
+        'text-anchor': 'top' 
       },
       paint: {
         "text-color": "rgba(0, 0, 0, 1)",
@@ -314,9 +312,9 @@ map.on("load", () => {
         'icon-allow-overlap': true,
         'icon-image': 'nature_icon',
         'icon-size': 0.3,
-        'icon-anchor': 'top',
-        'icon-padding': 5,
-        'icon-offset': [0, -500]
+        'icon-anchor': 'bottom',
+        // 'icon-padding': 5,
+        'icon-offset': [0, 0]
       }
     });  
     

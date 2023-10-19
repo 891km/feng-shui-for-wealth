@@ -41,7 +41,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9610842,37.6198054 ]
+       "coordinates":  [ 126.9618,37.6012 ]
     },
     "properties": {
     "Address_dong":"평창동",
