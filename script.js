@@ -71,7 +71,7 @@ map.on("load", () => {
   
   // dong_icon
   // https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014
-  map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/home.png?v=1697724986889', function (error, image) {
+  map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/home.png?v=1697725762039', function (error, image) {
     if (error) throw error;
     map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
     
@@ -81,7 +81,7 @@ map.on("load", () => {
       'source': 'dong_point',
       'layout': {
         'icon-image': 'dong_icon', // reference the image
-        'icon-size': 0.06,
+        'icon-size': 0.05,
         'icon-anchor': 'bottom',
         'icon-offset': [0, -10]
       }
