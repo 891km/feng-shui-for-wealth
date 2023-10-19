@@ -60,8 +60,8 @@ map.on("load", () => {
       'text-size': 16,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
-        10, ['literal', [0, -3]], // 줌 레벨 5에서의 오프셋
-        15, ['literal', [0, -12]] // 줌 레벨 10에서의 오프셋
+        11, ['literal', [0, -4]],
+        15, ['literal', [0, -12]]
       ],
       'text-anchor': 'center' 
     },
@@ -71,6 +71,8 @@ map.on("load", () => {
     minzoom: 0, // 최소 줌 레벨
     maxzoom: 24, // 최대 줌 레벨
   });
+  
+  map.moveLayer('dong_icon', 'dong_point', 'before');
   
   
   // dong_icon
@@ -88,9 +90,9 @@ map.on("load", () => {
         'icon-size': 0.06,
         'icon-size': {
           type: 'exponential',
-            stops: [  // zoom 0부터 0.5
-              [10, 0.04],  // zoom 10부터 1.0
-              [20, 0.2]   // zoom 15부터 1.5
+            stops: [ 
+              [10, 0.03],
+              [24, 0.4]
             ]
           },
         'icon-anchor': 'top',
