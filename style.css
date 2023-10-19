@@ -17,13 +17,13 @@
 }
 
 #project-title, #project-info, #address_dong {
-  font-family: "zw-songganggasa", sans-serif;
+/*   font-family: "zw-songganggasa", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: normal; */
 
-/*   font-family: "zw-mogujasusimgyeol", sans-serif;
+  font-family: "zw-mogujasusimgyeol", sans-serif;
   font-weight: 700;
-  font-style: normal;  */
+  font-style: normal; 
 }
 
 html,
@@ -248,6 +248,18 @@ i {
   padding-top: 1rem;
   word-break: keep-all;
 }
+
+
+/*마커 디자인*/
+.dong_marker {
+  background-image: url('https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014');
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  border-radius: 0%;
+  cursor: pointer;
+}
+
 
 
 /*맵박스 로고 가리기*/

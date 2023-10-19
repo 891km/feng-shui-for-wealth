@@ -40,11 +40,9 @@ const map = new mapboxgl.Map({
 
 
 map.on("load", () => {
-
-  
   map.resize();
-  
-  map.rotateTo(180, { duration: 600000 });
+  map.rotateTo(180, { duration: 800000 });
+  const map.getBearing();
 
   // dong_point
   map.addSource("dong_point", {
