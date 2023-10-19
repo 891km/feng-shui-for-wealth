@@ -58,8 +58,9 @@ map.on("load", () => {
       'text-size': 16.5,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
+        8, ['literal', [0, -2]],
         11, ['literal', [0, -4]],
-        15, ['literal', [0, -15]]
+        20, ['literal', [0, -20]]
       ],
       'text-anchor': 'center' 
     },
@@ -91,6 +92,7 @@ map.on("load", () => {
             ]
           },
         'icon-anchor': 'top',
+        'icon-padding': 5,
         'icon-offset': [0, -700]
       }
     });
