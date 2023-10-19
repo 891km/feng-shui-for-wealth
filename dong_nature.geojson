@@ -5,7 +5,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9629117,37.62246175 ]
+       "coordinates":  [ 126.9745,37.6282 ]
     },
     "properties": {
     "Address_dong":"평창동",
@@ -17,7 +17,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9757512,37.61968627 ]
+       "coordinates":  [ 126.9827,37.6197 ]
     },
     "properties": {
     "Address_dong":"평창동",
@@ -29,7 +29,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9519874,37.6253518 ]
+       "coordinates":  [ 126.9572,37.6263 ]
     },
     "properties": {
     "Address_dong":"평창동",
