@@ -1,0 +1,53 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9629117,37.62246175 ]
+    },
+    "properties": {
+    "Address_dong":"평창동",
+    "Name":"보현봉",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9757512,37.61968627 ]
+    },
+    "properties": {
+    "Address_dong":"평창동",
+    "Name":"형제봉",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9519874,37.6253518 ]
+    },
+    "properties": {
+    "Address_dong":"평창동",
+    "Name":"비봉",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9610842,37.6198054 ]
+    },
+    "properties": {
+    "Address_dong":"평창동",
+    "Name":"수구(구기계곡)",
+    "Category":"river"
+    }
+  }
+]
+}

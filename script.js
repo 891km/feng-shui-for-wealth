@@ -2,7 +2,7 @@
 let hoveredPolygonId = null; 
 let features_polygon;
 let features_profile;
-
+let features_nature;
 
 // geojson 파일 불러오기
 fetch('dong_polygon.geojson')
@@ -18,6 +18,16 @@ fetch('dong_profile.json')
   .then(response => response.json())
   .then(data => {
     features_profile = data;
+  })
+  .catch(error => {
+    console.error('파일 로딩 중 오류 발생:', error);
+  });
+
+fetch('dong_nature.geojson')
+  .then(response => response.json())
+  .then(data => {
+    features_nature = data.features;
+    console.log(features_nature, typeof(features_nature));
   })
   .catch(error => {
     console.error('파일 로딩 중 오류 발생:', error);
@@ -100,8 +110,7 @@ map.on("load", () => {
     });
       
   });
-                
-  map.moveLayer('dong_icon', 'dong_point', 'before');
+  
   
   // dong_polygon
   map.addSource("dong_polygon", {
@@ -138,6 +147,8 @@ map.on("load", () => {
     }
   });
   
+  
+  // event
   map.on('mouseenter', 'dong_polygon', (e) => {   
     map.getCanvas().style.cursor = "pointer";
     hoveredPolygonId = e.features[0].id; // 0번부터 시작
@@ -164,7 +175,7 @@ map.on("load", () => {
   });  
 });
 
-  // test
+  // button
   var leftBtn = document.getElementById("ctl_left");
   var rightBtn = document.getElementById("ctl_right");
   var homeBtn = document.getElementById("home");
@@ -188,13 +199,11 @@ map.on("load", () => {
       essential: true
     });    
   }
-
+  
   function targetByIndex(currentIndex) {    
     const targetFeature = features_polygon.find(feature => feature.properties.Index === currentIndex);
-    
     return targetFeature;
   }
-
 
   function loadTargetInfo(target) {
     hoveredPolygonId = target.id;
@@ -254,22 +263,22 @@ map.on("load", () => {
     }); 
   } 
 
-// // 마커 아이콘을 화면에 나타내고, 각 마커와 위 json 정보를 연결하는 부분
-// for (const { geometry, properties } of features_polygon) {
-//   console.log(features_polygon);
-//   // create a HTML element for each feature
-//   const markerDiv = document.createElement("div");
-//   markerDiv.className = "marker";
+// 마커 아이콘을 화면에 나타내고, 각 마커와 위 json 정보를 연결하는 부분
+for (const { geometry, properties } of features_nature) {
+  console.log(features_polygon);
+  // create a HTML element for each feature
+  const markerDiv = document.createElement("div");
+  markerDiv.className = "marker";
 
-//   // make a marker for each feature and add it to the map
-//   new mapboxgl.Marker(markerDiv)
-//     .setLngLat(geometry.coordinates)
-//     .setPopup(
-//       new mapboxgl.Popup({ offset: 35 }) // add popups
-//         .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
-//     )
-//     .addTo(map);
-// }
+  // make a marker for each feature and add it to the map
+  new mapboxgl.Marker(markerDiv)
+    .setLngLat(geometry.coordinates)
+    .setPopup(
+      new mapboxgl.Popup({ offset: 35 }) // add popups
+        .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
+    )
+    .addTo(map);
+}
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
