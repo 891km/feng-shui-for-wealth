@@ -53,19 +53,21 @@ map.on("load", () => {
     type: "symbol",
     source: "dong_point",
     layout: {
+      'text-allow-overlap': true, // 레이블 겹침 방지
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
       'text-size': 16.5,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
-        8, ['literal', [0, -2]],
         11, ['literal', [0, -4]],
+        15, ['literal', [0, -15]],
         20, ['literal', [0, -20]]
       ],
       'text-anchor': 'center' 
     },
     paint: {
-      "text-color": "rgba(0, 0, 0, 1)"
+      "text-color": "rgba(0, 0, 0, 1)",
+      'text-opacity': 0.8
     },
     minzoom: 0, // 최소 줌 레벨
     maxzoom: 24, // 최대 줌 레벨
