@@ -260,7 +260,11 @@ i {
   cursor: pointer;
 }
 
-
+/*팝업창 디자인 관련*/
+.mapboxgl-popup {
+  max-width: 200px;
+  background-color: rgba(0,0,0,0);
+}
 
 /*맵박스 로고 가리기*/
 .mapbox-logo { 

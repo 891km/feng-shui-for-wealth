@@ -247,19 +247,19 @@ map.on("load", () => {
     
     
     const targetNatures = features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong);
-    
+    console.log(targetNatures);
     for (let i = 0; i < targetNatures.length; i++) {
-      console.log();
       const markerDiv = document.createElement("div");
       markerDiv.className = "nature_marker";
       
       // make a marker for each feature and add it to the map
       new mapboxgl.Marker(markerDiv)
         .setLngLat(targetNatures[i].geometry.coordinates)
-        .setPopup(
-          new mapboxgl.Popup({ offset: 35 }) // add popups
-            .setHTML(`<h3>${targetNatures[i].properties.Name}</h3><p>${targetNatures.properties.Category}</p>`)
-        )
+        .addTo(map);
+      
+      new mapboxgl.Popup({ closeOnClick: true, offset: 10 }) // add popups
+        .setLngLat(targetNatures[i].geometry.coordinates)
+        .setHTML(`<h3>${targetNatures[i].properties.Name}</h3>`)
         .addTo(map);      
     }
     
