@@ -98,7 +98,13 @@ map.on("load", () => {
       'type': 'symbol',
       'source': 'dong_point',
       'layout': {
-        'icon-image': 'dong_icon', // reference the image
+        'icon-allow-overlap': [
+          'step',
+          ['zoom'],
+          false, // 0부터 시작하는 zoom 레벨에서는 표시
+          11.9, true
+        ],
+        'icon-image': 'dong_icon',
         'icon-size': 0.06,
         'icon-size': {
           type: 'exponential',
@@ -109,7 +115,7 @@ map.on("load", () => {
           },
         'icon-anchor': 'top',
         'icon-padding': 5,
-        'icon-offset': [0, -700]
+        'icon-offset': [0, -600]
       }
     });
       
@@ -152,6 +158,7 @@ map.on("load", () => {
   });
   
   
+  // nature icon image load
   map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
   if (error) throw error;
     map.addImage('nature_icon', image); // 이미지를 맵에 추가합니다.
@@ -299,21 +306,21 @@ map.on("load", () => {
       }
     });
 
-
-    
     map.addLayer({
       'id': 'nature_icon',
       'type': 'symbol',
       'source': 'dong_nature',
       'layout': {
         'icon-allow-overlap': true,
-        'icon-image': 'nature_icon', // reference the image
+        'icon-image': 'nature_icon',
         'icon-size': 0.3,
         'icon-anchor': 'top',
         'icon-padding': 5,
         'icon-offset': [0, -500]
       }
-    });    
+    });  
+    
+    // map.moveLayer('dong_icon', 'nature_icon');
     
     // target coord
     var lat = target.properties.Latitude;
@@ -356,6 +363,7 @@ rightBtn.addEventListener("click", function() {
 homeBtn.addEventListener("click", function() {
   currentIndex = -1;
 
+  removeNature();
   setHome();
 });
 
