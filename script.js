@@ -9,7 +9,6 @@ fetch('dong_polygon.geojson')
   .then(response => response.json())
   .then(data => {
     features_polygon = data.features;
-    console.log("features_polygon:", typeof(features_polygon));
   })
   .catch(error => {
     console.error('파일 로딩 중 오류 발생:', error);
@@ -67,6 +66,25 @@ map.on("load", () => {
     maxzoom: 24, // 최대 줌 레벨
   });
   
+  map.loadImage(
+    'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
+    (error, image) => {
+      if (error) throw error;
+
+  // Add the image to the map style.
+  map.addImage('cat', image);
+
+  map.addLayer({
+    'id': 'dong_icon',
+    'type': 'symbol',
+    'source': 'dong_point',
+    'layout': {
+      'icon-image': 'cat', // reference the image
+      'icon-size': 0.25
+    }
+  });
+  
+  
   // dong_polygon
   map.addSource("dong_polygon", {
     type: 'geojson',
@@ -88,6 +106,7 @@ map.on("load", () => {
       ]
     } 
   });
+  
   
   // dong_line
   map.addLayer({
@@ -217,22 +236,22 @@ map.on("load", () => {
     }); 
   } 
 
-// 마커 아이콘을 화면에 나타내고, 각 마커와 위 json 정보를 연결하는 부분
-for (const { geometry, properties } of features_polygon) {
-  console.log(features_polygon);
-  // create a HTML element for each feature
-  const markerDiv = document.createElement("div");
-  markerDiv.className = "marker";
+// // 마커 아이콘을 화면에 나타내고, 각 마커와 위 json 정보를 연결하는 부분
+// for (const { geometry, properties } of features_polygon) {
+//   console.log(features_polygon);
+//   // create a HTML element for each feature
+//   const markerDiv = document.createElement("div");
+//   markerDiv.className = "marker";
 
-  // make a marker for each feature and add it to the map
-  new mapboxgl.Marker(markerDiv)
-    .setLngLat(geometry.coordinates)
-    .setPopup(
-      new mapboxgl.Popup({ offset: 35 }) // add popups
-        .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
-    )
-    .addTo(map);
-}
+//   // make a marker for each feature and add it to the map
+//   new mapboxgl.Marker(markerDiv)
+//     .setLngLat(geometry.coordinates)
+//     .setPopup(
+//       new mapboxgl.Popup({ offset: 35 }) // add popups
+//         .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
+//     )
+//     .addTo(map);
+// }
 
 map.on("click", "dong_polygon", e => {
   target = e.features_polygon[0];
