@@ -58,7 +58,7 @@ map.on("load", () => {
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
       'text-size': 15,
-      'text-offset': [0, -3],
+      'text-offset': [0, -5],
       'text-anchor': 'center' 
     },
     paint: {
@@ -81,8 +81,8 @@ map.on("load", () => {
       'layout': {
         'icon-image': 'dong_icon', // reference the image
         'icon-size': 0.06,
-        // 'icon-offset': [0, -3],
-        'icon-anchor': 'bottom'
+        'icon-anchor': 'bottom',
+        'icon-offset': [0, -3] 
       }
     });
       
