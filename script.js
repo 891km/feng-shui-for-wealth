@@ -6,6 +6,8 @@ let features_nature;
 
 let nature_marker;
 let nature_popup;
+let markers = [];
+let popups = [];
 
 // geojson 파일 불러오기
 fetch('dong_polygon.geojson')
@@ -208,7 +210,7 @@ map.on("load", () => {
   }
 
   function loadTargetInfo(target) {
-
+    removeNature();
     
     hoveredPolygonId = target.id;
     document.getElementById("profile_grid").innerHTML = '';
@@ -260,13 +262,14 @@ map.on("load", () => {
       nature_marker = new mapboxgl.Marker(markerDiv)
         .setLngLat(targetNatures[i].geometry.coordinates)
         .addTo(map);
+      markers.push(nature_marker);
       
       nature_popup = new mapboxgl.Popup({ closeOnClick: true, offset: 10 }) // add popups
         .setLngLat(targetNatures[i].geometry.coordinates)
         .setHTML(`<h3>${targetNatures[i].properties.Name}</h3>`)
-        .addTo(map);      
+        .addTo(map);
+      popups.push(nature_popup);
     }
-    
     
     // target coord
     var lat = target.properties.Latitude;
@@ -286,18 +289,18 @@ map.on("load", () => {
   } 
 
 function removeNature() {
-  
+  if (markers.length > 0) {
+    markers.forEach(marker => marker.remove());
+    popups.forEach(popup => popup.remove());
+    
+    markers.length  = 0;
+    popups.length  = 0;
+  }
 }
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
-  
-  if (nature_marker && nature_popup) {
-    nature_marker.remove();
-    nature_popup.remove();
-    console.log("remove")
-  }
   
   loadTargetInfo(target);
 });
@@ -319,6 +322,7 @@ rightBtn.addEventListener("click", function() {
 homeBtn.addEventListener("click", function() {
   currentIndex = -1;
   
+  removeNature();
   setHome();
 });
 
