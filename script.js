@@ -47,7 +47,7 @@ map.on("load", () => {
     type: 'geojson',
     data: '/dong_point.geojson' 
   });
-  
+    
   map.addLayer({
     id: "dong_point",
     type: "symbol",
@@ -66,24 +66,29 @@ map.on("load", () => {
     maxzoom: 24, // 최대 줌 레벨
   });
   
-  map.loadImage(
-    'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
-    (error, image) => {
-      if (error) throw error;
-
-  // Add the image to the map style.
-  map.addImage('cat', image);
-
-  map.addLayer({
-    'id': 'dong_icon',
-    'type': 'symbol',
-    'source': 'dong_point',
-    'layout': {
-      'icon-image': 'cat', // reference the image
-      'icon-size': 0.25
-    }
-  });
   
+  // dong_icon 
+  map.loadImage('https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014', function (error, image) {
+    if (error) throw error;
+    map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
+    map.addSource("dong_icon", {
+      type: 'geojson',
+      data: '/dong_point.geojson' 
+    });
+    
+    map.addLayer({
+      'id': 'dong_icon',
+      'type': 'symbol',
+      'source': 'dong_icon',
+      'layout': {
+        'icon-image': 'dong_icon', // reference the image
+        'icon-size': 0.05
+      }
+    });
+      
+  });
+                
+
   
   // dong_polygon
   map.addSource("dong_polygon", {
@@ -171,8 +176,8 @@ map.on("load", () => {
     });    
   }
 
-  function targetByIndex(currentIndex) {                              
-    const targetFeature = features.find(feature => feature.properties.Index === currentIndex);
+  function targetByIndex(currentIndex) {    
+    const targetFeature = features_polygon.find(feature => feature.properties.Index === currentIndex);
     
     return targetFeature;
   }
@@ -254,7 +259,7 @@ map.on("load", () => {
 // }
 
 map.on("click", "dong_polygon", e => {
-  target = e.features_polygon[0];
+  target = e.features[0];
   currentIndex = (target.properties.Index);
   
   loadTargetInfo(target);
