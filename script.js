@@ -2,6 +2,7 @@
 let hoveredPolygonId = null; 
 let features_polygon;
 let features_profile;
+let geojson_nature;
 let features_nature;
 
 // geojson 파일 불러오기
@@ -26,7 +27,7 @@ fetch('dong_profile.json')
 fetch('dong_nature.geojson')
   .then(response => response.json())
   .then(data => {
-    features_nature = data.features;
+    geojson_nature = data;
   })
   .catch(error => {
     console.error('파일 로딩 중 오류 발생:', error);
