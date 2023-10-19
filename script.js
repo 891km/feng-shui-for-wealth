@@ -210,17 +210,20 @@ map.on("load", () => {
   }
 
   function removeNature() {
-    if (markers.length > 0) {
-      markers.forEach(marker => marker.remove());
-      popups.forEach(popup => popup.remove());
-
-      markers.length  = 0;
-      popups.length  = 0;
+    let nature_source = map.getSource('dong_nature')
+    let nature_label = map.getLayer('nature_label');
+    let nature_icon = map.getLayer('nature_icon');
+    
+    if (nature_label && nature_icon) {
+      map.removeLayer(nature_label);
+      map.removeLayer(nature_icon);
+    } else {
+      console.log("none")
     }
   }
 
   function loadTargetInfo(target) {
-    removeNature();
+    // removeNature();
     
     hoveredPolygonId = target.id;
     document.getElementById("profile_grid").innerHTML = '';
@@ -272,7 +275,7 @@ map.on("load", () => {
     });
 
     map.addLayer({
-      id: "dong_nature_text",
+      id: "nature_label",
       type: "symbol",
       source: "dong_nature",
       layout: {
@@ -329,6 +332,7 @@ map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
   
+  removeNature();
   loadTargetInfo(target);
 });
 
@@ -336,6 +340,7 @@ leftBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
+  removeNature();
   loadTargetInfo(target);
 });
 
@@ -343,6 +348,7 @@ rightBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
   
+  removeNature();
   loadTargetInfo(target); 
 });
 
