@@ -152,6 +152,12 @@ map.on("load", () => {
   });
   
   
+  map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
+  if (error) throw error;
+    map.addImage('nature_icon', image); // 이미지를 맵에 추가합니다.
+ });  
+  
+  
   // event
   map.on('mouseenter', 'dong_polygon', (e) => {   
     map.getCanvas().style.cursor = "pointer";
@@ -210,17 +216,18 @@ map.on("load", () => {
   }
 
   function removeNature() {
-    let nature_source = map.getSource('dong_nature');
-    let nature_label = map.getLayer('nature_label');
-    let nature_icon = map.getLayer('nature_icon');
-    // console.log(nature_source, nature_label, nature_icon);
-    console.log(boolean(nature_source));
-    if (nature_source) {
-      map.removeSource(nature_source);
-      map.removeLayer(nature_label);
-      map.removeLayer(nature_icon);
+    if (map.getLayer('nature_label')) {
+      map.removeLayer('nature_label');
+    }
+    if (map.getLayer('nature_icon')) {
+      map.removeLayer('nature_icon');
+    }
+    if (map.getSource('dong_nature')) {
+      map.removeSource('dong_nature');
     }
   }
+
+
 
   function loadTargetInfo(target) {
     removeNature();
@@ -292,24 +299,21 @@ map.on("load", () => {
       }
     });
 
-    map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
-    if (error) throw error;
-      map.addImage('nature_icon', image); // 이미지를 맵에 추가합니다.
 
-      map.addLayer({
-        'id': 'nature_icon',
-        'type': 'symbol',
-        'source': 'dong_nature',
-        'layout': {
-          'icon-allow-overlap': true,
-          'icon-image': 'nature_icon', // reference the image
-          'icon-size': 0.3,
-          'icon-anchor': 'top',
-          'icon-padding': 5,
-          'icon-offset': [0, -500]
-        }
-      });
-   });
+    
+    map.addLayer({
+      'id': 'nature_icon',
+      'type': 'symbol',
+      'source': 'dong_nature',
+      'layout': {
+        'icon-allow-overlap': true,
+        'icon-image': 'nature_icon', // reference the image
+        'icon-size': 0.3,
+        'icon-anchor': 'top',
+        'icon-padding': 5,
+        'icon-offset': [0, -500]
+      }
+    });    
     
     // target coord
     var lat = target.properties.Latitude;
@@ -331,31 +335,27 @@ map.on("load", () => {
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
-  
-  removeNature();
+
   loadTargetInfo(target);
 });
 
 leftBtn.addEventListener("click", function() {  
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
-  
-  // removeNature();
+
   loadTargetInfo(target);
 });
 
 rightBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
-  
-  // removeNature();
+
   loadTargetInfo(target); 
 });
 
 homeBtn.addEventListener("click", function() {
   currentIndex = -1;
-  
-  removeNature();
+
   setHome();
 });
 
