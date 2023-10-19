@@ -209,6 +209,16 @@ map.on("load", () => {
     return targetFeature;
   }
 
+  function removeNature() {
+    if (markers.length > 0) {
+      markers.forEach(marker => marker.remove());
+      popups.forEach(popup => popup.remove());
+
+      markers.length  = 0;
+      popups.length  = 0;
+    }
+  }
+
   function loadTargetInfo(target) {
     removeNature();
     
@@ -231,7 +241,6 @@ map.on("load", () => {
     
     // profile grid to html
     const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
-    
     var parentDiv = document.getElementById("profile_grid");
     for (let i = 0; i < targetProfiles.length; i++) {
       var profileDiv = document.createElement('div');
@@ -257,7 +266,6 @@ map.on("load", () => {
       type: 'FeatureCollection',
       features: features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
     };
-    
     map.addSource("dong_nature", {
       type: 'geojson',
       data: targetNatures
@@ -272,7 +280,7 @@ map.on("load", () => {
         'symbol-placement': 'point',
         'text-field': ['get', 'Name'],
         'text-size': 16.5,
-        'text-offset': [0, -6],
+        'text-offset': [0, 500],
         'text-anchor': 'center' 
       },
       paint: {
@@ -281,7 +289,7 @@ map.on("load", () => {
       }
     });
 
-    map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697723231122', function (error, image) {
+    map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
     if (error) throw error;
       map.addImage('nature_icon', image); // 이미지를 맵에 추가합니다.
 
@@ -292,10 +300,10 @@ map.on("load", () => {
         'layout': {
           'icon-allow-overlap': true,
           'icon-image': 'nature_icon', // reference the image
-          'icon-size': 0.06,
+          'icon-size': 0.3,
           'icon-anchor': 'top',
           'icon-padding': 5,
-          'icon-offset': [0, -1000]
+          'icon-offset': [0, -500]
         }
       });
    });
@@ -316,16 +324,6 @@ map.on("load", () => {
     }); 
   
     };
-
-function removeNature() {
-  if (markers.length > 0) {
-    markers.forEach(marker => marker.remove());
-    popups.forEach(popup => popup.remove());
-    
-    markers.length  = 0;
-    popups.length  = 0;
-  }
-}
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
