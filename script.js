@@ -1,4 +1,6 @@
 // 전역 변수
+document.getElementById('map').setAttribute('draggable', false);
+
 let hoveredPolygonId = null; 
 let features_polygon;
 let features_profile;
@@ -71,19 +73,16 @@ map.on("load", () => {
   map.loadImage('https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014', function (error, image) {
     if (error) throw error;
     map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
-    map.addSource("dong_icon", {
-      type: 'geojson',
-      data: '/dong_point.geojson' 
-    });
     
     map.addLayer({
       'id': 'dong_icon',
       'type': 'symbol',
-      'source': 'dong_icon',
+      'source': 'dong_point',
       'layout': {
         'icon-image': 'dong_icon', // reference the image
-        'icon-size': 0.05,
-        'icon-offset': [0, -100]
+        'icon-size': 0.06,
+        // 'icon-offset': [0, -3],
+        'icon-anchor': 'bottom'
       }
     });
       
