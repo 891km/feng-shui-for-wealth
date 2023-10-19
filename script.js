@@ -2,8 +2,10 @@
 let hoveredPolygonId = null; 
 let features_polygon;
 let features_profile;
-// let geojson_nature;
 let features_nature;
+
+let nature_marker;
+let nature_popup;
 
 // geojson 파일 불러오기
 fetch('dong_polygon.geojson')
@@ -206,6 +208,8 @@ map.on("load", () => {
   }
 
   function loadTargetInfo(target) {
+
+    
     hoveredPolygonId = target.id;
     document.getElementById("profile_grid").innerHTML = '';
     
@@ -281,10 +285,19 @@ map.on("load", () => {
     
   } 
 
+function removeNature() {
+  
+}
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
+  
+  if (nature_marker && nature_popup) {
+    nature_marker.remove();
+    nature_popup.remove();
+    console.log("remove")
+  }
   
   loadTargetInfo(target);
 });
