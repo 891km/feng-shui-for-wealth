@@ -53,7 +53,7 @@ map.on("load", () => {
     type: "symbol",
     source: "dong_point",
     layout: {
-      'text-allow-overlap': false, // 레이블 겹침 방지
+      'text-allow-overlap': true, // 레이블 겹침 방지
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
       'text-size': 16.5,
