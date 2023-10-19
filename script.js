@@ -82,7 +82,8 @@ map.on("load", () => {
       'source': 'dong_icon',
       'layout': {
         'icon-image': 'dong_icon', // reference the image
-        'icon-size': 0.05
+        'icon-size': 0.05,
+        'icon-offset': [0, 100]
       }
     });
       
