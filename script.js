@@ -252,24 +252,77 @@ map.on("load", () => {
     }    
     
     
-    const targetNatures = features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong);
+    const targetNatures = {
+      type: 'FeatureCollection',
+      features: features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
+    };
+    console.log("targetNatures", targetNatures)
     
-    for (let i = 0; i < targetNatures.length; i++) {
-      const markerDiv = document.createElement("div");
-      markerDiv.className = "nature_marker";
+    map.addSource("dong_nature", {
+      type: 'geojson',
+      data: targetNatures
+    });
+
+//     map.addLayer({
+//       id: "dong_nature_text",
+//       type: "symbol",
+//       source: "targetNatures",
+//       layout: {
+//         'text-allow-overlap': true, // 레이블 겹침 방지
+//         'symbol-placement': 'point',
+//         'text-field': ['get', 'Name'],
+//         'text-size': 16.5,
+//         'text-offset': -8,
+//         'text-anchor': 'center' 
+//       },
+//       paint: {
+//         "text-color": "rgba(0, 0, 0, 1)",
+//         'text-opacity': 0.8
+//       }
+//     });
+
+//     map.loadImage('https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014', function (error, image) {
+    if (error) throw error;
+    map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
+    
+    map.addLayer({
+      'id': 'dong_icon',
+      'type': 'symbol',
+      'source': 'dong_point',
+      'layout': {
+        'icon-image': 'dong_icon', // reference the image
+        'icon-size': 0.06,
+        'icon-size': {
+          type: 'exponential',
+            stops: [ 
+              [10, 0.03],
+              [24, 0.4]
+            ]
+          },
+        'icon-anchor': 'top',
+        'icon-padding': 5,
+        'icon-offset': [0, -700]
+      }
+    });
       
-      // make a marker for each feature and add it to the map
-      nature_marker = new mapboxgl.Marker(markerDiv)
-        .setLngLat(targetNatures[i].geometry.coordinates)
-        .addTo(map);
-      markers.push(nature_marker);
+  });    
+    
+//     for (let i = 0; i < targetNatures.length; i++) {
+// //       const markerDiv = document.createElement("div");
+// //       markerDiv.className = "nature_marker";
       
-      nature_popup = new mapboxgl.Popup({ closeOnClick: true, offset: 10 }) // add popups
-        .setLngLat(targetNatures[i].geometry.coordinates)
-        .setHTML(`<h3>${targetNatures[i].properties.Name}</h3>`)
-        .addTo(map);
-      popups.push(nature_popup);
-    }
+// //       // make a marker for each feature and add it to the map
+// //       nature_marker = new mapboxgl.Marker(markerDiv)
+// //         .setLngLat(targetNatures[i].geometry.coordinates)
+// //         .addTo(map);
+// //       markers.push(nature_marker);
+      
+// //       nature_popup = new mapboxgl.Popup({ closeOnClick: true, offset: 10 }) // add popups
+// //         .setLngLat(targetNatures[i].geometry.coordinates)
+// //         .setHTML(`<h3>${targetNatures[i].properties.Name}</h3>`)
+// //         .addTo(map);
+// //       popups.push(nature_popup);
+//     }
     
     // target coord
     var lat = target.properties.Latitude;
