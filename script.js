@@ -57,8 +57,13 @@ map.on("load", () => {
     layout: {
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
-      'text-size': 15,
-      'text-offset': [0, -3],
+      'text-size': 16,
+      'text-offset': [
+        'interpolate', ['linear'], ['zoom'],
+        0, ['literal', [0, 0]], // 줌 레벨 0에서의 오프셋
+        5, ['literal', [0, 5]], // 줌 레벨 5에서의 오프셋
+        10, ['literal', [0, 10]] // 줌 레벨 10에서의 오프셋
+      ]
       'text-anchor': 'center' 
     },
     paint: {
@@ -71,7 +76,7 @@ map.on("load", () => {
   
   // dong_icon
   // https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014
-  map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/village_icon2.png?v=1697728256494', function (error, image) {
+  map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/village_icon.png?v=1697728256494', function (error, image) {
     if (error) throw error;
     map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
     
@@ -82,15 +87,16 @@ map.on("load", () => {
       'layout': {
         'icon-image': 'dong_icon', // reference the image
         'icon-size': 0.06,
-        // 'icon-size': {
-        //   type: 'exponential',
-        //     stops: [  // zoom 0부터 0.5
-        //       [10, 0.04],  // zoom 10부터 1.0
-        //       [15, 0.1]   // zoom 15부터 1.5
-        //     ]
-        //   },
-        'icon-anchor': 'bottom',
-        'icon-offset': [0, -50000]
+        'icon-size': {
+          type: 'exponential',
+            stops: [  // zoom 0부터 0.5
+              [10, 0.04],  // zoom 10부터 1.0
+              [15, 0.1]   // zoom 15부터 1.5
+            ]
+          },
+        'icon-anchor': 'top',
+        // 'icon-padding': 10,
+        'icon-offset': [0, -700]
       }
     });
       
