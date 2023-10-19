@@ -1,10 +1,8 @@
 // 전역 변수
-document.getElementById('map').setAttribute('draggable', false);
-
 let hoveredPolygonId = null; 
 let features_polygon;
 let features_profile;
-// let isTarget;
+
 
 // geojson 파일 불러오기
 fetch('dong_polygon.geojson')
@@ -57,11 +55,11 @@ map.on("load", () => {
     layout: {
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
-      'text-size': 16,
+      'text-size': 16.5,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
         11, ['literal', [0, -4]],
-        15, ['literal', [0, -12]]
+        15, ['literal', [0, -15]]
       ],
       'text-anchor': 'center' 
     },
@@ -71,10 +69,7 @@ map.on("load", () => {
     minzoom: 0, // 최소 줌 레벨
     maxzoom: 24, // 최대 줌 레벨
   });
-  
-  map.moveLayer('dong_icon', 'dong_point', 'before');
-  
-  
+    
   // dong_icon
   // https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014
   map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/village_icon.png?v=1697728256494', function (error, image) {
@@ -96,14 +91,13 @@ map.on("load", () => {
             ]
           },
         'icon-anchor': 'top',
-        // 'icon-padding': 10,
         'icon-offset': [0, -700]
       }
     });
       
   });
                 
-
+  map.moveLayer('dong_icon', 'dong_point', 'before');
   
   // dong_polygon
   map.addSource("dong_polygon", {
