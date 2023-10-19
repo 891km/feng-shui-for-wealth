@@ -2,7 +2,7 @@
 let hoveredPolygonId = null; 
 let features_polygon;
 let features_profile;
-let geojson_nature;
+// let geojson_nature;
 let features_nature;
 
 // geojson 파일 불러오기
@@ -27,7 +27,7 @@ fetch('dong_profile.json')
 fetch('dong_nature.geojson')
   .then(response => response.json())
   .then(data => {
-    geojson_nature = data;
+    features_nature = data.features;
   })
   .catch(error => {
     console.error('파일 로딩 중 오류 발생:', error);
@@ -224,7 +224,7 @@ map.on("load", () => {
     
     
     // profile grid to html
-    const targetProfiles = features_profile.filter(dong => dong.Address_dong === target.properties.Address_dong);
+    const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
     
     var parentDiv = document.getElementById("profile_grid");
     for (let i = 0; i < targetProfiles.length; i++) {
@@ -246,18 +246,19 @@ map.on("load", () => {
     }    
     
     
-    const targetNatures = features_nature.filter(dong => dong.Address_dong === target.properties.Address_dong);
-    console.log(targetNatures);
+    const targetNatures = features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong);
+    
     for (let i = 0; i < targetNatures.length; i++) {
+      console.log();
       const markerDiv = document.createElement("div");
       markerDiv.className = "nature_marker";
-
+      
       // make a marker for each feature and add it to the map
       new mapboxgl.Marker(markerDiv)
-        .setLngLat(target.geometry.coordinates)
+        .setLngLat(targetNatures[i].geometry.coordinates)
         .setPopup(
           new mapboxgl.Popup({ offset: 35 }) // add popups
-            .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
+            .setHTML(`<h3>${targetNatures[i].properties.Name}</h3><p>${targetNatures.properties.Category}</p>`)
         )
         .addTo(map);      
     }
@@ -278,24 +279,9 @@ map.on("load", () => {
       duration: 2000,
       essential: true
     }); 
+    
   } 
 
-// 마커 아이콘을 화면에 나타내고, 각 마커와 위 json 정보를 연결하는 부분
-
-for (const { geometry, properties } of features_nature) {
-  // create a HTML element for each feature
-  const markerDiv = document.createElement("div");
-  markerDiv.className = "marker";
-
-  // make a marker for each feature and add it to the map
-  new mapboxgl.Marker(markerDiv)
-    .setLngLat(geometry.coordinates)
-    .setPopup(
-      new mapboxgl.Popup({ offset: 35 }) // add popups
-        .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
-    )
-    .addTo(map);
-}
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
