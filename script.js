@@ -27,7 +27,6 @@ fetch('dong_nature.geojson')
   .then(response => response.json())
   .then(data => {
     features_nature = data.features;
-    console.log(features_nature, typeof(features_nature));
   })
   .catch(error => {
     console.error('파일 로딩 중 오류 발생:', error);
