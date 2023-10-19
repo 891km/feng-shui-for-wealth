@@ -245,7 +245,24 @@ map.on("load", () => {
       parentDiv.appendChild(profileDiv);      
     }    
     
+    
+    const targetNatures = features_nature.filter(dong => dong.Address_dong === target.properties.Address_dong);
+    console.log(targetNatures);
+    for (let i = 0; i < targetNatures.length; i++) {
+      const markerDiv = document.createElement("div");
+      markerDiv.className = "nature_marker";
 
+      // make a marker for each feature and add it to the map
+      new mapboxgl.Marker(markerDiv)
+        .setLngLat(target.geometry.coordinates)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 35 }) // add popups
+            .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p><p>${properties.address}</p>`)
+        )
+        .addTo(map);      
+    }
+    
+    
     
     // target coord
     var lat = target.properties.Latitude;
@@ -264,8 +281,8 @@ map.on("load", () => {
   } 
 
 // 마커 아이콘을 화면에 나타내고, 각 마커와 위 json 정보를 연결하는 부분
+
 for (const { geometry, properties } of features_nature) {
-  console.log(features_polygon);
   // create a HTML element for each feature
   const markerDiv = document.createElement("div");
   markerDiv.className = "marker";
