@@ -60,10 +60,9 @@ map.on("load", () => {
       'text-size': 16,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
-        0, ['literal', [0, 0]], // 줌 레벨 0에서의 오프셋
-        5, ['literal', [0, 5]], // 줌 레벨 5에서의 오프셋
-        10, ['literal', [0, 10]] // 줌 레벨 10에서의 오프셋
-      ]
+        10, ['literal', [0, -3]], // 줌 레벨 5에서의 오프셋
+        15, ['literal', [0, -12]] // 줌 레벨 10에서의 오프셋
+      ],
       'text-anchor': 'center' 
     },
     paint: {
@@ -91,7 +90,7 @@ map.on("load", () => {
           type: 'exponential',
             stops: [  // zoom 0부터 0.5
               [10, 0.04],  // zoom 10부터 1.0
-              [15, 0.1]   // zoom 15부터 1.5
+              [20, 0.2]   // zoom 15부터 1.5
             ]
           },
         'icon-anchor': 'top',
