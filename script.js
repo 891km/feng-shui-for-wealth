@@ -1,5 +1,6 @@
 // 전역 변수
 let hoveredPolygonId = null; 
+let features_point;
 let features_polygon;
 let features_profile;
 let features_nature;
@@ -11,6 +12,15 @@ let popups = [];
 
 
 // geojson 파일 불러오기
+fetch('dong_point.geojson')
+  .then(response => response.json())
+  .then(data => {
+    features_point = data.features;
+  })
+  .catch(error => {
+    console.error('파일 로딩 중 오류 발생:', error);
+  });
+
 fetch('dong_polygon.geojson')
   .then(response => response.json())
   .then(data => {
@@ -53,6 +63,7 @@ const map = new mapboxgl.Map({
   bearing: 16
 });
 
+
 map.on("load", () => {
   map.resize();
   map.rotateTo(180, { duration: 800000 });
@@ -93,40 +104,39 @@ map.on("load", () => {
     maxzoom: 24, // 최대 줌 레벨
   });
     
-  // dong_icon
+  // dong_icon load
   map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/village_icon.png?v=1697728256494', function (error, image) {
     if (error) throw error;
     map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
-    
-    map.addLayer({
-      'id': 'dong_icon',
-      'type': 'symbol',
-      'source': 'dong_point',
-      'layout': {
-        'icon-allow-overlap': [
-          'step',
-          ['zoom'],
-          false, // 0부터 시작하는 zoom 레벨에서는 표시
-          11.9, true
-        ],
-        'icon-image': 'dong_icon',
-        'icon-size': 0.06,
-        'icon-size': {
-          type: 'exponential',
-            stops: [ 
-              [10, 0.03],
-              [24, 0.4]
-            ]
-          },
-        'icon-anchor': 'top',
-        // 'icon-padding': 5,
-        'icon-offset': [0, -500]
-      }
-    });
-      
   });
   
-  
+  // dong_icon 
+  map.addLayer({
+    'id': 'dong_icon',
+    'type': 'symbol',
+    'source': 'dong_point',
+    'layout': {
+      'icon-allow-overlap': [
+        'step',
+        ['zoom'],
+        false, // 0부터 시작하는 zoom 레벨에서는 표시
+        11.9, true
+      ],
+      'icon-image': 'dong_icon',
+      'icon-size': 0.06,
+      'icon-size': {
+        type: 'exponential',
+          stops: [ 
+            [10, 0.03],
+            [24, 0.4]
+          ]
+        },
+      'icon-anchor': 'top',
+      // 'icon-padding': 5,
+      'icon-offset': [0, -500]
+    }
+  });
+      
   // dong_polygon
   map.addSource("dong_polygon", {
     type: 'geojson',
@@ -147,8 +157,7 @@ map.on("load", () => {
         0.5 // hover: false
       ]
     } 
-  });
-  
+  }); 
   
   // dong_line
   map.addLayer({
@@ -162,13 +171,11 @@ map.on("load", () => {
     }
   });
   
-  
   // nature icon image load
   map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
-  if (error) throw error;
-    map.addImage('nature_icon', image);
- });  
-  
+    if (error) throw error;
+      map.addImage('nature_icon', image);
+  });  
   
   // event
   map.on('mouseenter', 'dong_polygon', (e) => {   
@@ -210,7 +217,6 @@ map.on("load", () => {
     document.getElementById("project-title").style.opacity = "100";
     document.getElementById("ctl_left").style.visibility = "hidden"; 
     document.getElementById("ctl_right").style.visibility = "hidden";
-    document.getElementById("home").style.visibility = "hidden"; 
 
     map.flyTo({
       center: [127.063, 37.447],
@@ -248,19 +254,17 @@ map.on("load", () => {
     
     // elem visibility
     document.getElementById("info-box").style.opacity = "100";
-    // document.getElementById("project-title").style.opacity = "0";
     document.getElementById("ctl_left").style.visibility = "visible"; 
     document.getElementById("ctl_right").style.visibility = "visible";
-    // document.getElementById("home").style.visibility = "visible";  
-
+    
+    // info-box content
     document.getElementById("address_sigu").innerHTML =
       target.properties.Address_si + " " + target.properties.Address_gu;
-
+    
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
     
-    
-    // profile grid to html
+    // profile
     const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
     var parentDiv = document.getElementById("profile_grid");
     for (let i = 0; i < targetProfiles.length; i++) {
@@ -280,7 +284,6 @@ map.on("load", () => {
 
       parentDiv.appendChild(profileDiv);      
     }    
-    
     
     // nauture label & icon
     const targetNatures = {
@@ -324,7 +327,18 @@ map.on("load", () => {
       }
     });  
     
-    // map.moveLayer('dong_icon', 'nature_icon');
+    // only target dong_icon
+    const targetDongIcon = {
+      type: 'FeatureCollection',
+      features: features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
+    };
+    
+    map.addSource("target_dong_icon", {
+      type: 'geojson',
+      data: targetNatures
+    });  
+    
+    
     
     // target coord
     var lat = target.properties.Latitude;
