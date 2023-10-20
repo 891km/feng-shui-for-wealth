@@ -68,7 +68,7 @@ map.on("load", () => {
     type: "symbol",
     source: "dong_point",
     layout: {
-      'icon-allow-overlap': [
+      'text-allow-overlap': [
         'step',
         ['zoom'],
         false, // 0부터 시작하는 zoom 레벨에서는 표시
@@ -76,10 +76,10 @@ map.on("load", () => {
       ],
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
-      'text-size': 17,
+      'text-size': 16.5,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
-        11, ['literal', [0, -3]],
+        11, ['literal', [0, -4]],
         15, ['literal', [0, -15]],
         20, ['literal', [0, -20]]
       ],
