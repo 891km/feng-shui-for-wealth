@@ -144,6 +144,7 @@ map.on("load", () => {
     generateId: true
   });
    
+  // 함수로 처리하기
   map.addLayer({
     id: "dong_polygon",
     type: "fill",
@@ -217,7 +218,36 @@ map.on("load", () => {
     document.getElementById("project-title").style.opacity = "100";
     document.getElementById("ctl_left").style.visibility = "hidden"; 
     document.getElementById("ctl_right").style.visibility = "hidden";
-
+    
+    if (!map.getLayer('dong_icon')) {
+      // 함수로 처리하기
+      map.addLayer({
+        'id': 'dong_icon',
+        'type': 'symbol',
+        'source': 'dong_point',
+        'layout': {
+          'icon-allow-overlap': [
+            'step',
+            ['zoom'],
+            false, // 0부터 시작하는 zoom 레벨에서는 표시
+            11.9, true
+          ],
+          'icon-image': 'dong_icon',
+          'icon-size': 0.06,
+          'icon-size': {
+            type: 'exponential',
+              stops: [ 
+                [10, 0.03],
+                [24, 0.4]
+              ]
+            },
+          'icon-anchor': 'top',
+          // 'icon-padding': 5,
+          'icon-offset': [0, -500]
+        }
+      });
+    } 
+    
     map.flyTo({
       center: [127.063, 37.447],
       zoom: 11.1,
@@ -235,6 +265,9 @@ map.on("load", () => {
   }
 
   function removeNature() {
+    if (map.getLayer('dong_icon')) {
+      map.removeLayer('dong_icon');
+    } 
     if (map.getLayer('nature_label')) {
       map.removeLayer('nature_label');
     }
@@ -244,10 +277,13 @@ map.on("load", () => {
     if (map.getSource('dong_nature')) {
       map.removeSource('dong_nature');
     }
+    if (map.getSource('target_dong_icon')) {
+      map.removeSource('target_dong_icon');
+    }  
   }
 
   function loadTargetInfo(target) {
-    // reset
+    // reset    
     removeNature();
     hoveredPolygonId = target.id;
     document.getElementById("profile_grid").innerHTML = '';
@@ -330,13 +366,35 @@ map.on("load", () => {
     // only target dong_icon
     const targetDongIcon = {
       type: 'FeatureCollection',
-      features: features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
+      features: features_point.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
     };
+    // console.log(targetDongIcon);
     
     map.addSource("target_dong_icon", {
       type: 'geojson',
-      data: targetNatures
+      data: targetDongIcon
     });  
+    
+    map.addLayer({
+      'id': 'target_dong_icon',
+      'type': 'symbol',
+      'source': 'target_dong_icon',
+      'layout': {
+        'icon-allow-overlap': true,
+        'icon-image': 'dong_icon',
+        'icon-size': {
+          type: 'exponential',
+            stops: [ 
+              [10, 0.03],
+              [24, 0.4]
+            ]
+          },
+        'icon-anchor': 'top',
+        // 'icon-padding': 5,
+        'icon-offset': [0, -500]
+      }
+    });    
+    
     
     
     
