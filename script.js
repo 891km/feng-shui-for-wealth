@@ -63,13 +63,22 @@ const map = new mapboxgl.Map({
   bearing: 16
 });
 
+map.on('pitch', function() {
+  console.log("zoom:", map.getZoom(), "pitch:", map.getPitch(), "bearing:", map.getBearing());
+});
+map.on('zoom', function() {
+  console.log("zoom:", map.getZoom(), "pitch:", map.getPitch(), "bearing:", map.getBearing());
+});
+map.on('bearing', function() {
+  console.log("zoom:", map.getZoom(), "pitch:", map.getPitch(), "bearing:", map.getBearing());
+});
+
 function initialSetLayers() {
   if (!map.getSource('dong_point')) {
     // dong_point
     map.addSource("dong_point", {
       type: 'geojson',
       data: '/dong_point.geojson',
-      // generateId: true
     });
   }
   
@@ -433,7 +442,7 @@ map.on("load", () => {
     // target coord
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
-    var coord = [long, lat-0.005];
+    var coord = [long, lat+0.01];
     var zoom = target.properties.Zoom;
     var pitch = target.properties.Pitch;
 
