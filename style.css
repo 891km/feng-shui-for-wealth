@@ -17,18 +17,11 @@
 }
 
 #project-title, #project-info, #address_dong {
-/*   font-family: "zw-songganggasa", sans-serif;
-  font-weight: 700;
-  font-style: normal; */
-
   font-family: "zw-mogujasusimgyeol", sans-serif;
   font-weight: 700;
   font-style: normal; 
 }
 
-#project-title: hover {
-  cursor: pointer;
-}
 
 html,
 body {
@@ -73,15 +66,33 @@ body {
   left: 0;
   font-size: 2.8rem;
   z-index: 10;
+  color: black;
+  transition: transform .15s ease-in-out;
+  background-color: rgba(255,255,255,0.5);
+}
+
+#project-title:hover {
+  color: grey;
 }
 
 #project-info {
   right: 0;
   font-size: 1.8rem;
-  z-index: 50;
+  z-index: 110;
+  display: flex;
+  width: auto;
+  height: auto;
+/*   width: calc(var(--ctl_width) * 0.9);
+  height: calc(var(--ctl_width) * 0.9); */
+  
+  color: white;
+  background-color: black;
+  margin: 0 2.4vw;
+  padding: 0.5%;
+  border-radius: 20%;
 }
 
-#home {
+/* #home {
   z-index: 110;
   display: flex;
   width: calc(var(--ctl_width) * 0.7);
@@ -90,7 +101,6 @@ body {
   margin: 0 2.4vw;
   border-radius: 20%;
   visibility: hidden;
-  z-index: 50;
 }
 
 #home_x {
@@ -99,7 +109,7 @@ body {
   margin: auto;
   color: white;
   transform: scale(0.9);
-}
+} */
 
 #ctl_left, #ctl_right {
   position: fixed;
@@ -131,7 +141,7 @@ i {
   transition: transform .15s ease-in-out;
 }
 
-#ctl_left:hover, #ctl_right:hover, #home:hover, #project-info:hover {
+#ctl_left:hover, #ctl_right:hover, #home:hover, #project-info:hover, #project-title:hover{
   cursor: pointer !important;
 }
 
