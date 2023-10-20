@@ -264,7 +264,10 @@ map.on("load", () => {
     return targetFeature;
   }
 
-  function removeNature() {
+  function resetLayer() {
+    if (map.getLayer('target_dong_icon')) {
+      map.removeLayer('target_dong_icon');
+    }
     if (map.getLayer('dong_icon')) {
       map.removeLayer('dong_icon');
     } 
@@ -284,7 +287,7 @@ map.on("load", () => {
 
   function loadTargetInfo(target) {
     // reset    
-    removeNature();
+    resetLayer();
     hoveredPolygonId = target.id;
     document.getElementById("profile_grid").innerHTML = '';
     
@@ -358,12 +361,19 @@ map.on("load", () => {
         'icon-image': 'nature_icon',
         'icon-size': 0.3,
         'icon-anchor': 'bottom',
-        // 'icon-padding': 5,
         'icon-offset': [0, 0]
       }
     });  
     
+    
     // only target dong_icon
+    console.log(target.id);
+    map.setLayoutProperty('dong_point', 'text-offset', [
+      'case',
+      ['!=', ['id'], target.id],
+      ['literal', [0, -1]],
+      ['literal', [0, -4]] // target feature
+    ]);
     const targetDongIcon = {
       type: 'FeatureCollection',
       features: features_point.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
@@ -439,7 +449,7 @@ rightBtn.addEventListener("click", function() {
 titleBtn.addEventListener("click", function() {
   currentIndex = -1;
 
-  removeNature();
+  resetLayer();
   setHome();
 });
 
