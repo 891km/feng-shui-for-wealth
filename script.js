@@ -88,7 +88,6 @@ map.on("load", () => {
   });
     
   // dong_icon
-  // https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014
   map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/village_icon.png?v=1697728256494', function (error, image) {
     if (error) throw error;
     map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
@@ -161,7 +160,7 @@ map.on("load", () => {
   // nature icon image load
   map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
   if (error) throw error;
-    map.addImage('nature_icon', image); // 이미지를 맵에 추가합니다.
+    map.addImage('nature_icon', image);
  });  
   
   
