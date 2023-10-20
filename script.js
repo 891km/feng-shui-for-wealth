@@ -79,6 +79,7 @@ function initialSetLayers() {
     type: "symbol",
     source: "dong_point",
     layout: {
+      'text-font': ['source-han-sans-korean', 'regular'],
       'text-allow-overlap': [
         'step',
         ['zoom'],
