@@ -9,6 +9,7 @@ let nature_popup;
 let markers = [];
 let popups = [];
 
+
 // geojson 파일 불러오기
 fetch('dong_polygon.geojson')
   .then(response => response.json())
@@ -67,13 +68,18 @@ map.on("load", () => {
     type: "symbol",
     source: "dong_point",
     layout: {
-      'text-allow-overlap': true, // 레이블 겹침 방지
+      'icon-allow-overlap': [
+        'step',
+        ['zoom'],
+        false, // 0부터 시작하는 zoom 레벨에서는 표시
+        11.9, true
+      ],
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
-      'text-size': 16.5,
+      'text-size': 17,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
-        11, ['literal', [0, -4]],
+        11, ['literal', [0, -3]],
         15, ['literal', [0, -15]],
         20, ['literal', [0, -20]]
       ],
@@ -114,7 +120,7 @@ map.on("load", () => {
           },
         'icon-anchor': 'top',
         // 'icon-padding': 5,
-        'icon-offset': [0, -600]
+        'icon-offset': [0, -500]
       }
     });
       
