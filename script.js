@@ -490,10 +490,10 @@ titleBtn.addEventListener("click", function() {
 });
 
 infoBtn.addEventListener("mouseenter", function(e) {
-  new mapboxgl.Popup({ closeOnClick:  false, offset: 10 })
-    .setLngLat(e.latlan)
-    .setHTML(`<h3>소개내용</h3>`)
-    .addTo(map);
+  // new mapboxgl.Popup({ closeOnClick:  false, offset: 10 })
+  //   .setLngLat(e.latlan)
+  //   .setHTML(`<h3>소개내용</h3>`)
+  //   .addTo(map);
   
 });
 
