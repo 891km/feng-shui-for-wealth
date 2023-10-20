@@ -442,14 +442,16 @@ map.on("load", () => {
     // target coord
     var lat = target.properties.Latitude;
     var long = target.properties.Longitude;
-    var coord = [long, lat+0.01];
+    var coord = [long, lat];
     var zoom = target.properties.Zoom;
     var pitch = target.properties.Pitch;
+    var bearing = target.properties.Bearing;
 
     map.flyTo({
       center: coord,
       zoom: zoom,
       pitch: pitch,
+      bearing: bearing,
       duration: 2000,
       essential: true
     }); 
