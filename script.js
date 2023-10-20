@@ -284,7 +284,6 @@ map.on("load", () => {
               ]
             },
           'icon-anchor': 'top',
-          // 'icon-padding': 5,
           'icon-offset': [0, -500]
         }
       });
@@ -320,7 +319,6 @@ map.on("load", () => {
     // info-box content
     document.getElementById("address_sigu").innerHTML =
       target.properties.Address_si + " " + target.properties.Address_gu;
-    
     document.getElementById("address_dong").innerHTML =
       target.properties.Address_dong;
     
@@ -345,7 +343,7 @@ map.on("load", () => {
       parentDiv.appendChild(profileDiv);      
     }    
     
-    // nauture label & icon
+    // target nauture label & icon
     const targetNatures = {
       type: 'FeatureCollection',
       features: features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
@@ -394,11 +392,17 @@ map.on("load", () => {
       ['literal', [0, -4]] // target feature
     ]);
     
+    map.setLayoutProperty('dong_point', 'text-font', [
+      'case',
+      ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
+      ['literal', ['source-han-sans-korean', 'regular']],
+      ['literal', ['source-han-sans-korean', 'bold']] // target feature
+    ]);
+    
     const targetDongIcon = {
       type: 'FeatureCollection',
       features: features_point.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
     };
-    // console.log(targetDongIcon);
     
     map.addSource("target_dong_icon", {
       type: 'geojson',
@@ -420,12 +424,9 @@ map.on("load", () => {
             ]
           },
         'icon-anchor': 'top',
-        // 'icon-padding': 5,
         'icon-offset': [0, -500]
       }
     });    
-    
-    
     
     
     // target coord
