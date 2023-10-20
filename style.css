@@ -51,7 +51,7 @@ body {
   width: 100%;
   height: auto;
   margin-top: 70px;
-  background-color: yellow;
+/*   background-color: yellow; */
 }
 
 #project-title, #project-info {
@@ -246,8 +246,20 @@ i {
   word-break: keep-all;
 }
 
-.mapboxgl-popup {
+#info-popup {
+  position: fixed;
+  right: 0;
+  display: inline-block;
+  padding: auto;
   width: 200px;
+  height: auto;
+  background-color: white;
+}
+
+.info-png {
+  margin: 20px;
+  width: 90%;
+  height: auto;
 }
 
 /*맵박스 로고 가리기*/
