@@ -26,6 +26,10 @@
   font-style: normal; 
 }
 
+#project-title: hover {
+  cursor: pointer;
+}
+
 html,
 body {
   width: 100%;
@@ -247,40 +251,6 @@ i {
   margin: 0;
   padding-top: 1rem;
   word-break: keep-all;
-}
-
-
-/*마커 디자인*/
-.nature_marker {
-  background-image: url('https://cdn.glitch.global/1a457f74-eb98-4ed1-8631-b5320b847340/pos.png?v=1695349509014');
-  background-size: cover;
-  width: 20px;
-  height: 20px;
-  border-radius: 0%;
-  cursor: pointer;
-}
-
-/*팝업창 디자인 관련*/
-.mapboxgl-popup {
-  max-width: 200px;
-}
-
-.mapboxgl-popup-content {
-  position: relative;
-  background: rgba(255,255,255,0.5);
-  opacity: 1;
-  box-shadow: 0 1px 2px rgba(0,0,0,0);
-  padding: 0 10;
-  font-family: 'source-han-sans-korean';
-}
-
-.mapboxgl-popup-close-button {
-  display: none;
-}
-
-.mapboxgl-popup-tip {
-  display: none;
-  background: rgba(255,255,255,0.5);
 }
 
 

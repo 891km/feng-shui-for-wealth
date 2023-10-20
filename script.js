@@ -200,7 +200,8 @@ map.on("load", () => {
   // button
   var leftBtn = document.getElementById("ctl_left");
   var rightBtn = document.getElementById("ctl_right");
-  var homeBtn = document.getElementById("home");
+  var titleBtn = document.getElementById("project-title");
+  // var homeBtn = document.getElementById("home");
   var currentIndex = 0;
   var target;
 
@@ -240,17 +241,17 @@ map.on("load", () => {
   }
 
   function loadTargetInfo(target) {
+    // reset
     removeNature();
-    
     hoveredPolygonId = target.id;
     document.getElementById("profile_grid").innerHTML = '';
     
     // elem visibility
     document.getElementById("info-box").style.opacity = "100";
-    document.getElementById("project-title").style.opacity = "0";
+    // document.getElementById("project-title").style.opacity = "0";
     document.getElementById("ctl_left").style.visibility = "visible"; 
     document.getElementById("ctl_right").style.visibility = "visible";
-    document.getElementById("home").style.visibility = "visible";  
+    // document.getElementById("home").style.visibility = "visible";  
 
     document.getElementById("address_sigu").innerHTML =
       target.properties.Address_si + " " + target.properties.Address_gu;
@@ -363,7 +364,7 @@ rightBtn.addEventListener("click", function() {
   loadTargetInfo(target); 
 });
 
-homeBtn.addEventListener("click", function() {
+titleBtn.addEventListener("click", function() {
   currentIndex = -1;
 
   removeNature();
