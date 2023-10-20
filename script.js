@@ -202,7 +202,6 @@ function initialSetLayers() {
 
 };
 
-
 function resetLayer() { 
   if (map.getLayer('target_dong_icon')) {
     map.removeLayer('target_dong_icon');
@@ -257,175 +256,35 @@ map.on("load", () => {
   });  
 });
 
-  // button
-  var leftBtn = document.getElementById("ctl_left");
-  var rightBtn = document.getElementById("ctl_right");
-  var titleBtn = document.getElementById("project-title");
-  // var homeBtn = document.getElementById("home");
-  var currentIndex = 0;
-  var target;
+// button
+var leftBtn = document.getElementById("ctl_left");
+var rightBtn = document.getElementById("ctl_right");
+var titleBtn = document.getElementById("project-title");
+var infoBtn = document.getElementById("project-info");
+var currentIndex = 0;
+var target;
 
-  function setHome() {
-    document.getElementById("info-box").style.opacity = "0";
-    document.getElementById("project-title").style.opacity = "100";
-    document.getElementById("ctl_left").style.visibility = "hidden"; 
-    document.getElementById("ctl_right").style.visibility = "hidden";
-    
-    if (!map.getLayer('dong_icon')) {
-      // 함수로 처리하기
-      map.addLayer({
-        'id': 'dong_icon',
-        'type': 'symbol',
-        'source': 'dong_point',
-        'layout': {
-          'icon-allow-overlap': [
-            'step',
-            ['zoom'],
-            false, // 0부터 시작하는 zoom 레벨에서는 표시
-            11.9, true
-          ],
-          'icon-image': 'dong_icon',
-          'icon-size': 0.06,
-          'icon-size': {
-            type: 'exponential',
-              stops: [ 
-                [10, 0.03],
-                [24, 0.4]
-              ]
-            },
-          'icon-anchor': 'top',
-          'icon-offset': [0, -500]
-        }
-      });
-    } 
-    
-    map.flyTo({
-      center: [127.063, 37.447],
-      zoom: 11.1,
-      minZoom: 10.3,
-      pitch: 64.5,
-      bearing: 16,
-      duration: 1500,
-      essential: true
-    });    
-  }
-  
-  function targetByIndex(currentIndex) {    
-    const targetFeature = features_polygon.find(feature => feature.properties.Index === currentIndex);
-    return targetFeature;
-  }
+function setHome() {
+  document.getElementById("info-box").style.opacity = "0";
+  document.getElementById("project-title").style.opacity = "100";
+  document.getElementById("ctl_left").style.visibility = "hidden"; 
+  document.getElementById("ctl_right").style.visibility = "hidden";
 
-  function loadTargetInfo(target) {
-    // reset    
-    resetLayer();
-    hoveredPolygonId = target.id;
-    document.getElementById("profile_grid").innerHTML = '';
-    
-    // elem visibility
-    document.getElementById("info-box").style.opacity = "100";
-    document.getElementById("ctl_left").style.visibility = "visible"; 
-    document.getElementById("ctl_right").style.visibility = "visible";
-    
-    // info-box content
-    document.getElementById("address_sigu").innerHTML =
-      target.properties.Address_si + " " + target.properties.Address_gu;
-    document.getElementById("address_dong").innerHTML =
-      target.properties.Address_dong;
-    
-    // profile
-    const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
-    var parentDiv = document.getElementById("profile_grid");
-    for (let i = 0; i < targetProfiles.length; i++) {
-      var profileDiv = document.createElement('div');
-      profileDiv.className = 'profile';
-
-      var imgElement = document.createElement('img');
-      imgElement.className = 'pict';
-      imgElement.src = targetProfiles[i].url;
-      
-      var nameDiv = document.createElement('div');
-      nameDiv.className = 'name';      
-      nameDiv.textContent = targetProfiles[i].name;
-      
-      profileDiv.appendChild(imgElement);
-      profileDiv.appendChild(nameDiv);
-
-      parentDiv.appendChild(profileDiv);      
-    }    
-    
-    // target nauture label & icon
-    const targetNatures = {
-      type: 'FeatureCollection',
-      features: features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
-    };
-    map.addSource("dong_nature", {
-      type: 'geojson',
-      data: targetNatures
-    });
-
+  if (!map.getLayer('dong_icon')) {
+    // 함수로 처리하기
     map.addLayer({
-      id: "nature_label",
-      type: "symbol",
-      source: "dong_nature",
-      layout: {
-        'text-allow-overlap': true, // 레이블 겹침 방지
-        'symbol-placement': 'point',
-        'text-field': ['get', 'Name'],
-        'text-size': 15,
-        'text-offset': [0, 500],
-        'text-anchor': 'top' 
-      },
-      paint: {
-        "text-color": "rgba(0, 0, 0, 1)",
-        'text-opacity': 0.8
-      }
-    });
-
-    map.addLayer({
-      'id': 'nature_icon',
+      'id': 'dong_icon',
       'type': 'symbol',
-      'source': 'dong_nature',
+      'source': 'dong_point',
       'layout': {
-        'icon-allow-overlap': true,
-        'icon-image': 'nature_icon',
-        'icon-size': 0.3,
-        'icon-anchor': 'bottom',
-        'icon-offset': [0, 0]
-      }
-    });  
-    
-    // only target dong_icon
-    map.setLayoutProperty('dong_point', 'text-offset', [
-      'case',
-      ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
-      ['literal', [0, -1]],
-      ['literal', [0, -4]] // target feature
-    ]);
-    
-    map.setLayoutProperty('dong_point', 'text-font', [
-      'case',
-      ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
-      ['literal', ['source-han-sans-korean', 'regular']],
-      ['literal', ['source-han-sans-korean', 'bold']] // target feature
-    ]);
-    
-    const targetDongIcon = {
-      type: 'FeatureCollection',
-      features: features_point.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
-    };
-    
-    map.addSource("target_dong_icon", {
-      type: 'geojson',
-      data: targetDongIcon
-    });  
-    
-    map.addLayer({
-      'id': 'target_dong_icon',
-      'type': 'symbol',
-      'source': 'target_dong_icon',
-      'layout': {
-        'icon-allow-overlap': true,
+        'icon-allow-overlap': [
+          'step',
+          ['zoom'],
+          false, // 0부터 시작하는 zoom 레벨에서는 표시
+          11.9, true
+        ],
         'icon-image': 'dong_icon',
+        'icon-size': 0.06,
         'icon-size': {
           type: 'exponential',
             stops: [ 
@@ -436,27 +295,167 @@ map.on("load", () => {
         'icon-anchor': 'top',
         'icon-offset': [0, -500]
       }
-    });    
-    
-    
-    // target coord
-    var lat = target.properties.Latitude;
-    var long = target.properties.Longitude;
-    var coord = [long, lat+0.005];
-    var zoom = target.properties.Zoom;
-    var pitch = target.properties.Pitch;
-    var bearing = target.properties.Bearing;
+    });
+  } 
 
-    map.flyTo({
-      center: coord,
-      zoom: zoom,
-      pitch: pitch,
-      bearing: bearing,
-      duration: 2000,
-      essential: true
-    }); 
-  
-    };
+  map.flyTo({
+    center: [127.063, 37.447],
+    zoom: 11.1,
+    minZoom: 10.3,
+    pitch: 64.5,
+    bearing: 16,
+    duration: 1500,
+    essential: true
+  });    
+}
+
+function targetByIndex(currentIndex) {    
+  const targetFeature = features_polygon.find(feature => feature.properties.Index === currentIndex);
+  return targetFeature;
+}
+
+function loadTargetInfo(target) {
+  // reset    
+  resetLayer();
+  hoveredPolygonId = target.id;
+  document.getElementById("profile_grid").innerHTML = '';
+
+  // elem visibility
+  document.getElementById("info-box").style.opacity = "100";
+  document.getElementById("ctl_left").style.visibility = "visible"; 
+  document.getElementById("ctl_right").style.visibility = "visible";
+
+  // info-box content
+  document.getElementById("address_sigu").innerHTML =
+    target.properties.Address_si + " " + target.properties.Address_gu;
+  document.getElementById("address_dong").innerHTML =
+    target.properties.Address_dong;
+
+  // profile
+  const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
+  var parentDiv = document.getElementById("profile_grid");
+  for (let i = 0; i < targetProfiles.length; i++) {
+    var profileDiv = document.createElement('div');
+    profileDiv.className = 'profile';
+
+    var imgElement = document.createElement('img');
+    imgElement.className = 'pict';
+    imgElement.src = targetProfiles[i].url;
+
+    var nameDiv = document.createElement('div');
+    nameDiv.className = 'name';      
+    nameDiv.textContent = targetProfiles[i].name;
+
+    profileDiv.appendChild(imgElement);
+    profileDiv.appendChild(nameDiv);
+
+    parentDiv.appendChild(profileDiv);      
+  }    
+
+  // target nauture label & icon
+  const targetNatures = {
+    type: 'FeatureCollection',
+    features: features_nature.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
+  };
+  map.addSource("dong_nature", {
+    type: 'geojson',
+    data: targetNatures
+  });
+
+  map.addLayer({
+    id: "nature_label",
+    type: "symbol",
+    source: "dong_nature",
+    layout: {
+      'text-allow-overlap': true, // 레이블 겹침 방지
+      'symbol-placement': 'point',
+      'text-field': ['get', 'Name'],
+      'text-size': 15,
+      'text-offset': [0, 500],
+      'text-anchor': 'top' 
+    },
+    paint: {
+      "text-color": "rgba(0, 0, 0, 1)",
+      'text-opacity': 0.8
+    }
+  });
+
+  map.addLayer({
+    'id': 'nature_icon',
+    'type': 'symbol',
+    'source': 'dong_nature',
+    'layout': {
+      'icon-allow-overlap': true,
+      'icon-image': 'nature_icon',
+      'icon-size': 0.3,
+      'icon-anchor': 'bottom',
+      'icon-offset': [0, 0]
+    }
+  });  
+
+  // only target dong_icon
+  map.setLayoutProperty('dong_point', 'text-offset', [
+    'case',
+    ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
+    ['literal', [0, -1]],
+    ['literal', [0, -4]] // target feature
+  ]);
+
+  map.setLayoutProperty('dong_point', 'text-font', [
+    'case',
+    ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
+    ['literal', ['source-han-sans-korean', 'regular']],
+    ['literal', ['source-han-sans-korean', 'bold']] // target feature
+  ]);
+
+  const targetDongIcon = {
+    type: 'FeatureCollection',
+    features: features_point.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
+  };
+
+  map.addSource("target_dong_icon", {
+    type: 'geojson',
+    data: targetDongIcon
+  });  
+
+  map.addLayer({
+    'id': 'target_dong_icon',
+    'type': 'symbol',
+    'source': 'target_dong_icon',
+    'layout': {
+      'icon-allow-overlap': true,
+      'icon-image': 'dong_icon',
+      'icon-size': {
+        type: 'exponential',
+          stops: [ 
+            [10, 0.03],
+            [24, 0.4]
+          ]
+        },
+      'icon-anchor': 'top',
+      'icon-offset': [0, -500]
+    }
+  });    
+
+
+  // target coord
+  var lat = target.properties.Latitude;
+  var long = target.properties.Longitude;
+  var coord = [long, lat+0.005];
+  var zoom = target.properties.Zoom;
+  var pitch = target.properties.Pitch;
+  var bearing = target.properties.Bearing;
+
+  map.flyTo({
+    center: coord,
+    zoom: zoom,
+    pitch: pitch,
+    bearing: bearing,
+    duration: 2000,
+    essential: true
+  }); 
+
+  };
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
@@ -490,4 +489,11 @@ titleBtn.addEventListener("click", function() {
   setHome();
 });
 
+infoBtn.addEventListener("mouseenter", function(e) {
+  new mapboxgl.Popup({ closeOnClick:  false, offset: 10 })
+    .setLngLat(e.latlan)
+    .setHTML(`<h3>소개내용</h3>`)
+    .addTo(map);
+  
+});
 
