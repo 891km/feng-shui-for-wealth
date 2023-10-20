@@ -189,7 +189,7 @@ function initialSetLayers() {
       map.addImage('nature_icon', image);
   });   
   }
-  
+
 };
 
 
@@ -469,9 +469,9 @@ rightBtn.addEventListener("click", function() {
 titleBtn.addEventListener("click", function() {
   currentIndex = -1;
   
-  // if (map.getSource('dong_point')) {
-  //   map.removeSource('dong_point');
-  // }
+  if (map.getLayer('dong_point')) {
+    map.removeLayer('dong_point');
+  }
   resetLayer();
   initialSetLayers();
   setHome();
