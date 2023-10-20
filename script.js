@@ -63,15 +63,12 @@ const map = new mapboxgl.Map({
   bearing: 16
 });
 
-
-map.on("load", () => {
-  map.resize();
-  map.rotateTo(180, { duration: 800000 });
-
+function resetAllLayers() {
   // dong_point
   map.addSource("dong_point", {
     type: 'geojson',
-    data: '/dong_point.geojson' 
+    data: '/dong_point.geojson',
+    // generateId: true
   });
     
   map.addLayer({
@@ -176,7 +173,15 @@ map.on("load", () => {
   map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
     if (error) throw error;
       map.addImage('nature_icon', image);
-  });  
+  });   
+}
+
+
+map.on("load", () => {
+  map.resize();
+  map.rotateTo(180, { duration: 800000 });
+
+  resetAllLayers();
   
   // event
   map.on('mouseenter', 'dong_polygon', (e) => {   
@@ -365,15 +370,14 @@ map.on("load", () => {
       }
     });  
     
-    
     // only target dong_icon
-    console.log(target.id);
     map.setLayoutProperty('dong_point', 'text-offset', [
       'case',
-      ['!=', ['id'], target.id],
+      ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
       ['literal', [0, -1]],
       ['literal', [0, -4]] // target feature
     ]);
+    
     const targetDongIcon = {
       type: 'FeatureCollection',
       features: features_point.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)
