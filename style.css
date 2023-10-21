@@ -103,22 +103,24 @@ body {
   width: 500px;
   height: 100vh;
 /*   text-align: center; */
-  background-color: black;
+  background-color: white;
   box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
+  overflow: scroll;
 }
 
 .popup-h, .popup-p, .popup-img {
-  color: white;
+  color: black;
   position: relative;
   left: 0;
-  margin: 20px 30px;
+  margin: 20px 24px;
   width: 95%;
   height: auto;
   text-align: left;
 }
 
 .popup-h {
-  margin-top: 70px;
+  margin-top: 100px;
+  font-weight: 700;
 }
 
 .popup-img {
@@ -130,12 +132,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   object-fit: contain;
-  background-color: white;
-  border-radius: 8px;
+  background-color: #F9F9F9;
+  border-radius: 4px;
 }
 
 #popup-x {
-  position: absolute;
+  position: fixed;
   right: 0;
   margin-right: 2.5vw;
   width: 20px;
