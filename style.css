@@ -96,31 +96,41 @@ body {
 
 #info-popup {
   z-index: 1000;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
+  margin: 0 auto;
+  top: 0;
   right: 0;
-  padding: auto;
-  width: 50vw;
-  height: 100vh;
+  width: 500px;
+  height: 90vh;
   background-color: white;
   box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .popup-png {
-  margin: 20px;
-  width: 90%;
+  position: relative;
+  margin: 0 auto;
+  padding: auto;
+  width: 70%;
   height: auto;
+  background-color: orange;
 }
 
 .popup-h {
-  margin: 20px;
+  position: relative;
+  margin: 0 auto;
   width: 90%;
   height: auto;
+  background-color: orange;
 }
 .popup-p {
-  margin: 20px;
+  position: relative;
+/*   margin: 20px; */
   width: 90%;
   height: auto;
+  background-color: orange;
 }
 
 
