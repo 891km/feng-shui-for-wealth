@@ -103,28 +103,35 @@ body {
   width: 500px;
   height: 100vh;
 /*   text-align: center; */
-  background-color: white;
+  background-color: black;
   box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.popup-h, .popup-p {
+.popup-h, .popup-p, .popup-img {
+  color: white;
   position: relative;
   left: 0;
-  margin: 60px 20px;
-/*   margin: 50px auto; */
+  margin: 20px 30px;
   width: 95%;
   height: auto;
-/*   background-color: orange; */
   text-align: left;
 }
 
-.popup-png {
-  position: relative;
-  width: 70%;
-  height: auto;
+.popup-h {
+  margin-top: 70px;
+}
+
+.popup-img {
+  width: 74%;
+  height: 300px;
+/*   background-image: url("https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/%E1%84%91%E1%85%AE%E1%86%BC%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%84%85%E1%85%B5%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2_%E1%84%90%E1%85%AE%E1%84%86%E1%85%A7%E1%86%BC_%E1%84%87%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A5%E1%86%AB.png?v=1697874370292"); */
   background-image: url("https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/%E1%84%91%E1%85%AE%E1%86%BC%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%84%85%E1%85%B5%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2_%E1%84%90%E1%85%AE%E1%84%86%E1%85%A7%E1%86%BC.png?v=1697808509606");
   background-size: contain;
-  background-color: orange;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  background-color: white;
+  border-radius: 8px;
 }
 
 #popup-x {
