@@ -211,7 +211,7 @@ i {
   transform: translateX(-50%);
   width: calc(100vw - 20px);
   height: 32vh;
-  padding-top: 20px;
+/*   padding-top: 20px; */
   color: black;
   background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,1)); 
 /*   background-color: rgba(36,39,51,0.9); */
@@ -226,30 +226,25 @@ i {
 }
 
 #info-left {
-  display: grid;
-  grid-template-rows : 10% 25% 65%;
-  padding: 2.4vw;
+  display: inline-block;
+/*   display: grid;
+  grid-template-rows : 10% 25% 65%; */
+  padding: 20px;
   overflow: hidden;
 }
 
-#address_dong, #address_sigu, #address_des {
-  padding-bottom: 60px;
-  
-  background-color: orange;
-}
-
-/* text - left */
-#address_dong {
-  font-size: 3.8rem;
-  margin: 0;
-  word-break: keep-all;
-/*   background-color: yellow; */
-}
-
 #address_sigu {
+  padding-bottom: 5px;
   font-size: 1.2rem;
   word-break: keep-all;
 /*   background-color: green; */
+}
+
+#address_dong {
+  padding-bottom: 20px;
+  font-size: 3.8rem;
+  word-break: keep-all;
+/*   background-color: yellow; */
 }
 
 #address_des {

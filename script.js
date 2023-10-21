@@ -331,6 +331,8 @@ function loadTargetInfo(target) {
     target.properties.Address_si + " " + target.properties.Address_gu;
   document.getElementById("address_dong").innerHTML =
     target.properties.Address_dong;
+  document.getElementById("address_des").innerHTML =
+    target.properties.Info;
 
   // profile
   const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
