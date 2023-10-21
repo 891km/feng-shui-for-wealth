@@ -231,35 +231,46 @@ i {
   left: 0;
   margin: 20px;
   width: calc(100% - 20px);
-  height: calc(100% - 65px);
   background-color: yellow;
-  overflow: hidden;
+  overflow: auto;
   z-index: 900;
 }
 
 #address_sigu {
-  position: relative;
+  position: sticky;
+  top: 0;
   padding-bottom: 5px;
   font-size: 1.2rem;
   word-break: keep-all;
+  overflow: hidden;
+  background-color: orange;
 }
 
 #address_dong {
-  position: relative;
+  position: sticky;
+  top: 0;
   padding-bottom: 20px;
   font-size: 3.4rem;
   word-break: keep-all;
+  overflow: hidden;
+  background-color: orange;
 }
 
 #address_des {
-  position: relative;
+  position: sticky;
+  top: 0;
   font-size: 1rem;
-  left: 0;
   width: 90%;
   pointer-events: auto;
   overflow: scroll;
-  background-color: orange;
+/*   background-color: orange; */
 }
+
+/* #address_des.scrollable {
+  position: sticky;
+  top: 0;
+  background-color: yellow;
+} */
 
 #info-right {
   text-align: left;
