@@ -203,15 +203,16 @@ i {
 
 #info-box {
   opacity: 0; 
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 35% 65%;
   position: fixed;
   bottom: 10px;
   left: 50%;
+/*   padding: 20px; */
   transform: translateX(-50%);
   width: calc(100vw - 20px);
   height: 32vh;
-/*   padding-top: 20px; */
   color: black;
   background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,1)); 
 /*   background-color: rgba(36,39,51,0.9); */
@@ -227,31 +228,32 @@ i {
 
 #info-left {
   display: inline-block;
+  margin: 20px;
 /*   display: grid;
   grid-template-rows : 10% 25% 65%; */
-  padding: 20px;
+
   overflow: hidden;
+  background-color: green;
+  z-index: 900;
 }
 
 #address_sigu {
   padding-bottom: 5px;
   font-size: 1.2rem;
   word-break: keep-all;
-/*   background-color: green; */
 }
 
 #address_dong {
   padding-bottom: 20px;
-  font-size: 3.8rem;
+  font-size: 3.4rem;
   word-break: keep-all;
-/*   background-color: yellow; */
 }
 
 #address_des {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   overflow: scroll;
 /*   word-break: keep-all; */
-/*   background-color: red; */
+  background-color: red;
 }
 
 #info-right {
@@ -259,8 +261,7 @@ i {
   
   display: grid;
   grid-template-rows : 20% 15% 65%;
-  padding-right: 2.4vw;
-/*   background-color: yellow; */
+  background-color: yellow;
 }
 
 /* text - right */
