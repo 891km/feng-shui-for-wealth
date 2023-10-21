@@ -24,8 +24,7 @@
 }
 
 :root {
-  --pict_width: 64px;
-/*   --pict_width: 76px; */
+  --pict_width: 68px;
   --ctl_width :54px;
   --popup_width: 550px;
 }
@@ -204,7 +203,7 @@ i {
 #info-box {
   opacity: 0; 
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 32% 68%;
   position: fixed;
   bottom: 10px;
   left: 50%;
@@ -212,7 +211,7 @@ i {
   width: calc(100vw - 20px);
   height: 32vh;
   color: black;
-  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,1)); 
+  background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,1)); 
   border-radius: 8px;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
@@ -226,11 +225,11 @@ i {
 #info-left {
   display: inline-block;
   left: 0;
-  margin: 20px;
-  width: calc(100% - 40px);
+  margin: 20px 30px;
+  width: calc(100% - 60px);
   height: calc(100% - 40px);
   overflow: scroll;
-  background-color: yellow;
+/*   background-color: yellow; */
 }
 
 .adress {
@@ -269,10 +268,11 @@ i {
 
 #info-right {
   text-align: left;
-  margin: 20px;
-  width: calc(100% - 40px);
+  margin: 20px 30px;
+  width: calc(100% - 60px);
   display: grid;
-  grid-template-rows : 20% 15% 65%;
+  grid-template-rows : 15% 20% 65%;
+/*   background-color: yellow; */
 }
 
 /* text - right */
@@ -321,6 +321,14 @@ i {
 
 
 /*맵박스 로고 가리기*/
+.mapbox-attribution-container {
+  bottom: -1000;
+  right: 0;
+  position: absolute;
+  display: block;
+  margin: 0 10px 5px;
+}
+
 .mapbox-logo { 
   display: none; 
 }
