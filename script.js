@@ -496,5 +496,5 @@ infoBtn.addEventListener("click", function() {
 
 infoXBtn.addEventListener("click", function() {
   const popupWidth = getComputedStyle(document.documentElement).getPropertyValue('--popup_width');  
-  document.getElementById("info-popup").style.right = popupWidth;
+  document.getElementById("info-popup").style.right = -1.5 * parseInt(popupWidth) + "px";
 });

@@ -41,15 +41,15 @@ body {
 }
 
 #header {
-  position: fixed;
-  display: flex;
-  align-items: center;
   z-index: 100;  
+  position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: auto;
-  margin-top: 70px;
+  padding-top: 70px;
   background-color: yellow;
 }
 
@@ -97,7 +97,7 @@ body {
   z-index: 1000;
   display: block;
   position: fixed;
-  right: calc(-1 * var(--popup_width));
+  right: calc(-1.5 * var(--popup_width));
   padding-top: 50px;
   width: var(--popup_width);
   height: 100vh;
@@ -105,7 +105,7 @@ body {
   background-color: white;
   box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
   overflow: scroll;
-  visibility: hidden;
+  transition: right 0.6s ease-out;
 }
 
 .popup-h, .popup-p, .popup-img {
