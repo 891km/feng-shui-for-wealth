@@ -50,7 +50,7 @@ body {
   width: 100%;
   height: auto;
   padding-top: 70px;
-  background-color: yellow;
+/*   background-color: yellow; */
 }
 
 #project-title, #project-info {
@@ -181,7 +181,7 @@ i {
   transition: transform .15s ease-in-out;
 }
 
-#ctl_left:hover, #ctl_right:hover, #home:hover, #project-info:hover, #project-title:hover{
+#ctl_left:hover, #ctl_right:hover, #home:hover, #project-info:hover, #project-title:hover, #popup-x:hover {
   cursor: pointer !important;
 }
 
@@ -199,6 +199,11 @@ i {
   height: 100% !important; 
   background-color : #ffffff;
   z-index: 0;
+}
+
+.bottom {
+  position: fixed;
+  width: 100%;
 }
 
 #info-box {
