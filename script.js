@@ -56,7 +56,8 @@ mapboxgl.accessToken =
 const map = new mapboxgl.Map({
   container: "map", // id
   style: "mapbox://styles/891km/clmr9ohkz01yj01r64l03bouv/draft",
-  center: [127.063, 37.447],
+  attributionControl: false,
+  center: [127.063, 37.46],
   zoom: 11.1,
   minZoom: 10.3,
   pitch: 64.5,
@@ -300,7 +301,7 @@ function setHome() {
   } 
 
   map.flyTo({
-    center: [127.063, 37.447],
+    center: [127.063, 37.46],
     zoom: 11.1,
     minZoom: 10.3,
     pitch: 64.5,
