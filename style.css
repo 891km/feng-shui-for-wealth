@@ -94,6 +94,33 @@ body {
   transform: scale(1.1);
 }
 
+#info-popup {
+  z-index: 1000;
+  display: grid;
+  position: fixed;
+  right: 0;
+  padding: auto;
+  width: 200px;
+  height: 100vh;
+  background-color: grey;
+}
+
+.popup-png {
+  margin: 20px;
+  width: 90%;
+  height: auto;
+}
+
+.popup-h {
+  margin: 20px;
+  width: 90%;
+  height: auto;
+}
+.popup-p {
+  margin: 20px;
+  width: 90%;
+  height: auto;
+}
 
 
 #ctl_left, #ctl_right {
@@ -248,22 +275,6 @@ i {
   word-break: keep-all;
 }
 
-#info-popup {
-  z-index: 1000;
-  position: fixed;
-  right: 0;
-  display: inline-block;
-  padding: auto;
-  width: 200px;
-  height: 100vh;
-  background-color: black;
-}
-
-.info-png {
-  margin: 20px;
-  width: 90%;
-  height: auto;
-}
 
 
 /*맵박스 로고 가리기*/
