@@ -24,7 +24,8 @@
 }
 
 :root {
-  --pict_width: 76px;
+  --pict_width: 64px;
+/*   --pict_width: 76px; */
   --ctl_width :54px;
   --popup_width: 550px;
 }
