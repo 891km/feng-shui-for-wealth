@@ -96,16 +96,13 @@ body {
 
 #info-popup {
   z-index: 1000;
-  display: inline-block;
+  display: block;
   justify-content: center;
   align-items: center;
-  position: relative;
-  margin: auto;
-  padding: auto;
-  top: 0;
+  position: fixed;
   right: 0;
   width: 500px;
-  height: 90vh;
+  height: 100vh;
   background-color: white;
   box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
 }
@@ -113,7 +110,7 @@ body {
 .popup-png {
   position: relative;
   margin: 0 auto;
-  width: 70%;
+  width: 80%;
   height: auto;
   background-color: orange;
 }
@@ -127,7 +124,7 @@ body {
 }
 .popup-p {
   position: relative;
-/*   margin: 20px; */
+  margin: 0 auto;
   width: 90%;
   height: auto;
   background-color: orange;
