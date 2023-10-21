@@ -94,6 +94,8 @@ body {
   transform: scale(1.1);
 }
 
+
+
 #ctl_left, #ctl_right {
   position: fixed;
   z-index: 110;
@@ -247,13 +249,14 @@ i {
 }
 
 #info-popup {
+  z-index: 1000;
   position: fixed;
   right: 0;
   display: inline-block;
   padding: auto;
   width: 200px;
-  height: auto;
-  background-color: white;
+  height: 100vh;
+  background-color: black;
 }
 
 .info-png {
@@ -261,6 +264,7 @@ i {
   width: 90%;
   height: auto;
 }
+
 
 /*맵박스 로고 가리기*/
 .mapbox-logo { 

@@ -489,11 +489,3 @@ titleBtn.addEventListener("click", function() {
   setHome();
 });
 
-infoBtn.addEventListener("mouseenter", function(e) {
-  // new mapboxgl.Popup({ closeOnClick:  false, offset: 10 })
-  //   .setLngLat(e.latlan)
-  //   .setHTML(`<h3>소개내용</h3>`)
-  //   .addTo(map);
-  
-});
-
