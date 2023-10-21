@@ -445,7 +445,7 @@ function loadTargetInfo(target) {
   var lat = target.properties.Latitude;
   var long = target.properties.Longitude;
   // var coord = [long, lat+0.005];
-  var coord = [long, lat];
+  var coord = [long, lat+0.002];
   var zoom = target.properties.Zoom;
   var pitch = target.properties.Pitch;
   var bearing = target.properties.Bearing;

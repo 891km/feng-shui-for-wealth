@@ -203,7 +203,7 @@ i {
 
 #info-box {
   opacity: 0; 
-  overflow: hidden;
+/*   overflow: hidden; */
   display: grid;
   grid-template-columns: 35% 65%;
   position: fixed;
@@ -228,40 +228,45 @@ i {
 
 #info-left {
   display: inline-block;
+  left: 0;
   margin: 20px;
-/*   display: grid;
-  grid-template-rows : 10% 25% 65%; */
-
+  width: calc(100% - 20px);
+  height: calc(100% - 65px);
+  background-color: yellow;
   overflow: hidden;
-  background-color: green;
   z-index: 900;
 }
 
 #address_sigu {
+  position: relative;
   padding-bottom: 5px;
   font-size: 1.2rem;
   word-break: keep-all;
 }
 
 #address_dong {
+  position: relative;
   padding-bottom: 20px;
   font-size: 3.4rem;
   word-break: keep-all;
 }
 
 #address_des {
-  font-size: 1.1rem;
+  position: relative;
+  font-size: 1rem;
+  left: 0;
+  width: 90%;
+  pointer-events: auto;
   overflow: scroll;
-/*   word-break: keep-all; */
-  background-color: red;
+  background-color: orange;
 }
 
 #info-right {
   text-align: left;
-  
+  margin: 20px;
+  width: calc(100% - 40px);
   display: grid;
   grid-template-rows : 20% 15% 65%;
-  background-color: yellow;
 }
 
 /* text - right */
