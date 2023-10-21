@@ -375,8 +375,8 @@ function loadTargetInfo(target) {
       'symbol-placement': 'point',
       'text-field': ['get', 'Name'],
       'text-size': 15,
-      'text-offset': [0, 500],
-      'text-anchor': 'top' 
+      'text-offset': [0, -10],
+      'text-anchor': 'bottom' 
     },
     paint: {
       "text-color": "rgba(0, 0, 0, 1)",
@@ -391,7 +391,7 @@ function loadTargetInfo(target) {
     'layout': {
       'icon-allow-overlap': true,
       'icon-image': 'nature_icon',
-      'icon-size': 0.3,
+      'icon-size': 0.26,
       'icon-anchor': 'bottom',
       'icon-offset': [0, 0]
     }

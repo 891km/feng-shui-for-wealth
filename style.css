@@ -100,7 +100,6 @@ body {
   padding-top: 50px;
   width: var(--popup_width);
   height: 100vh;
-/*   text-align: center; */
   background-color: white;
   box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
   overflow: scroll;
@@ -211,7 +210,8 @@ i {
   width: calc(100vw - 20px);
   height: 32vh;
   color: black;
-  background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,1)); 
+  background-color: rgba(255,255,255,0.8);
+/*   background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,1));  */
   border-radius: 8px;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
