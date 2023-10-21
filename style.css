@@ -100,9 +100,10 @@ body {
   position: fixed;
   right: 0;
   padding: auto;
-  width: 200px;
+  width: 50vw;
   height: 100vh;
-  background-color: grey;
+  background-color: white;
+  box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .popup-png {
