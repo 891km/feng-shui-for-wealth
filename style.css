@@ -232,45 +232,43 @@ i {
   margin: 20px;
   width: calc(100% - 20px);
   background-color: yellow;
-  overflow: auto;
-  z-index: 900;
+  overflow: scroll;
+}
+
+.adress {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+#address_sigu, #address_dong {
+  position: relative;
+  width: 100%;
+  height: auto;
+  word-break: keep-all;
 }
 
 #address_sigu {
-  position: sticky;
-  top: 0;
   padding-bottom: 5px;
   font-size: 1.2rem;
-  word-break: keep-all;
-  overflow: hidden;
-  background-color: orange;
 }
 
 #address_dong {
-  position: sticky;
-  top: 0;
   padding-bottom: 20px;
   font-size: 3.4rem;
-  word-break: keep-all;
-  overflow: hidden;
-  background-color: orange;
 }
 
 #address_des {
-  position: sticky;
-  top: 0;
+  position: relative;
+  top: 50%;
   font-size: 1rem;
   width: 90%;
   pointer-events: auto;
   overflow: scroll;
-/*   background-color: orange; */
+  background-color: orange;
 }
-
-/* #address_des.scrollable {
-  position: sticky;
-  top: 0;
-  background-color: yellow;
-} */
 
 #info-right {
   text-align: left;
