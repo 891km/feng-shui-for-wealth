@@ -99,6 +99,7 @@ body {
   display: block;
   position: fixed;
   right: 0;
+  padding-top: 50px;
   width: 500px;
   height: 100vh;
   text-align: center;
@@ -107,13 +108,26 @@ body {
 }
 
 #popup-x {
-  transform: scale(1.2);
+  position: absolute;
+  right: 0;
+  margin-right: 2.5vw;
   width: 20px;
   height: 20px;
+  transform: scale(1.2);
+  transition: transform 0.1s ease-in-out;
 }
 
 #popup-x:hover {
-    transform: scale(1.4);
+  transform: scale(1.4);
+}
+
+.popup-h {
+  position: relative;
+  margin: 50px auto;
+  width: 90%;
+  height: auto;
+  background-color: orange;
+  text-align: left;
 }
 
 .popup-png {
@@ -123,14 +137,6 @@ body {
   background-color: white;
 }
 
-.popup-h {
-  position: relative;
-  margin: 0 auto;
-  width: 90%;
-  height: auto;
-  background-color: orange;
-  text-align: left;
-}
 .popup-p {
   position: relative;
   margin: 0 auto;
