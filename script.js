@@ -261,6 +261,7 @@ var leftBtn = document.getElementById("ctl_left");
 var rightBtn = document.getElementById("ctl_right");
 var titleBtn = document.getElementById("project-title");
 var infoBtn = document.getElementById("project-info");
+var infoXBtn = document.getElementById("popup-x");
 var currentIndex = 0;
 var target;
 
@@ -489,3 +490,11 @@ titleBtn.addEventListener("click", function() {
   setHome();
 });
 
+infoBtn.addEventListener("click", function() {
+  document.getElementById("info-popup").style.right = "0";
+});
+
+infoXBtn.addEventListener("click", function() {
+  const popupWidth = getComputedStyle(document.documentElement).getPropertyValue('--popup_width');  
+  document.getElementById("info-popup").style.right = popupWidth;
+});

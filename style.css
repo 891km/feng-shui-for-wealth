@@ -23,6 +23,11 @@
   font-style: normal; 
 }
 
+:root {
+  --pict_width: 76px;
+  --ctl_width :54px;
+  --popup_width: 550px;
+}
 
 html,
 body {
@@ -34,13 +39,6 @@ body {
   float: right;
   overflow: hidden;
 }
-
-:root {
-  --pict_width: 76px;
-  --ctl_width :54px;
-  --popup_width: 550px;
-}
-
 
 #header {
   position: fixed;
@@ -107,6 +105,7 @@ body {
   background-color: white;
   box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
   overflow: scroll;
+  visibility: hidden;
 }
 
 .popup-h, .popup-p, .popup-img {
