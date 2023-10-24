@@ -1,9 +1,3 @@
-let fontLoaded = false;
-
-
-
-
-
 // 전역 변수
 let hoveredPolygonId = null; 
 
@@ -283,47 +277,40 @@ function setHome() {
   });    
 }
 
-function loadFont() {
-  Typekit.load({
-    async: false,
-    active: function() {
-      fontLoaded = true;
-      console.log(fontLoaded);
-    },
-  });
-}
-
 function targetByIndex(currentIndex) {    
   const targetFeature = features_polygon.find(feature => feature.properties.Index === currentIndex);
   return targetFeature;
 }
 
 function loadTargetInfo(target) {  
-  
-  console.log(fontLoaded);
-  
-  
-  
+
   // reset    
   resetLayer();
   hoveredPolygonId = target.id;
   document.getElementById("profile_grid").innerHTML = '';
-
   
-  if(fontLoaded == true) {
-    // elem visibility
-    document.getElementById("info-box").style.opacity = "100";
-    document.getElementById("ctl_left").style.visibility = "visible"; 
-    document.getElementById("ctl_right").style.visibility = "visible";
+  // elem visibility
+  document.getElementById("info-box").style.opacity = "100";
+  document.getElementById("ctl_left").style.visibility = "visible"; 
+  document.getElementById("ctl_right").style.visibility = "visible";
+  document.getElementById("address_sigu").innerHTML =
+    target.properties.Address_si + " " + target.properties.Address_gu;
+  document.getElementById("address_dong").innerHTML =
+    target.properties.Address_dong;
+  document.getElementById("address_des").innerHTML =
+    target.properties.Info;
 
-    // info-box content
-    document.getElementById("address_sigu").innerHTML =
-      target.properties.Address_si + " " + target.properties.Address_gu;
-    document.getElementById("address_dong").innerHTML =
-      target.properties.Address_dong;
-    document.getElementById("address_des").innerHTML =
-      target.properties.Info;
-  }
+  Typekit.load({
+    async: false,
+    loading: function() {
+      // document.getElementById("address_dong").style.visibility = "hidden";
+    },
+    active: function() {
+      document.getElementById("address_dong").style.visibility = "visible";
+    }
+  });
+
+
 
 
   // profile
@@ -463,7 +450,6 @@ map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
 
-  loadFont();
   loadTargetInfo(target);
 });
 
@@ -471,7 +457,6 @@ leftBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
 
-  loadFont();
   loadTargetInfo(target);
 });
 
@@ -479,7 +464,6 @@ rightBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
 
-  loadFont();
   loadTargetInfo(target); 
 });
 
