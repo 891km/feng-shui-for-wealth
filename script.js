@@ -65,13 +65,13 @@ const map = new mapboxgl.Map({
 });
 
 map.on('pitch', function() {
-  console.log("zoom:", map.getZoom(), "pitch:", map.getPitch(), "bearing:", map.getBearing());
+  console.log("zoom:", Math.round(map.getZoom(),2), "pitch:", Math.round(map.getPitch(),2), "bearing:", Math.round(map.getBearing(),2));
 });
 map.on('zoom', function() {
-  console.log("zoom:", map.getZoom(), "pitch:", map.getPitch(), "bearing:", map.getBearing());
+  console.log("zoom:", Math.round(map.getZoom(),2), "pitch:", Math.round(map.getPitch(),2), "bearing:", Math.round(map.getBearing());
 });
 map.on('bearing', function() {
-  console.log("zoom:", map.getZoom(), "pitch:", map.getPitch(), "bearing:", map.getBearing());
+  console.log("zoom:", Math.round(map.getZoom(),2), "pitch:", Math.round(map.getPitch(),2), "bearing:", map.getBearing());
 });
 
 function initialSetLayers() {
@@ -252,7 +252,6 @@ map.on("load", () => {
         { hover: false }
       );        
     }    
-    
     hoveredPolygonId = null;
   });  
 });
@@ -271,33 +270,8 @@ function setHome() {
   document.getElementById("project-title").style.opacity = "100";
   document.getElementById("ctl_left").style.visibility = "hidden"; 
   document.getElementById("ctl_right").style.visibility = "hidden";
-
-  if (!map.getLayer('dong_icon')) {
-    map.addLayer({
-      'id': 'dong_icon',
-      'type': 'symbol',
-      'source': 'dong_point',
-      'layout': {
-        'icon-allow-overlap': [
-          'step',
-          ['zoom'],
-          false, // 0부터 시작하는 zoom 레벨에서는 표시
-          11.9, true
-        ],
-        'icon-image': 'dong_icon',
-        'icon-size': 0.06,
-        'icon-size': {
-          type: 'exponential',
-            stops: [ 
-              [10, 0.03],
-              [24, 0.4]
-            ]
-          },
-        'icon-anchor': 'top',
-        'icon-offset': [0, -500]
-      }
-    });
-  } 
+  
+  initialSetLayers();
 
   map.flyTo({
     center: [127.063, 37.46],
@@ -396,6 +370,7 @@ function loadTargetInfo(target) {
     }
   });  
 
+  
   // only target dong_point (label)
   map.setLayoutProperty('dong_point', 'text-offset', [
     'case',
@@ -407,7 +382,7 @@ function loadTargetInfo(target) {
   map.setPaintProperty('dong_point', 'text-opacity', [
     'case',
     ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
-    0.3, 1 // target feature
+    0.4, 1 // target feature
   ]);
 
   map.setLayoutProperty('dong_point', 'text-font', [
@@ -416,6 +391,8 @@ function loadTargetInfo(target) {
     ['literal', ['source-han-sans-korean', 'regular']],
     ['literal', ['source-han-sans-korean', 'bold']] // target feature
   ]);
+  
+  
   
   const targetDongIcon = {
     type: 'FeatureCollection',
