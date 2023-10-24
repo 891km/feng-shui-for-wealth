@@ -70,7 +70,6 @@ body {
   z-index: 10;
   color: black;
   transition: transform .15s ease-in-out;
-/*   background-color: rgba(255,255,255,0.5); */
 }
 
 #project-title:hover {

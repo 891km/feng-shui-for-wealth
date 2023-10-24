@@ -168,12 +168,13 @@ function initialSetLayers() {
     type: "fill",
     source: "dong_polygon",
     paint: {
-      "fill-color": "rgb(59, 64, 84)",
+      "fill-color": "#2F364E",
+      // "fill-color": "rgb(59, 64, 84)",
       'fill-opacity': [
         'case', 
         ['boolean', ['feature-state', 'hover'], false],
         0.9, // hover : true
-        0.5 // hover: false
+        0.6 // hover: false
       ]
     } 
   }); 
@@ -187,7 +188,8 @@ function initialSetLayers() {
       'source': 'dong_polygon',
       'layout': {},
       'paint': {
-      'line-color': "rgba(59, 64, 84, 0.8)",
+      'line-color': "rgba(59, 64, 84, 1)",
+      // 'line-color': "rgba(59, 64, 84, 0.8)",
       'line-width': 1
       }
     });
