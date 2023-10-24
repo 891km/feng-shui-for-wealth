@@ -26,10 +26,6 @@
   font-style: normal; 
 }
 
-#address_dong {
-  visibility: hidden;
-}
-
 :root {
   --pict_width: 68px;
   --ctl_width :54px;

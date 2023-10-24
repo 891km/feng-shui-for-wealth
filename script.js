@@ -1,3 +1,9 @@
+let fontLoaded = false;
+
+
+
+
+
 // 전역 변수
 let hoveredPolygonId = null; 
 
@@ -277,6 +283,16 @@ function setHome() {
   });    
 }
 
+function loadFont() {
+  Typekit.load({
+    async: false,
+    active: function() {
+      fontLoaded = true;
+      console.log(fontLoaded);
+    },
+  });
+}
+
 function targetByIndex(currentIndex) {    
   const targetFeature = features_polygon.find(feature => feature.properties.Index === currentIndex);
   return targetFeature;
@@ -284,35 +300,31 @@ function targetByIndex(currentIndex) {
 
 function loadTargetInfo(target) {  
   
-  document.getElementById("address_dong").style.visibility = "hidden"; 
+  console.log(fontLoaded);
   
-  try {
-    Typekit.load({
-      async: true,
-      active: function() {
-        console.log("true");
-        document.getElementById('address_dong').style.visibility = "visible";
-      },
-    });
-  } catch (e) {}
+  
   
   // reset    
   resetLayer();
   hoveredPolygonId = target.id;
   document.getElementById("profile_grid").innerHTML = '';
 
-  // elem visibility
-  document.getElementById("info-box").style.opacity = "100";
-  document.getElementById("ctl_left").style.visibility = "visible"; 
-  document.getElementById("ctl_right").style.visibility = "visible";
+  
+  if(fontLoaded == true) {
+    // elem visibility
+    document.getElementById("info-box").style.opacity = "100";
+    document.getElementById("ctl_left").style.visibility = "visible"; 
+    document.getElementById("ctl_right").style.visibility = "visible";
 
-  // info-box content
-  document.getElementById("address_sigu").innerHTML =
-    target.properties.Address_si + " " + target.properties.Address_gu;
-  document.getElementById("address_dong").innerHTML =
-    target.properties.Address_dong;
-  document.getElementById("address_des").innerHTML =
-    target.properties.Info;
+    // info-box content
+    document.getElementById("address_sigu").innerHTML =
+      target.properties.Address_si + " " + target.properties.Address_gu;
+    document.getElementById("address_dong").innerHTML =
+      target.properties.Address_dong;
+    document.getElementById("address_des").innerHTML =
+      target.properties.Info;
+  }
+
 
   // profile
   const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
@@ -451,6 +463,7 @@ map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
 
+  loadFont();
   loadTargetInfo(target);
 });
 
@@ -458,6 +471,7 @@ leftBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex - 1 + 15) % 15);
   target = targetByIndex(currentIndex);
 
+  loadFont();
   loadTargetInfo(target);
 });
 
@@ -465,6 +479,7 @@ rightBtn.addEventListener("click", function() {
   currentIndex = ((currentIndex + 1 + 15) % 15);
   target = targetByIndex(currentIndex);
 
+  loadFont();
   loadTargetInfo(target); 
 });
 
