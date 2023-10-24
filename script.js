@@ -441,7 +441,8 @@ function loadTargetInfo(target) {
     duration: 2000,
     essential: true
   }); 
-
+  
+  console.log(map.getBearing())
   };
 
 map.on("click", "dong_polygon", e => {
