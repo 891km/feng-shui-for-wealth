@@ -1,5 +1,4 @@
 // 전역 변수
-let fontLoaded = false;
 let hoveredPolygonId = null; 
 
 let features_point;
@@ -278,11 +277,6 @@ function setHome() {
   });    
 }
 
-
-map.on('style.load', () => {
-  fontLoaded = true;
-});
-
 function targetByIndex(currentIndex) {    
   const targetFeature = features_polygon.find(feature => feature.properties.Index === currentIndex);
   return targetFeature;
@@ -291,30 +285,21 @@ function targetByIndex(currentIndex) {
 function loadTargetInfo(target) {
   // reset    
   resetLayer();
-  
-  function setTargetInfo(target) {
-    hoveredPolygonId = target.id;
-    document.getElementById("profile_grid").innerHTML = '';
+  hoveredPolygonId = target.id;
+  document.getElementById("profile_grid").innerHTML = '';
 
-    // elem visibility
-    document.getElementById("info-box").style.opacity = "100";
-    document.getElementById("ctl_left").style.visibility = "visible"; 
-    document.getElementById("ctl_right").style.visibility = "visible";
+  // elem visibility
+  document.getElementById("info-box").style.opacity = "100";
+  document.getElementById("ctl_left").style.visibility = "visible"; 
+  document.getElementById("ctl_right").style.visibility = "visible";
 
-    // info-box content
-    document.getElementById("address_sigu").innerHTML =
-      target.properties.Address_si + " " + target.properties.Address_gu;
-    document.getElementById("address_dong").innerHTML =
-      target.properties.Address_dong;
-    document.getElementById("address_des").innerHTML =
-      target.properties.Info;
-  }
-  
-  
-  if(fontLoaded) {
-    setTargetInfo(target);
-    console.log(fontLoaded);
-  }
+  // info-box content
+  document.getElementById("address_sigu").innerHTML =
+    target.properties.Address_si + " " + target.properties.Address_gu;
+  document.getElementById("address_dong").innerHTML =
+    target.properties.Address_dong;
+  document.getElementById("address_des").innerHTML =
+    target.properties.Info;
 
   // profile
   const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
@@ -429,8 +414,6 @@ function loadTargetInfo(target) {
     ['literal', ['source-han-sans-korean', 'regular']],
     ['literal', ['source-han-sans-korean', 'bold']] // target feature
   ]);
-  
-
 
   // target coord
   var lat = target.properties.Latitude;
