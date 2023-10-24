@@ -1,17 +1,3 @@
-  try {
-    Typekit.load({
-      async: true,
-      active: function() {
-        // 웹 폰트가 로드된 후 실행할 작업을 수행합니다.
-        // 예: 특정 요소에 웹 폰트 적용
-        document.getElementById('your-text-element-id').style.fontFamily = 'YourAdobeFont';
-      },
-    });
-  } catch (e) {}
-
-
-
-
 // 전역 변수
 let hoveredPolygonId = null; 
 
@@ -297,6 +283,19 @@ function targetByIndex(currentIndex) {
 }
 
 function loadTargetInfo(target) {  
+  
+  document.getElementById("address_dong").style.visibility = "hidden"; 
+  
+  try {
+    Typekit.load({
+      async: true,
+      active: function() {
+        console.log("true");
+        document.getElementById('address_dong').style.visibility = "visible";
+      },
+    });
+  } catch (e) {}
+  
   // reset    
   resetLayer();
   hoveredPolygonId = target.id;

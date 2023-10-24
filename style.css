@@ -9,7 +9,6 @@
 
 * {
   font-family: 'Noto Sans KR', sans-serif;
-/*   font-family: "source-han-sans-korean", sans-serif; */
   font-weight: 400;
   font-style: normal;
   
@@ -29,10 +28,6 @@
 
 #address_dong {
   visibility: hidden;
-}
-
-.wf-active #address_dong {
-  visibility: visible;
 }
 
 :root {
