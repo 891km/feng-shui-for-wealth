@@ -137,7 +137,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 27.0072,37.5444 ]
+       "coordinates":  [ 127.0072,37.5444 ]
     },
     "properties": {
     "Address_dong":"한남동",
