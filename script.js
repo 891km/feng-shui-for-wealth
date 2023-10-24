@@ -135,7 +135,7 @@ function initialSetLayers() {
           'step',
           ['zoom'],
           false, // 0부터 시작하는 zoom 레벨에서는 표시
-          11.9, true
+          11.5, true
         ],
         'icon-image': 'dong_icon',
         'icon-size': 0.06,
