@@ -284,8 +284,17 @@ function targetByIndex(currentIndex) {
 
 function loadTargetSetting(target) {
   
+  
+}
+
+function loadTargetInfo(target) {  
+
+  // reset    
+  resetLayer();
+  hoveredPolygonId = target.id;
+  document.getElementById("profile_grid").innerHTML = '';
+  
   // elem visibility
-  document.getElementById("info-box").style.opacity = "100";
   document.getElementById("ctl_left").style.visibility = "visible"; 
   document.getElementById("ctl_right").style.visibility = "visible";
   
@@ -294,10 +303,20 @@ function loadTargetSetting(target) {
   document.getElementById("address_dong").innerHTML =
     target.properties.Address_dong;
   document.getElementById("address_des").innerHTML =
-    target.properties.Info;  
-  
-  
-  // profiles
+    target.properties.Info;
+  document.getElementById("info-box").style.opacity = "100";
+
+  // document.getElementById("info-left").style.visibility = "hidden";
+  // document.getElementById("info-right").style.visibility = "hidden";
+  // Typekit.load({
+  //   async: true,
+  //   active: function() {
+  //     document.getElementById("info-left").style.visibility = "visible";
+  //     document.getElementById("info-right").style.visibility = "visible";
+  //   }
+  // });
+
+  // profile
   const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
   var parentDiv = document.getElementById("profile_grid");
   for (let i = 0; i < targetProfiles.length; i++) {
@@ -317,15 +336,6 @@ function loadTargetSetting(target) {
 
     parentDiv.appendChild(profileDiv);      
   }    
-}
-
-function loadTargetInfo(target) {  
-
-  // reset    
-  resetLayer();
-  hoveredPolygonId = target.id;
-  document.getElementById("profile_grid").innerHTML = '';
-  
 
   // target nauture label & icon
   const targetNatures = {
@@ -443,13 +453,6 @@ map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
 
-  Typekit.load({
-    async: false,
-    active: function() {
-      loadTargetInfo
-    }
-  });
-  
   loadTargetInfo(target);
 });
 
