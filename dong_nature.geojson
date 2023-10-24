@@ -5,11 +5,23 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
+       "coordinates":  [ 126.971,37.6587 ]
+    },
+    "properties": {
+    "Address_dong":"평창동",
+    "Name":"북한산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
        "coordinates":  [ 126.9745,37.6282 ]
     },
     "properties": {
     "Address_dong":"평창동",
-    "Name":"보현봉",
+    "Name":"보현봉(북한산)",
     "Category":"mtn_main"
     }
   },
@@ -46,6 +58,486 @@
     "properties": {
     "Address_dong":"평창동",
     "Name":"수구",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9797,37.6028 ]
+    },
+    "properties": {
+    "Address_dong":"성북동",
+    "Name":"구진봉",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.006,37.6021 ]
+    },
+    "properties": {
+    "Address_dong":"성북동",
+    "Name":"정릉",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9422,37.6414 ]
+    },
+    "properties": {
+    "Address_dong":"성북동",
+    "Name":"응봉능선",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0067,37.5881 ]
+    },
+    "properties": {
+    "Address_dong":"성북동",
+    "Name":"수구",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9887,37.5501 ]
+    },
+    "properties": {
+    "Address_dong":"장충동",
+    "Name":"남산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9887,37.5501 ]
+    },
+    "properties": {
+    "Address_dong":"한남동",
+    "Name":"남산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 27.0072,37.5444 ]
+    },
+    "properties": {
+    "Address_dong":"한남동",
+    "Name":"매봉",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9832,37.529 ]
+    },
+    "properties": {
+    "Address_dong":"한남동",
+    "Name":"둔지산",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0128,37.5272 ]
+    },
+    "properties": {
+    "Address_dong":"한남동",
+    "Name":"한강",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9887,37.5501 ]
+    },
+    "properties": {
+    "Address_dong":"이태원동",
+    "Name":"남산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0027,37.5197 ]
+    },
+    "properties": {
+    "Address_dong":"이태원동",
+    "Name":"한강",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9549,37.5076 ]
+    },
+    "properties": {
+    "Address_dong":"청담동",
+    "Name":"수도산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0528,37.5313 ]
+    },
+    "properties": {
+    "Address_dong":"청담동",
+    "Name":"한강",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0346,37.548034 ]
+    },
+    "properties": {
+    "Address_dong":"청담동",
+    "Name":"중랑천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.1147,37.5097 ]
+    },
+    "properties": {
+    "Address_dong":"신천동",
+    "Name":"남한산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.1094,37.5238 ]
+    },
+    "properties": {
+    "Address_dong":"신천동",
+    "Name":"성내천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0679,37.5148 ]
+    },
+    "properties": {
+    "Address_dong":"신천동",
+    "Name":"탄천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0905,37.5241 ]
+    },
+    "properties": {
+    "Address_dong":"신천동",
+    "Name":"한강",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9808,37.4821 ]
+    },
+    "properties": {
+    "Address_dong":"논현동",
+    "Name":"우면산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0252,37.5155 ]
+    },
+    "properties": {
+    "Address_dong":"논현동",
+    "Name":"용요봉",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0252,37.5375 ]
+    },
+    "properties": {
+    "Address_dong":"논현동",
+    "Name":"한강",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9808,37.4821 ]
+    },
+    "properties": {
+    "Address_dong":"반포동",
+    "Name":"우면산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0555,37.4671 ]
+    },
+    "properties": {
+    "Address_dong":"반포동",
+    "Name":"구룡산",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9809,37.4494 ]
+    },
+    "properties": {
+    "Address_dong":"반포동",
+    "Name":"관악산",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9874,37.4986 ]
+    },
+    "properties": {
+    "Address_dong":"반포동",
+    "Name":"반포천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9808,37.4821 ]
+    },
+    "properties": {
+    "Address_dong":"대치동",
+    "Name":"우면산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0689,37.5083 ]
+    },
+    "properties": {
+    "Address_dong":"대치동",
+    "Name":"탄천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0695,37.4915 ]
+    },
+    "properties": {
+    "Address_dong":"대치동",
+    "Name":"양재천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9808,37.4821 ]
+    },
+    "properties": {
+    "Address_dong":"서초동",
+    "Name":"우면산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9968,37.4881 ]
+    },
+    "properties": {
+    "Address_dong":"서초동",
+    "Name":"서리풀공원",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0026,37.4939 ]
+    },
+    "properties": {
+    "Address_dong":"서초동",
+    "Name":"몽마르뜨공원",
+    "Category":"mtn_sub"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.07012,37.47266 ]
+    },
+    "properties": {
+    "Address_dong":"삼성동",
+    "Name":"대모산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.061,37.5275 ]
+    },
+    "properties": {
+    "Address_dong":"삼성동",
+    "Name":"한강",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0647,37.5163 ]
+    },
+    "properties": {
+    "Address_dong":"삼성동",
+    "Name":"탄천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 126.9808,37.4821 ]
+    },
+    "properties": {
+    "Address_dong":"우면동",
+    "Name":"우면산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0255,37.4582 ]
+    },
+    "properties": {
+    "Address_dong":"우면동",
+    "Name":"양재천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0423,37.4225 ]
+    },
+    "properties": {
+    "Address_dong":"하산운동",
+    "Name":"청계산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.0956,37.3879 ]
+    },
+    "properties": {
+    "Address_dong":"하산운동",
+    "Name":"운중천",
+    "Category":"river"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.1219,37.3517 ]
+    },
+    "properties": {
+    "Address_dong":"구미동",
+    "Name":"불곡산",
+    "Category":"mtn_main"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 127.1178,37.3416 ]
+    },
+    "properties": {
+    "Address_dong":"구미동",
+    "Name":"탄천",
     "Category":"river"
     }
   }
