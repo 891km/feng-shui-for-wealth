@@ -399,12 +399,18 @@ function loadTargetInfo(target) {
     }
   });  
 
-  // only target dong_icon
+  // only target dong_point (label)
   map.setLayoutProperty('dong_point', 'text-offset', [
     'case',
     ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
     ['literal', [0, -1]],
     ['literal', [0, -4]] // target feature
+  ]);
+  
+  map.setPaintProperty('dong_point', 'text-opacity', [
+    'case',
+    ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
+    0, 1 // target feature
   ]);
 
   map.setLayoutProperty('dong_point', 'text-font', [
@@ -413,7 +419,7 @@ function loadTargetInfo(target) {
     ['literal', ['source-han-sans-korean', 'regular']],
     ['literal', ['source-han-sans-korean', 'bold']] // target feature
   ]);
-
+  
   const targetDongIcon = {
     type: 'FeatureCollection',
     features: features_point.filter(feature => feature.properties.Address_dong === target.properties.Address_dong)

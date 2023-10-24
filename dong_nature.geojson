@@ -401,7 +401,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.07012,37.4749 ]
+       "coordinates":  [ 127.0783,37.4749 ]
     },
     "properties": {
     "Address_dong":"삼성동",
