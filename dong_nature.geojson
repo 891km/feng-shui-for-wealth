@@ -5,23 +5,11 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.971,37.6587 ]
-    },
-    "properties": {
-    "Address_dong":"평창동",
-    "Name":"북한산",
-    "Category":"mtn_main"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
        "coordinates":  [ 126.9745,37.6282 ]
     },
     "properties": {
     "Address_dong":"평창동",
-    "Name":"보현봉(북한산)",
+    "Name":"보현봉",
     "Category":"mtn_main"
     }
   },
@@ -65,7 +53,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9797,37.6028 ]
+       "coordinates":  [ 126.9815,37.6018 ]
     },
     "properties": {
     "Address_dong":"성북동",
@@ -77,23 +65,11 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.006,37.6021 ]
+       "coordinates":  [ 126.9983,37.6017 ]
     },
     "properties": {
     "Address_dong":"성북동",
-    "Name":"정릉",
-    "Category":"mtn_sub"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 126.9422,37.6414 ]
-    },
-    "properties": {
-    "Address_dong":"성북동",
-    "Name":"응봉능선",
+    "Name":"북악산 능선",
     "Category":"mtn_sub"
     }
   },
@@ -113,7 +89,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9887,37.5501 ]
+       "coordinates":  [ 126.9879,37.5517 ]
     },
     "properties": {
     "Address_dong":"장충동",
@@ -125,7 +101,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9887,37.5501 ]
+       "coordinates":  [ 126.9879,37.5517 ]
     },
     "properties": {
     "Address_dong":"한남동",
@@ -137,7 +113,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.0072,37.5444 ]
+       "coordinates":  [ 127.0084,37.5446 ]
     },
     "properties": {
     "Address_dong":"한남동",
@@ -149,7 +125,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9832,37.529 ]
+       "coordinates":  [ 126.9869,37.5308 ]
     },
     "properties": {
     "Address_dong":"한남동",
@@ -173,7 +149,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9887,37.5501 ]
+       "coordinates":  [ 126.9879,37.5517 ]
     },
     "properties": {
     "Address_dong":"이태원동",
@@ -197,7 +173,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9549,37.5076 ]
+       "coordinates":  [ 127.0625, 37.5194 ]
     },
     "properties": {
     "Address_dong":"청담동",
@@ -221,19 +197,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.0346,37.548034 ]
-    },
-    "properties": {
-    "Address_dong":"청담동",
-    "Name":"중랑천",
-    "Category":"river"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 127.1147,37.5097 ]
+       "coordinates":  [ 127.1763,37.4795 ]
     },
     "properties": {
     "Address_dong":"신천동",
@@ -281,7 +245,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9808,37.4821 ]
+       "coordinates":  [ 127.0087,37.4711 ]
     },
     "properties": {
     "Address_dong":"논현동",
@@ -317,7 +281,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9808,37.4821 ]
+       "coordinates":  [ 127.0087,37.4711 ]
     },
     "properties": {
     "Address_dong":"반포동",
@@ -341,7 +305,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9809,37.4494 ]
+       "coordinates":  [ 126.9702,37.4472 ]
     },
     "properties": {
     "Address_dong":"반포동",
@@ -365,7 +329,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9808,37.4821 ]
+       "coordinates":  [ 127.0087,37.4711 ]
     },
     "properties": {
     "Address_dong":"대치동",
@@ -377,7 +341,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.0689,37.5083 ]
+       "coordinates":  [ 127.0683,37.5119 ]
     },
     "properties": {
     "Address_dong":"대치동",
@@ -401,7 +365,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9808,37.4821 ]
+       "coordinates":  [ 127.0087,37.4711 ]
     },
     "properties": {
     "Address_dong":"서초동",
@@ -413,7 +377,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9968,37.4881 ]
+       "coordinates":  [ 127.0009,37.4844 ]
     },
     "properties": {
     "Address_dong":"서초동",
@@ -425,7 +389,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.0026,37.4939 ]
+       "coordinates":  [ 127.004,37.4955 ]
     },
     "properties": {
     "Address_dong":"서초동",
@@ -437,7 +401,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.07012,37.47266 ]
+       "coordinates":  [ 127.07012,37.4749 ]
     },
     "properties": {
     "Address_dong":"삼성동",
@@ -461,7 +425,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.0647,37.5163 ]
+       "coordinates":  [ 127.0683,37.5126 ]
     },
     "properties": {
     "Address_dong":"삼성동",
@@ -521,7 +485,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.1219,37.3517 ]
+       "coordinates":  [ 127.1346,37.3519 ]
     },
     "properties": {
     "Address_dong":"구미동",
