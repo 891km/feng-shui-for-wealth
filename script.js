@@ -360,13 +360,24 @@ function loadTargetInfo(target) {
     }
   });  
 
+
   
   // only target dong_point (label)
   map.setLayoutProperty('dong_point', 'text-offset', [
     'case',
     ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
     ['literal', [0, -1]],
-    ['literal', [0, -4]] // target feature
+    ['case',
+      ['<', ['zoom'], 11],
+      ['literal', [0, -3]],
+      ['case',
+        ['<', ['zoom'], 13],
+        ['literal', [0, -7]],
+        ['literal', [0, -20]]
+      ]
+    ]
+    
+    // ['literal', [0, -4]] // target feature
   ]);
   
   map.setPaintProperty('dong_point', 'text-opacity', [
@@ -431,7 +442,6 @@ function loadTargetInfo(target) {
     duration: 2000,
     essential: true
   }); 
-
 };
 
 map.on("click", "dong_polygon", e => {
