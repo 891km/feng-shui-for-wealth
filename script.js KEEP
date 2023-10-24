@@ -12,38 +12,6 @@ let markers = [];
 let popups = [];
 
 
-// 데이터를 비동기로 로드
-function loadData(url) {
-  return fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('네트워크 오류: ' + response.status);
-      }
-      return response.json();
-    })
-    .catch(error => {
-      console.error('데이터 로딩 중 오류 발생:', error);
-    });
-}
-
-const dataPromises = [
-  loadData('dong_point.geojson'),
-  loadData('dong_polygon.geojson'),
-  loadData('dong_profile.json'),
-  loadData('dong_nature.geojson')
-];
-
-Promise.all(dataPromises)
-  .then(([pointData, polygonData, profileData, natureData]) => {
-    features_point = pointData.features;
-    features_polygon = polygonData.features;
-    features_profile = profileData;
-    features_nature = natureData.features;
-  
-  
-  initializeMap();
-});
-
 // geojson 파일 불러오기
 fetch('dong_point.geojson')
   .then(response => response.json())
