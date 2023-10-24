@@ -51,7 +51,7 @@ body {
   align-items: center;
   width: 100%;
   height: auto;
-  padding-top: 70px;
+  padding-top: 60px;
 }
 
 #project-title, #project-info {
@@ -103,7 +103,7 @@ body {
   width: var(--popup_width);
   height: 100vh;
   background-color: white;
-  box-shadow: -2.5px 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: -2.5px 0 10px rgba(0, 0, 0, 0.2);
   overflow: scroll;
   transition: right 0.6s ease-out;
 }
