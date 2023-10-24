@@ -99,7 +99,9 @@ function initialSetLayers() {
     },
     paint: {
       "text-color": "rgba(0, 0, 0, 1)",
-      'text-opacity': 1
+      'text-opacity': 1,
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 1,
     },
     minzoom: 0, // 최소 줌 레벨
     maxzoom: 24, // 최대 줌 레벨
@@ -269,7 +271,7 @@ function setHome() {
     minZoom: 10.3,
     pitch: 64.5,
     bearing: 16,
-    duration: 1500,
+    duration: 2000,
     essential: true
   });    
 }
@@ -337,13 +339,13 @@ function loadTargetInfo(target) {
       'text-allow-overlap': true, // 레이블 겹침 방지
       'symbol-placement': 'point',
       'text-field': ['get', 'Name'],
-      'text-size': 15,
-      'text-offset': [0, -10],
+      'text-size': 16,
+      'text-offset': [0, -9],
       'text-anchor': 'bottom' 
     },
     paint: {
       "text-color": "rgba(0, 0, 0, 1)",
-      'text-opacity': 0.8
+      'text-opacity': 1
     }
   });
 
@@ -367,17 +369,7 @@ function loadTargetInfo(target) {
     'case',
     ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
     ['literal', [0, -1]],
-    ['case',
-      ['<', ['zoom'], 11],
-      ['literal', [0, -3]],
-      ['case',
-        ['<', ['zoom'], 13],
-        ['literal', [0, -7]],
-        ['literal', [0, -20]]
-      ]
-    ]
-    
-    // ['literal', [0, -4]] // target feature
+    ['literal', [0, -4]] // target feature
   ]);
   
   map.setPaintProperty('dong_point', 'text-opacity', [
@@ -428,7 +420,6 @@ function loadTargetInfo(target) {
   // target coord
   var lat = target.properties.Latitude;
   var long = target.properties.Longitude;
-  // var coord = [long, lat+0.005];
   var coord = [long, lat+0.002];
   var zoom = target.properties.Zoom;
   var pitch = target.properties.Pitch;
@@ -439,10 +430,12 @@ function loadTargetInfo(target) {
     zoom: zoom,
     pitch: pitch,
     bearing: bearing,
-    duration: 2000,
+    duration: 3000,
     essential: true
   }); 
 };
+
+
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
@@ -476,6 +469,8 @@ titleBtn.addEventListener("click", function() {
   setHome();
 });
 
+
+// infoBtn
 infoBtn.addEventListener("click", function() {
   document.getElementById("info-popup").style.right = "0";
 });
