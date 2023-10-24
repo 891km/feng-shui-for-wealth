@@ -7,6 +7,13 @@
   background: rgba(36, 39, 51, 0.4); /* 스크롤바의 색상 */
 }
 
+.wf-loading {
+  visibility: hidden;
+}
+.wf-active {
+  visibility: visible;
+}
+
 * {
   transition: opacity 1s;
   font-family: "source-han-sans-korean", sans-serif;
