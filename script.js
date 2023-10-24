@@ -65,13 +65,13 @@ const map = new mapboxgl.Map({
 });
 
 map.on('pitch', function() {
-  console.log("zoom:", Math.round(map.getZoom(),2), "pitch:", Math.round(map.getPitch(),2), "bearing:", Math.round(map.getBearing(),2));
+  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
 });
 map.on('zoom', function() {
-  console.log("zoom:", Math.round(map.getZoom(),2), "pitch:", Math.round(map.getPitch(),2), "bearing:", Math.round(map.getBearing());
+  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
 });
 map.on('bearing', function() {
-  console.log("zoom:", Math.round(map.getZoom(),2), "pitch:", Math.round(map.getPitch(),2), "bearing:", map.getBearing());
+  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
 });
 
 function initialSetLayers() {
