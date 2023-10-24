@@ -173,7 +173,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 127.0625, 37.5194 ]
+       "coordinates":  [ 127.0625,37.5194 ]
     },
     "properties": {
     "Address_dong":"청담동",
@@ -437,7 +437,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9808,37.4821 ]
+       "coordinates":  [ 127.0087,37.4711 ]
     },
     "properties": {
     "Address_dong":"우면동",

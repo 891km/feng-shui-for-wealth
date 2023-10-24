@@ -98,18 +98,18 @@ function initialSetLayers() {
       ],
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
-      'text-size': 16.5,
+      'text-size': 17,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
-        11, ['literal', [0, -4]],
-        15, ['literal', [0, -15]],
+        11, ['literal', [0, -3]],
+        13, ['literal', [0, -15]],
         20, ['literal', [0, -20]]
       ],
       'text-anchor': 'center' 
     },
     paint: {
       "text-color": "rgba(0, 0, 0, 1)",
-      'text-opacity': 0.8
+      'text-opacity': 1
     },
     minzoom: 0, // 최소 줌 레벨
     maxzoom: 24, // 최대 줌 레벨
@@ -147,7 +147,6 @@ function initialSetLayers() {
             ]
           },
         'icon-anchor': 'top',
-        // 'icon-padding': 5,
         'icon-offset': [0, -500]
       }
     });
@@ -202,7 +201,6 @@ function initialSetLayers() {
       map.addImage('nature_icon', image);
   });   
   }
-
 };
 
 function resetLayer() { 
@@ -275,7 +273,6 @@ function setHome() {
   document.getElementById("ctl_right").style.visibility = "hidden";
 
   if (!map.getLayer('dong_icon')) {
-    // 함수로 처리하기
     map.addLayer({
       'id': 'dong_icon',
       'type': 'symbol',
@@ -410,7 +407,7 @@ function loadTargetInfo(target) {
   map.setPaintProperty('dong_point', 'text-opacity', [
     'case',
     ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
-    0, 1 // target feature
+    0.3, 1 // target feature
   ]);
 
   map.setLayoutProperty('dong_point', 'text-font', [
