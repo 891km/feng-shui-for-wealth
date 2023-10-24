@@ -243,7 +243,7 @@ map.on("load", () => {
     }
   });
 
-  map.on('mouseleave', 'dong_polygon', () => {
+  map.on('mouseleave', 'dong_polygon', (e) => {
     map.getCanvas().style.cursor = "";
     
     if(hoveredPolygonId + 1 > 0) {
