@@ -283,6 +283,8 @@ function targetByIndex(currentIndex) {
 }
 
 function loadTargetInfo(target) {
+  document.getElementById("address_dong").style.visibility = "hidden";
+  
   // reset    
   resetLayer();
   hoveredPolygonId = target.id;

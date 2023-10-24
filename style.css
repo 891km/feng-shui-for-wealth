@@ -7,15 +7,6 @@
   background: rgba(36, 39, 51, 0.4); /* 스크롤바의 색상 */
 }
 
-
-.wf-loading div, .wf-loading h2, .wf-loading p{
-  visibility: hidden;
-}
-
-.wf-active div, .wf-active h2, .wf-active p{
-  visibility: visible;
-}
-
 * {
   font-family: 'Noto Sans KR', sans-serif;
 /*   font-family: "source-han-sans-korean", sans-serif; */
@@ -34,7 +25,13 @@
   font-family: "zw-mogujasusimgyeol", sans-serif;
   font-weight: 700;
   font-style: normal; 
-  font-display: block;
+}
+
+#address_dong {
+  visibility: hidden;
+}
+
+.wf-active #address_dong {
   visibility: visible;
 }
 
