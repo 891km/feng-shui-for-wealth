@@ -16,6 +16,9 @@
   font-style: normal;
   
   user-select: none;
+  -moz-user-select: none; /* Firefox 지원 */
+  -ms-user-select: none; /* IE 지원 */
+  -webkit-user-select: none; /* Webkit 브라우저 지원 (Safari, Chrome) */
 }
 
 #project-title, #project-info, #address_dong {
@@ -199,11 +202,6 @@ i {
   height: 100% !important; 
   background-color : #ffffff;
   z-index: 0;
-  
-  user-select: none;
-  -moz-user-select: none; /* Firefox 지원 */
-  -ms-user-select: none; /* IE 지원 */
-  -webkit-user-select: none; /* Webkit 브라우저 지원 (Safari, Chrome) */
 }
 
 #info-box {
