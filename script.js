@@ -64,16 +64,6 @@ const map = new mapboxgl.Map({
   bearing: 16
 });
 
-map.on('pitch', function() {
-  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
-});
-map.on('zoom', function() {
-  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
-});
-map.on('bearing', function() {
-  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
-});
-
 function initialSetLayers() {
   if (!map.getSource('dong_point')) {
     // dong_point
@@ -98,11 +88,11 @@ function initialSetLayers() {
       ],
       'symbol-placement': 'point',
       'text-field': ['get', 'Address_dong'],
-      'text-size': 17,
+      'text-size': 18,
       'text-offset': [
         'interpolate', ['linear'], ['zoom'],
         11, ['literal', [0, -3]],
-        13, ['literal', [0, -15]],
+        13, ['literal', [0, -7]],
         20, ['literal', [0, -20]]
       ],
       'text-anchor': 'center' 
@@ -441,9 +431,8 @@ function loadTargetInfo(target) {
     duration: 2000,
     essential: true
   }); 
-  
-  console.log(map.getBearing())
-  };
+
+};
 
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
