@@ -7,13 +7,12 @@
   background: rgba(36, 39, 51, 0.4); /* 스크롤바의 색상 */
 }
 
-
 * {
-  font-display: block;
   transition: opacity 1s;
   font-family: "source-han-sans-korean", sans-serif;
   font-weight: 400;
   font-style: normal;
+  font-display: block;
   
   user-select: none;
   -moz-user-select: none; /* Firefox 지원 */
@@ -22,10 +21,10 @@
 }
 
 #project-title, #project-info, #address_dong {
-  font-display: block;
   font-family: "zw-mogujasusimgyeol", sans-serif;
   font-weight: 700;
   font-style: normal; 
+  font-display: block;
 }
 
 :root {
