@@ -1,4 +1,5 @@
 // 전역 변수
+let map;
 let hoveredPolygonId = null; 
 
 let features_point;
@@ -23,6 +24,7 @@ function loadData(url) {
     })
     .catch(error => {
       console.error('데이터 로딩 중 오류 발생:', error);
+      throw error;
     });
 }
 
@@ -40,213 +42,232 @@ Promise.all(dataPromises)
     features_profile = profileData;
     features_nature = natureData.features;
   
-  
-  initializeMap();
+    initializeMap();
 });
 
-// geojson 파일 불러오기
-fetch('dong_point.geojson')
-  .then(response => response.json())
-  .then(data => {
-    features_point = data.features;
-  })
-  .catch(error => {
-    console.error('파일 로딩 중 오류 발생:', error);
-  });
-
-fetch('dong_polygon.geojson')
-  .then(response => response.json())
-  .then(data => {
-    features_polygon = data.features;
-  })
-  .catch(error => {
-    console.error('파일 로딩 중 오류 발생:', error);
-  });
-
-fetch('dong_profile.json')
-  .then(response => response.json())
-  .then(data => {
-    features_profile = data;
-  })
-  .catch(error => {
-    console.error('파일 로딩 중 오류 발생:', error);
-  });
-
-fetch('dong_nature.geojson')
-  .then(response => response.json())
-  .then(data => {
-    features_nature = data.features;
-  })
-  .catch(error => {
-    console.error('파일 로딩 중 오류 발생:', error);
-  });
-
-
-// mapbox
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiODkxa20iLCJhIjoiY2xsenowYWlpMTc5eTNpczZ3czJnaDNnZCJ9.MJ5L9o66OPTMzllWEW_17Q";
-
-const map = new mapboxgl.Map({
-  container: "map", // id
-  style: "mapbox://styles/891km/clmr9ohkz01yj01r64l03bouv/draft",
-  attributionControl: false,
-  center: [127.063, 37.46],
-  zoom: 11.1,
-  minZoom: 10.3,
-  pitch: 64.5,
-  bearing: 16
-});
-
-function initialSetLayers() {
-  if (!map.getSource('dong_point')) {
-    // dong_point
-    map.addSource("dong_point", {
-      type: 'geojson',
-      data: '/dong_point.geojson',
+function initializeMap() {
+  // geojson 파일 불러오기
+  fetch('dong_point.geojson')
+    .then(response => response.json())
+    .then(data => {
+      features_point = data.features;
+    })
+    .catch(error => {
+      console.error('파일 로딩 중 오류 발생:', error);
     });
-  }
-  
-  if (!map.getLayer('dong_point')) {
-    map.addLayer({
-    id: "dong_point",
-    type: "symbol",
-    source: "dong_point",
-    layout: {
-      'text-font': ['source-han-sans-korean', 'regular'],
-      'text-allow-overlap': [
-        'step',
-        ['zoom'],
-        false, // 0부터 시작하는 zoom 레벨에서는 표시
-        11.9, true
-      ],
-      'symbol-placement': 'point',
-      'text-field': ['get', 'Address_dong'],
-      'text-size': 18,
-      'text-offset': [
-        'interpolate', ['linear'], ['zoom'],
-        11, ['literal', [0, -3]],
-        13, ['literal', [0, -7]],
-        20, ['literal', [0, -20]]
-      ],
-      'text-anchor': 'center' 
-    },
-    paint: {
-      "text-color": "rgba(0, 0, 0, 1)",
-      'text-opacity': 1,
-      'text-halo-color': '#ffffff',
-      // 'text-halo-width': 2
-    },
-    minzoom: 0, // 최소 줌 레벨
-    maxzoom: 24, // 최대 줌 레벨
-  });
-  };
-    
-  if (!map.hasImage('dong_icon')) {
-    // dong_icon load
-    map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/village_icon.png?v=1697728256494', function (error, image) {
-    if (error) throw error;
-    map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
+
+  fetch('dong_polygon.geojson')
+    .then(response => response.json())
+    .then(data => {
+      features_polygon = data.features;
+    })
+    .catch(error => {
+      console.error('파일 로딩 중 오류 발생:', error);
     });
-  };
-  
-  if (!map.getLayer('dong_icon')) {
-    // dong_icon 
-    map.addLayer({
-      'id': 'dong_icon',
-      'type': 'symbol',
-      'source': 'dong_point',
-      'layout': {
-        'icon-allow-overlap': [
+
+  fetch('dong_profile.json')
+    .then(response => response.json())
+    .then(data => {
+      features_profile = data;
+    })
+    .catch(error => {
+      console.error('파일 로딩 중 오류 발생:', error);
+    });
+
+  fetch('dong_nature.geojson')
+    .then(response => response.json())
+    .then(data => {
+      features_nature = data.features;
+    })
+    .catch(error => {
+      console.error('파일 로딩 중 오류 발생:', error);
+    });
+
+  // mapbox
+  mapboxgl.accessToken =
+    "pk.eyJ1IjoiODkxa20iLCJhIjoiY2xsenowYWlpMTc5eTNpczZ3czJnaDNnZCJ9.MJ5L9o66OPTMzllWEW_17Q";
+
+  map = new mapboxgl.Map({
+    container: "map", // id
+    style: "mapbox://styles/891km/clmr9ohkz01yj01r64l03bouv/draft",
+    attributionControl: false,
+    center: [127.063, 37.46],
+    zoom: 11.1,
+    minZoom: 10.3,
+    pitch: 64.5,
+    bearing: 16
+  });
+
+  function initialSetLayers() {
+    if (!map.getSource('dong_point')) {
+      // dong_point
+      map.addSource("dong_point", {
+        type: 'geojson',
+        data: '/dong_point.geojson',
+      });
+    }
+
+    if (!map.getLayer('dong_point')) {
+      map.addLayer({
+      id: "dong_point",
+      type: "symbol",
+      source: "dong_point",
+      layout: {
+        'text-font': ['source-han-sans-korean', 'regular'],
+        'text-allow-overlap': [
           'step',
           ['zoom'],
           false, // 0부터 시작하는 zoom 레벨에서는 표시
-          11.5, true
+          11.9, true
         ],
-        'icon-image': 'dong_icon',
-        'icon-size': 0.06,
-        'icon-size': {
-          type: 'exponential',
-            stops: [ 
-              [10, 0.03],
-              [24, 0.4]
-            ]
-          },
-        'icon-anchor': 'top',
-        'icon-offset': [0, -500]
-      }
+        'symbol-placement': 'point',
+        'text-field': ['get', 'Address_dong'],
+        'text-size': 18,
+        'text-offset': [
+          'interpolate', ['linear'], ['zoom'],
+          11, ['literal', [0, -3]],
+          13, ['literal', [0, -7]],
+          20, ['literal', [0, -20]]
+        ],
+        'text-anchor': 'center' 
+      },
+      paint: {
+        "text-color": "rgba(0, 0, 0, 1)",
+        'text-opacity': 1,
+        'text-halo-color': '#ffffff',
+        // 'text-halo-width': 2
+      },
+      minzoom: 0, // 최소 줌 레벨
+      maxzoom: 24, // 최대 줌 레벨
     });
-  };
-      
-  if (!map.getSource('dong_polygon')) {
-    // dong_polygon
-    map.addSource("dong_polygon", {
-      type: 'geojson',
-      data: '/dong_polygon.geojson',
-      generateId: true
-    });
-  };
-   
-  if (!map.getLayer('dong_polygon')) {
-    map.addLayer({
-    id: "dong_polygon",
-    type: "fill",
-    source: "dong_polygon",
-    paint: {
-      "fill-color": "#2F364E",
-      // "fill-color": "rgb(59, 64, 84)",
-      'fill-opacity': [
-        'case', 
-        ['boolean', ['feature-state', 'hover'], false],
-        0.9, // hover : true
-        0.6 // hover: false
-      ]
-    } 
-  }); 
-  };
-  
-  if (!map.getLayer('dong_line')) {
-    // dong_line
-    map.addLayer({
-      'id': 'dong_line',
-      'type': 'line',
-      'source': 'dong_polygon',
-      'layout': {},
-      'paint': {
-      'line-color': "rgba(59, 64, 84, 1)",
-      // 'line-color': "rgba(59, 64, 84, 0.8)",
-      'line-width': 1
-      }
-    });
-  };
-  
-  if (!map.hasImage('nature_icon')) {
-    // nature icon image load
-    map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
-    if (error) throw error;
-      map.addImage('nature_icon', image);
-  });   
-  }
-};
+    };
 
-function resetLayer() { 
-  if (map.getLayer('target_dong_icon')) {
-    map.removeLayer('target_dong_icon');
+    if (!map.hasImage('dong_icon')) {
+      // dong_icon load
+      map.loadImage('https://cdn.glitch.global/6866da1d-b241-4b37-a22b-ab00a9127f17/village_icon.png?v=1697728256494', function (error, image) {
+      if (error) throw error;
+      map.addImage('dong_icon', image); // 이미지를 맵에 추가합니다.
+      });
+    };
+
+    if (!map.getLayer('dong_icon')) {
+      // dong_icon 
+      map.addLayer({
+        'id': 'dong_icon',
+        'type': 'symbol',
+        'source': 'dong_point',
+        'layout': {
+          'icon-allow-overlap': [
+            'step',
+            ['zoom'],
+            false, // 0부터 시작하는 zoom 레벨에서는 표시
+            11.5, true
+          ],
+          'icon-image': 'dong_icon',
+          'icon-size': 0.06,
+          'icon-size': {
+            type: 'exponential',
+              stops: [ 
+                [10, 0.03],
+                [24, 0.4]
+              ]
+            },
+          'icon-anchor': 'top',
+          'icon-offset': [0, -500]
+        }
+      });
+    };
+
+    if (!map.getSource('dong_polygon')) {
+      // dong_polygon
+      map.addSource("dong_polygon", {
+        type: 'geojson',
+        data: '/dong_polygon.geojson',
+        generateId: true
+      });
+    };
+
+    if (!map.getLayer('dong_polygon')) {
+      map.addLayer({
+      id: "dong_polygon",
+      type: "fill",
+      source: "dong_polygon",
+      paint: {
+        "fill-color": "#2F364E",
+        // "fill-color": "rgb(59, 64, 84)",
+        'fill-opacity': [
+          'case', 
+          ['boolean', ['feature-state', 'hover'], false],
+          0.9, // hover : true
+          0.6 // hover: false
+        ]
+      } 
+    }); 
+    };
+
+    if (!map.getLayer('dong_line')) {
+      // dong_line
+      map.addLayer({
+        'id': 'dong_line',
+        'type': 'line',
+        'source': 'dong_polygon',
+        'layout': {},
+        'paint': {
+        'line-color': "rgba(59, 64, 84, 1)",
+        // 'line-color': "rgba(59, 64, 84, 0.8)",
+        'line-width': 1
+        }
+      });
+    };
+
+    if (!map.hasImage('nature_icon')) {
+      // nature icon image load
+      map.loadImage('https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/pin.png?v=1697743554730', function (error, image) {
+      if (error) throw error;
+        map.addImage('nature_icon', image);
+    });   
+    }
+  };
+
+  function resetLayer() { 
+    if (map.getLayer('target_dong_icon')) {
+      map.removeLayer('target_dong_icon');
+    }
+    if (map.getLayer('dong_icon')) {
+      map.removeLayer('dong_icon');
+    } 
+    if (map.getLayer('nature_label')) {
+      map.removeLayer('nature_label');
+    }
+    if (map.getLayer('nature_icon')) {
+      map.removeLayer('nature_icon');
+    }
+    if (map.getSource('dong_nature')) {
+      map.removeSource('dong_nature');
+    }
+    if (map.getSource('target_dong_icon')) {
+      map.removeSource('target_dong_icon');
+    }  
   }
-  if (map.getLayer('dong_icon')) {
-    map.removeLayer('dong_icon');
-  } 
-  if (map.getLayer('nature_label')) {
-    map.removeLayer('nature_label');
+  
+  function setHome() {
+    document.getElementById("info-box").style.opacity = "0";
+    document.getElementById("project-title").style.opacity = "100";
+    document.getElementById("ctl_left").style.visibility = "hidden"; 
+    document.getElementById("ctl_right").style.visibility = "hidden";
+
+    initialSetLayers();
+
+    map.flyTo({
+      center: [127.063, 37.46],
+      zoom: 11.1,
+      minZoom: 10.3,
+      pitch: 64.5,
+      bearing: 16,
+      duration: 2000,
+      essential: true
+    });    
   }
-  if (map.getLayer('nature_icon')) {
-    map.removeLayer('nature_icon');
-  }
-  if (map.getSource('dong_nature')) {
-    map.removeSource('dong_nature');
-  }
-  if (map.getSource('target_dong_icon')) {
-    map.removeSource('target_dong_icon');
-  }  
 }
 
 map.on("load", () => {
@@ -254,7 +275,7 @@ map.on("load", () => {
   map.rotateTo(180, { duration: 800000 });
 
   initialSetLayers();
-  
+
   // event
   map.on('mouseenter', 'dong_polygon', (e) => {   
     map.getCanvas().style.cursor = "pointer";
@@ -270,7 +291,7 @@ map.on("load", () => {
 
   map.on('mouseleave', 'dong_polygon', (e) => {
     map.getCanvas().style.cursor = "";
-    
+
     if(hoveredPolygonId + 1 > 0) {
       map.setFeatureState(
         { source: 'dong_polygon', id: hoveredPolygonId },
@@ -290,24 +311,7 @@ var infoXBtn = document.getElementById("popup-x");
 var currentIndex = 0;
 var target;
 
-function setHome() {
-  document.getElementById("info-box").style.opacity = "0";
-  document.getElementById("project-title").style.opacity = "100";
-  document.getElementById("ctl_left").style.visibility = "hidden"; 
-  document.getElementById("ctl_right").style.visibility = "hidden";
-  
-  initialSetLayers();
 
-  map.flyTo({
-    center: [127.063, 37.46],
-    zoom: 11.1,
-    minZoom: 10.3,
-    pitch: 64.5,
-    bearing: 16,
-    duration: 2000,
-    essential: true
-  });    
-}
 
 function targetByIndex(currentIndex) {    
   const targetFeature = features_polygon.find(feature => feature.properties.Index === currentIndex);
@@ -425,7 +429,7 @@ function loadTargetInfo(target) {
       'icon-offset': [0, -500]
     }
   });  
-  
+
     // only target dong_point (label)
   map.setLayoutProperty('dong_point', 'text-offset', [
     'case',
@@ -433,7 +437,7 @@ function loadTargetInfo(target) {
     ['literal', [0, -1]],
     ['literal', [0, -4]] // target feature
   ]);
-  
+
   map.setPaintProperty('dong_point', 'text-opacity', [
     'case',
     ['!=', ['get', 'Address_dong'], target.properties.Address_dong],
@@ -489,7 +493,7 @@ rightBtn.addEventListener("click", function() {
 
 titleBtn.addEventListener("click", function() {
   currentIndex = -1;
-  
+
   if (map.getLayer('dong_point')) {
     map.removeLayer('dong_point');
   }
@@ -497,7 +501,6 @@ titleBtn.addEventListener("click", function() {
   initialSetLayers();
   setHome();
 });
-
 
 // infoBtn
 infoBtn.addEventListener("click", function() {
@@ -507,4 +510,7 @@ infoBtn.addEventListener("click", function() {
 infoXBtn.addEventListener("click", function() {
   const popupWidth = getComputedStyle(document.documentElement).getPropertyValue('--popup_width');  
   document.getElementById("info-popup").style.right = -1.5 * parseInt(popupWidth) + "px";
-});
+});  
+
+
+initializeMap();
