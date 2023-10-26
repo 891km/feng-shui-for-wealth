@@ -487,3 +487,14 @@ infoXBtn.addEventListener("click", function() {
   const popupWidth = getComputedStyle(document.documentElement).getPropertyValue('--popup_width');  
   document.getElementById("info-popup").style.right = -1.5 * parseInt(popupWidth) + "px";
 });
+
+
+map.on('pitch', function() {
+  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
+});
+map.on('zoom', function() {
+  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
+});
+map.on('bearing', function() {
+  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
+});

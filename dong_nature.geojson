@@ -77,11 +77,11 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9824,37.5973 ]
+       "coordinates":  [ 126.9809,37.5962 ]
     },
     "properties": {
     "Address_dong":"성북동",
-    "Name":"응봉능선",
+    "Name":"말바위",
     "Category":"mtn_sub"
     }
   },
