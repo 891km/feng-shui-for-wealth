@@ -50,6 +50,16 @@ fetch('dong_nature.geojson')
   });
 
 
+window.addEventListener('load', function() {
+  // Typekit.load({
+  //   async: true,
+  //   active: function() {
+  //     document.body.style.visibility = "visible";
+  //     console.log("load")
+  //   }
+  // });
+});
+
 // mapbox
 mapboxgl.accessToken =
   "pk.eyJ1IjoiODkxa20iLCJhIjoiY2xsenowYWlpMTc5eTNpczZ3czJnaDNnZCJ9.MJ5L9o66OPTMzllWEW_17Q";
@@ -282,11 +292,6 @@ function targetByIndex(currentIndex) {
   return targetFeature;
 }
 
-function loadTargetSetting(target) {
-  
-  
-}
-
 function loadTargetInfo(target) {  
 
   // reset    
@@ -295,25 +300,17 @@ function loadTargetInfo(target) {
   document.getElementById("profile_grid").innerHTML = '';
   
   // elem visibility
-  document.getElementById("info-box").style.opacity = "100";
-  document.getElementById("ctl_left").style.visibility = "visible"; 
-  document.getElementById("ctl_right").style.visibility = "visible";
   document.getElementById("address_sigu").innerHTML =
     target.properties.Address_si + " " + target.properties.Address_gu;
   document.getElementById("address_dong").innerHTML =
     target.properties.Address_dong;
   document.getElementById("address_des").innerHTML =
     target.properties.Info;
+  
+  document.getElementById("ctl_left").style.visibility = "visible"; 
+  document.getElementById("ctl_right").style.visibility = "visible";
+  document.getElementById("info-box").style.opacity = "100";
 
-  // document.getElementById("info-left").style.visibility = "hidden";
-  // document.getElementById("info-right").style.visibility = "hidden";
-  // Typekit.load({
-  //   async: false,
-  //   active: function() {
-  //     document.getElementById("info-left").style.visibility = "visible";
-  //     document.getElementById("info-right").style.visibility = "visible";
-  //   }
-  // });
 
   // profile
   const targetProfiles = features_profile.filter(feature => feature.Address_dong === target.properties.Address_dong);
@@ -492,12 +489,12 @@ infoXBtn.addEventListener("click", function() {
 });
 
 
-map.on('pitch', function() {
-  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
-});
-map.on('zoom', function() {
-  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
-});
-map.on('bearing', function() {
-  console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
-});
+// map.on('pitch', function() {
+//   console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
+// });
+// map.on('zoom', function() {
+//   console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
+// });
+// map.on('bearing', function() {
+//   console.log("zoom:", map.getZoom().toFixed(2), "pitch:", map.getPitch().toFixed(2), "bearing:", map.getBearing().toFixed(2));
+// });
