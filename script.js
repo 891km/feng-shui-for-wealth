@@ -220,22 +220,10 @@ function resetLayer() {
   }  
 }
 
-function rotateMapInfinitely(map) {
-  function rotateOnce() {
-    map.rotateTo(map.getBearing()+180, {
-      duration: 700000
-    }, () => {
-      rotateOnce();
-    });
-  }
-  rotateOnce();
-}
 
 map.on("load", () => {
   map.resize();
-  rotateMapInfinitely(map);
-  // map.rotateTo(180, { duration: 800000 });
-
+  map.rotateTo(map.getBearing() + 180, { duration: 800000 });
   initialSetLayers();
   
   // event
@@ -478,7 +466,6 @@ titleBtn.addEventListener("click", function() {
     map.removeLayer('dong_point');
   }
   resetLayer();
-  initialSetLayers();
   setHome();
 });
 
