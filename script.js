@@ -50,16 +50,6 @@ fetch('dong_nature.geojson')
   });
 
 
-window.addEventListener('load', function() {
-  // Typekit.load({
-  //   async: true,
-  //   active: function() {
-  //     document.body.style.visibility = "visible";
-  //     console.log("load")
-  //   }
-  // });
-});
-
 // mapbox
 mapboxgl.accessToken =
   "pk.eyJ1IjoiODkxa20iLCJhIjoiY2xsenowYWlpMTc5eTNpczZ3czJnaDNnZCJ9.MJ5L9o66OPTMzllWEW_17Q";
@@ -448,7 +438,7 @@ function loadTargetInfo(target) {
 map.on("click", "dong_polygon", e => {
   target = e.features[0];
   currentIndex = (target.properties.Index);
-
+  
   loadTargetInfo(target);
 });
 
