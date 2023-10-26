@@ -77,7 +77,7 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 126.9596,37.6282 ]
+       "coordinates":  [ 126.9824,37.5973 ]
     },
     "properties": {
     "Address_dong":"성북동",
