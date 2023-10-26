@@ -49,6 +49,9 @@ fetch('dong_nature.geojson')
     console.error('파일 로딩 중 오류 발생:', error);
   });
 
+window.addEventListener("load", function (event) {
+  document.body.style.visibility = "visible";
+});
 
 // mapbox
 mapboxgl.accessToken =
