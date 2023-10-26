@@ -220,9 +220,21 @@ function resetLayer() {
   }  
 }
 
+function rotateMapInfinitely(map) {
+  function rotateOnce() {
+    map.rotateTo(map.getBearing()+180, {
+      duration: 700000
+    }, () => {
+      rotateOnce();
+    });
+  }
+  rotateOnce();
+}
+
 map.on("load", () => {
   map.resize();
-  map.rotateTo(180, { duration: 800000 });
+  rotateMapInfinitely(map);
+  // map.rotateTo(180, { duration: 800000 });
 
   initialSetLayers();
   
@@ -268,7 +280,7 @@ function setHome() {
   document.getElementById("ctl_right").style.visibility = "hidden";
   
   initialSetLayers();
-
+  
   map.flyTo({
     center: [127.063, 37.46],
     zoom: 11.1,
@@ -277,7 +289,7 @@ function setHome() {
     bearing: 16,
     duration: 2000,
     essential: true
-  });    
+  });  
 }
 
 function targetByIndex(currentIndex) {    
