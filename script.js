@@ -282,10 +282,6 @@ function targetByIndex(currentIndex) {
   return targetFeature;
 }
 
-function loadTargetSetting(target) {
-  
-  
-}
 
 function loadTargetInfo(target) {  
 

@@ -210,9 +210,8 @@ i {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100vw - 20px);
-  height: 32vh;
+  height: 34vh;
   color: black;
-/*   background-color: rgba(255,255,255,0.9); */
   background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,1)); 
   border-radius: 8px;
   pointer-events: none;
@@ -259,7 +258,7 @@ i {
 }
 
 #address_des {
-  font-size: 1rem;
+  font-size: 0.95rem;
   position: sticky;
   top: 55%;
   width: 100%;
@@ -274,7 +273,6 @@ i {
   width: calc(100% - 60px);
   display: grid;
   grid-template-rows : 15% 20% 65%;
-/*   background-color: yellow; */
 }
 
 /* text - right */
