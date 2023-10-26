@@ -282,6 +282,10 @@ function targetByIndex(currentIndex) {
   return targetFeature;
 }
 
+function loadTargetSetting(target) {
+  
+  
+}
 
 function loadTargetInfo(target) {  
 
@@ -291,21 +295,20 @@ function loadTargetInfo(target) {
   document.getElementById("profile_grid").innerHTML = '';
   
   // elem visibility
+  document.getElementById("info-box").style.opacity = "100";
   document.getElementById("ctl_left").style.visibility = "visible"; 
   document.getElementById("ctl_right").style.visibility = "visible";
-  
   document.getElementById("address_sigu").innerHTML =
     target.properties.Address_si + " " + target.properties.Address_gu;
   document.getElementById("address_dong").innerHTML =
     target.properties.Address_dong;
   document.getElementById("address_des").innerHTML =
     target.properties.Info;
-  document.getElementById("info-box").style.opacity = "100";
 
   // document.getElementById("info-left").style.visibility = "hidden";
   // document.getElementById("info-right").style.visibility = "hidden";
   // Typekit.load({
-  //   async: true,
+  //   async: false,
   //   active: function() {
   //     document.getElementById("info-left").style.visibility = "visible";
   //     document.getElementById("info-right").style.visibility = "visible";

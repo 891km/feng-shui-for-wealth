@@ -41,6 +41,9 @@ body {
   display: inline-block;
   float: right;
   overflow: hidden;
+  
+  visibility: hidden;
+  
 }
 
 #header {
