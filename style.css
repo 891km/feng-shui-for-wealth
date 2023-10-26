@@ -112,21 +112,23 @@ body {
   color: black;
   position: relative;
   left: 0;
-  margin: 20px auto;
+  margin: 30px auto;
   width: 92%;
   height: auto;
   text-align: left;
 }
 
 .popup-h {
-  margin-top: 100px;
+  font-family: "zw-mogujasusimgyeol", sans-serif;
   font-weight: 700;
-/*   font-size: 1.6rem; */
+  margin-top: 90px;
+  font-weight: 1000;
+  font-size: 2rem;
 }
 
 .popup-img {
-  width: 90%;
-  height: 310px;
+  width: 80%;
+  height: 290px;
   background-image: url("https://cdn.glitch.global/4300c893-b7d0-43b8-97e2-45113b955d30/%E1%84%91%E1%85%AE%E1%86%BC%E1%84%89%E1%85%AE%E1%84%8C%E1%85%B5%E1%84%85%E1%85%B5%20%E1%84%89%E1%85%A9%E1%84%80%E1%85%A2_%E1%84%90%E1%85%AE%E1%84%86%E1%85%A7%E1%86%BC.png?v=1697808509606");
   background-size: contain;
   background-position: center;
@@ -137,10 +139,10 @@ body {
 }
 
 .popup-p {
-  width: 50%;
-  font-size: 0.9rem;
-  line-height: 170%;
-  background-color: yellow;
+  width: 90%;
+  font-size: 0.94rem;
+  line-height: 180%;
+/*   background-color: yellow; */
 }
 
 #popup-x {
