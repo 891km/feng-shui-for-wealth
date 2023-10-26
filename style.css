@@ -136,6 +136,13 @@ body {
 /*   border-radius: 4px; */
 }
 
+.popup-p {
+  width: 50%;
+  font-size: 0.9rem;
+  line-height: 170%;
+  background-color: yellow;
+}
+
 #popup-x {
   position: absolute;
   right: 0;
