@@ -265,6 +265,7 @@ i {
   height: 45%;
   pointer-events: auto;
   overflow: auto;
+  color: #353535;
 }
 
 #info-right {
