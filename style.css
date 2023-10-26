@@ -235,7 +235,7 @@ i {
 #info-left {
   display: inline-block;
   left: 0;
-  margin: 20px 30px;
+  margin: 24px 30px;
   width: calc(100% - 60px);
   height: calc(100% - 40px);
   overflow: scroll;
@@ -285,12 +285,12 @@ i {
   margin: 20px 30px;
   width: calc(100% - 60px);
   display: grid;
-  grid-template-rows : 15% 20% 65%;
+  grid-template-rows : 20% 20% 60%;
 }
 
 /* text - right */
 .right_title {
-  font-weight: 700;
+  font-weight: 900;
   font-size: 1.05rem;
 }
 
@@ -313,7 +313,6 @@ i {
   height: 100%;
   text-align: center;
   margin-right : 2%;
-/*   background-color: grey; */
 }
 
 .pict {
