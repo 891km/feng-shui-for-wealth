@@ -331,3 +331,18 @@ i {
   width: 100%;
   padding-top: 0.7rem;
 }
+
+/*맵박스 로고 가리기*/
+.mapbox-logo { 
+  display: none; 
+}
+.mapboxgl-ctrl-logo { 
+  display: none !important; 
+} 
+.mapbox-improve-map { 
+  display: none; 
+} 
+.mapboxgl-ctrl-compass { 
+  display: none; 
+}
+
