@@ -72,7 +72,7 @@ function initialSetLayers() {
     // dong_point
     map.addSource("dong_point", {
       type: "geojson",
-      data: "/dong_point.geojson",
+      data: "json/dong_point.geojson",
     });
   }
 
@@ -158,7 +158,7 @@ function initialSetLayers() {
     // dong_polygon
     map.addSource("dong_polygon", {
       type: "geojson",
-      data: "/dong_polygon.geojson",
+      data: "json/dong_polygon.geojson",
       generateId: true,
     });
   }
