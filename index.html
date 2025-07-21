@@ -2,69 +2,104 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>feng-shui-for-wealth</title>  
-    
+    <title>feng-shui-for-wealth</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-    <script src="https://kit.fontawesome.com/3841f068e0.js" crossorigin="anonymous"></script>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>  
+    <script
+      src="https://kit.fontawesome.com/3841f068e0.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.5.0/turf.min.js"></script>
     <script>
-      (function(d) {
+      (function (d) {
         var config = {
-          kitId: 'qmn7ekv',
-          scriptTimeout: 3000,
-          async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            kitId: "qmn7ekv",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
       })(document);
     </script>
-    <link rel="stylesheet" href="/style.css" />
-    <script src="/script.js" defer></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=block" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=block"
+      rel="stylesheet"
+    />
   </head>
-  
+
   <body>
     <div id="map"></div>
-    <div id="ctl_left"> <i class="fa-solid fa-arrow-left fa-2xl"></i> </div>
-    <div id="ctl_right"> <i class="fa-solid fa-arrow-right fa-2xl"></i> </div>
-        
-    <div id="header">
-      <div id="project-title"> 풍수지리로 보는 부촌 </div>
-      <div id="project-info"> 소개 </div>
-    </div>
-    
-    <div id="info-popup">
-      <div id="popup-x"> <i class="fa-solid fa-xmark fa-xl"></i> </div>
-      <h2 class="popup-h"> ▪︎ 풍수지리에 대하여 </h2>
-      <div class="popup-img"> </div>
-      <p class="popup-p"> 
-        한국의 풍수지리의 기본개념은 땅의 형세를 인간의 길흉화복에 관련시켜 설명하는 자연관의 하나이다. 자산가들은 땅이나 건물을 살 때 풍수지리를 따진다. 이왕이면 기후, 풍향, 물길 등을 파악해 좀 더 건강하고 안락하게 살아갈 터를 찾기 위해서다. 
-        <br> <br> 
-        풍수지리 사상에 따른 명당은 좌청룡, 우백호로 개념 지워진 산줄기로 둘러싸여 있으며, 그 사이로 하천이 흐르는 배산임수의 여건을 갖춘 곳이다. 배산임수는 예전부터 풍수 명당의 기본 조건으로 뒤의 산은 집에 생기를 불어넣고 앞의 물은 땅의 기운을 모이게 하는 역할을 하는 것으로 알려졌다.      </p>
-    </div>
-    
-    <div id="info-box">
-        <div id="info-left">
-          <div class="adress">
-            <div id="address_sigu"> 시/구 </div>
-            <div id="address_dong"> 동 </div>            
-          </div>
-          <div id="address_des"> 설명 </div>        
-        </div>
-      
-        <div id="info-right">
-          <div> </div>
-          <div class="right_title"> 거주중인 자산가 </div>
-          <div id="profile_grid"> </div>
-        </div>
-    </div>      
+    <div id="ctl_left"><i class="fa-solid fa-arrow-left fa-2xl"></i></div>
+    <div id="ctl_right"><i class="fa-solid fa-arrow-right fa-2xl"></i></div>
 
-  
-               
+    <div id="header">
+      <div id="project-title">풍수지리로 보는 부촌</div>
+      <div id="project-info">소개</div>
+    </div>
+
+    <div id="info-popup">
+      <div id="popup-x"><i class="fa-solid fa-xmark fa-xl"></i></div>
+      <h2 class="popup-h">▪︎ 풍수지리에 대하여</h2>
+      <div class="popup-img"></div>
+      <p class="popup-p">
+        한국의 풍수지리의 기본개념은 땅의 형세를 인간의 길흉화복에 관련시켜
+        설명하는 자연관의 하나이다. 자산가들은 땅이나 건물을 살 때 풍수지리를
+        따진다. 이왕이면 기후, 풍향, 물길 등을 파악해 좀 더 건강하고 안락하게
+        살아갈 터를 찾기 위해서다.
+        <br />
+        <br />
+        풍수지리 사상에 따른 명당은 좌청룡, 우백호로 개념 지워진 산줄기로
+        둘러싸여 있으며, 그 사이로 하천이 흐르는 배산임수의 여건을 갖춘 곳이다.
+        배산임수는 예전부터 풍수 명당의 기본 조건으로 뒤의 산은 집에 생기를
+        불어넣고 앞의 물은 땅의 기운을 모이게 하는 역할을 하는 것으로 알려졌다.
+      </p>
+    </div>
+
+    <div id="info-box">
+      <div id="info-left">
+        <div class="adress">
+          <div id="address_sigu">시/구</div>
+          <div id="address_dong">동</div>
+        </div>
+        <div id="address_des">설명</div>
+      </div>
+
+      <div id="info-right">
+        <div></div>
+        <div class="right_title">거주중인 자산가</div>
+        <div id="profile_grid"></div>
+      </div>
+    </div>
   </body>
 </html>
